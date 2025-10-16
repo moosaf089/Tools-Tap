@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home -->
+  <url>
+    <loc>https://moosaf089.github.io/toolstap/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Image Tools -->
+  <url><loc>https://moosaf089.github.io/toolstap/image-converter.html</loc><priority>0.9</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/image-compressor.html</loc><priority>0.8</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/image-resizer.html</loc><priority>0.8</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/image-cropper.html</loc><priority>0.8</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/image-to-text.html</loc><priority>0.8</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/image-rotater.html</loc><priority>0.8</priority></url>
+
+  <!-- PDF Tools -->
+  <url><loc>https://moosaf089.github.io/toolstap/pdf-to-word.html</loc><priority>0.8</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/pdf-compressor-tool.html</loc><priority>0.8</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/pdf-merger-splitter-tool.html</loc><priority>0.8</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/document-converter-tool.html</loc><priority>0.7</priority></url>
+
+  <!-- Calculator Tools -->
+  <url><loc>https://moosaf089.github.io/toolstap/scientific-calculator.html</loc><priority>0.8</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/age-calculator-tool.html</loc><priority>0.8</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/bmi-calculator-tool.html</loc><priority>0.8</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/loan-emi-calculator-tool.html</loc><priority>0.8</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/gst-calculator-converter.html</loc><priority>0.7</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/gst-currency-calculator-tool.html</loc><priority>0.7</priority></url>
+
+  <!-- Text Tools -->
+  <url><loc>https://moosaf089.github.io/toolstap/text-case-converter-tool.html</loc><priority>0.9</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/word-counter-tool.html</loc><priority>0.9</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/duplicate-line-remover.html</loc><priority>0.8</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/text-shortner-tool.html</loc><priority>0.8</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/text-reverser.html</loc><priority>0.8</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/text-encrypter-decrypter.html</loc><priority>0.8</priority></url>
+
+  <!-- QR Tools -->
+  <url><loc>https://moosaf089.github.io/toolstap/qrcode-generator.html</loc><priority>0.9</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/qr-history.html</loc><priority>0.8</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/qr-code-scanner.html</loc><priority>0.8</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/barcode-scanner.html</loc><priority>0.8</priority></url>
+
+  <!-- Other Pages -->
+  <url><loc>https://moosaf089.github.io/toolstap/about.html</loc><priority>0.6</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/privacy-policy.html</loc><priority>0.6</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/terms-and-condition.html</loc><priority>0.6</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/faq.html</loc><priority>0.6</priority></url>
+  <url><loc>https://moosaf089.github.io/toolstap/cookies-policy.html</loc><priority>0.6</priority></url>
+
+</urlset>

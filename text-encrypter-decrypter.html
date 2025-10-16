@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon_io/favicon-16x16.png" type="image/x-icon">
+    
+    <!-- Enhanced SEO Meta Tags -->
+    <meta name="google-site-verification" content="PASTE_YOUR_VERIFICATION_CODE_HERE" />
+    <meta name="description" content="Text Encryptor & Decryptor – Encrypt and decrypt text instantly with Base64, ROT13, or Caesar Cipher. 100% free, private, and browser-based text security by ToolsTap.">
+    <meta name="keywords" content="text encryptor, text decryptor, base64 encoder, cipher tool, online encryption, decrypt text online">
+    <link rel="canonical" href="https://toolstap.com/text-encrypter-decrypter.html">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Text Encryptor & Decryptor – Secure Online Encryption Tool | ToolsTap">
+    <meta property="og:description" content="Encrypt and decrypt text instantly with Base64, ROT13, or Caesar Cipher. 100% free, private, and browser-based text security by ToolsTap.">
+    <meta property="og:image" content="https://toolstap.com/og-image.png">
+    <meta property="og:url" content="https://toolstap.com/text-encrypter-decrypter.html">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <title>Text Encryptor & Decryptor – Secure Online Encryption Tool | ToolsTap</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-038FRY9P45"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-038FRY9P45');
+    </script>
+    
+    <style>
+        :root {
+            /* Light Theme */
+            --primary-color: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary-color: #7209b7;
+            --accent-color: #4895ef;
+            --success-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --light-color-2: #ffffff;
+            --dark-color: #212529;
+            --dark-color-2: #343a40;
+            --text-light: #6c757d;
+            --text-dark: #212529;
+            --border-color: #e9ecef;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --rounded: 12px;
+            --rounded-lg: 20px;
+            --transition: all 0.3s ease;
+            --white: #ffffff;
+        }
+
+        .dark-mode {
+            /* Dark Theme */
+            --primary-color: #4895ef;
+            --primary-dark: #3a7bc8;
+            --secondary-color: #7209b7;
+            --accent-color: #4361ee;
+            --success-color: #4cc9f0;
+            --light-color: #121212;
+            --light-color-2: #1e1e1e;
+            --dark-color: #f8f9fa;
+            --dark-color-2: #e9ecef;
+            --text-light: #adb5bd;
+            --text-dark: #f8f9fa;
+            --border-color: #343a40;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--text-dark);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--light-color-2);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i {
+            font-size: 28px;
+        }
+
+        .logo span {
+            color: var(--dark-color);
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: var(--rounded);
+            font-size: 0.95rem;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+
+        .contact-link {
+            color: var(--white);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 10px 20px;
+            border-radius: var(--rounded);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+
+        .contact-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark-color);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: var(--rounded);
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: var(--rounded);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Tool Section */
+        .tool-section {
+            padding: 100px 0;
+        }
+
+        .tool-container {
+            background-color: var(--light-color-2);
+            border-radius: var(--rounded-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 40px;
+            margin-bottom: 60px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .input-area {
+            margin-bottom: 30px;
+        }
+
+        .input-area textarea {
+            width: 100%;
+            min-height: 250px;
+            padding: 20px;
+            border-radius: var(--rounded);
+            border: 1px solid var(--border-color);
+            background-color: var(--light-color);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            resize: vertical;
+            transition: var(--transition);
+        }
+
+        .input-area textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+
+        .options-area {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--light-color);
+            border-radius: var(--rounded);
+            border: 1px solid var(--border-color);
+        }
+
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-group h4 {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .radio-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .radio-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary-color);
+        }
+
+        .radio-option label {
+            color: var(--text-dark);
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .shift-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .shift-input label {
+            color: var(--text-dark);
+            font-weight: 500;
+            min-width: 60px;
+        }
+
+        .shift-input input {
+            width: 80px;
+            padding: 8px 12px;
+            border-radius: var(--rounded);
+            border: 1px solid var(--border-color);
+            background-color: var(--light-color-2);
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .shift-input input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .action-btn {
+            padding: 12px 24px;
+            border-radius: var(--rounded);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .action-btn.primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+
+        .action-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(67, 97, 238, 0.4);
+        }
+
+        .action-btn.secondary {
+            background-color: var(--light-color);
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
+        }
+
+        .action-btn.secondary:hover {
+            background-color: var(--border-color);
+        }
+
+        .result-area {
+            margin-top: 30px;
+        }
+
+        .result-area h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .result-area h3 i {
+            color: var(--primary-color);
+        }
+
+        .result-box {
+            width: 100%;
+            min-height: 200px;
+            padding: 20px;
+            border-radius: var(--rounded);
+            border: 1px solid var(--border-color);
+            background-color: var(--light-color);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            resize: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .result-box.show {
+            opacity: 1;
+        }
+
+        .result-box:focus {
+            outline: none;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .content-card {
+            background-color: var(--light-color-2);
+            border-radius: var(--rounded);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .content-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--primary-color);
+        }
+
+        .content-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--light-color-2);
+            color: var(--text-dark);
+            padding: 80px 0 30px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-logo span {
+            color: var(--primary-color);
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-about p {
+            margin-bottom: 25px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: var(--light-color);
+            color: var(--text-dark);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            transform: translateY(-3px);
+            border-color: transparent;
+        }
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+            position: relative;
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            padding: 5px 0;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .footer-contact h3 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+            position: relative;
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+
+        .footer-contact p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-contact a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1100px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--light-color-2);
+                box-shadow: var(--shadow-lg);
+                padding: 20px;
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 99;
+                border-top: 1px solid var(--border-color);
+            }
+
+            nav.active {
+                transform: translateY(0);
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .tool-section {
+                padding: 80px 0;
+            }
+
+            .tool-container {
+                padding: 30px 20px;
+            }
+
+            .options-area {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 80px 0 40px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .tool-container {
+                padding: 25px 15px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .action-btn {
+                justify-content: center;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-tools"></i>
+                <span>ToolsTap</span>
+            </a>
+            
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="mailto:moosafaisal880@gmail.com" class="contact-link">Get in Touch</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content container">
+            <h1><i class="fas fa-lock"></i> Text Encryptor / Decryptor</h1>
+            <p>Securely encrypt and decrypt text online. Fast, private, and browser-based — your data never leaves your device.</p>
+        </div>
+    </section>
+
+    <!-- Tool Section -->
+    <section class="tool-section">
+        <div class="container">
+            <div class="tool-container">
+                <div class="input-area">
+                    <textarea id="textInput" placeholder="Enter your text to encrypt or decrypt..." aria-label="Text input for encryption/decryption"></textarea>
+                </div>
+                
+                <div class="options-area">
+                    <div class="option-group">
+                        <h4>Encryption Method</h4>
+                        <div class="radio-options">
+                            <div class="radio-option">
+                                <input type="radio" id="base64" name="encryptionMethod" checked aria-label="Base64 encryption">
+                                <label for="base64">Base64</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="rot13" name="encryptionMethod" aria-label="ROT13 encryption">
+                                <label for="rot13">ROT13</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="caesar" name="encryptionMethod" aria-label="Caesar cipher encryption">
+                                <label for="caesar">Caesar Cipher</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-group" id="caesarOptions" style="display: none;">
+                        <h4>Caesar Cipher Settings</h4>
+                        <div class="shift-input">
+                            <label for="shiftValue">Shift:</label>
+                            <input type="number" id="shiftValue" min="1" max="25" value="3" aria-label="Caesar cipher shift value">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="action-btn primary" id="encryptBtn">
+                        <i class="fas fa-lock"></i> Encrypt Text
+                    </button>
+                    <button class="action-btn primary" id="decryptBtn">
+                        <i class="fas fa-unlock"></i> Decrypt Text
+                    </button>
+                    <button class="action-btn secondary" id="copyResultBtn">
+                        <i class="fas fa-copy"></i> Copy Result
+                    </button>
+                    <button class="action-btn secondary" id="clearTextBtn">
+                        <i class="fas fa-trash-alt"></i> Clear Text
+                    </button>
+                </div>
+                
+                <div class="result-area">
+                    <h3><i class="fas fa-check-circle"></i> Result</h3>
+                    <textarea id="resultBox" class="result-box" readonly placeholder="Your encrypted or decrypted text will appear here..." aria-label="Result of encryption/decryption"></textarea>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Use Text Encryption?</h2>
+                <p>Our encryption tools help protect your sensitive information and ensure privacy.</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3><i class="fas fa-shield-alt"></i> Data Security</h3>
+                    <p>Protect sensitive messages, passwords, or confidential information from unauthorized access with strong encryption methods.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3><i class="fas fa-user-secret"></i> Privacy Protection</h3>
+                    <p>Keep your personal communications private. All encryption happens locally in your browser - your data never leaves your device.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3><i class="fas fa-code"></i> Developer Tools</h3>
+                    <p>Test encryption algorithms, work with encoded data, or implement security features in your applications with our easy-to-use tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">Tools<span>Tap</span></a>
+                    <p>Simplifying your digital life with powerful, easy-to-use tools for all your needs. Our mission is to provide free, high-quality online tools that make your work easier. All tools work directly in your browser.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/moosa.faisal.338/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/tools_tap/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="index.html#tools">All Tools</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-and-condition.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Tool Categories</h3>
+                    <ul>
+                        <li><a href="index.html#qr-tools">QR Code Tools</a></li>
+                        <li><a href="index.html#image-tools">Image Tools</a></li>
+                        <li><a href="index.html#document-tools">Document Tools</a></li>
+                        <li><a href="index.html#calculator-tools">Calculators</a></li>
+                        <li><a href="index.html#text-tools">Text Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:moosafaisal880@gmail.com">moosafaisal880@gmail.com</a></p>
+                    <p><i class="fas fa-phone"></i> (+92-03108895446)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Pakistan</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-links">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-and-condition.html">Terms of Use</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="cookies-policy.html">Cookie Policy</a>
+                </div>
+                <p>&copy; 2025 ToolsTap. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference or default to light
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply the saved theme on page load
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+        
+        // Text Encryptor/Decryptor Functionality
+        const textInput = document.getElementById('textInput');
+        const resultBox = document.getElementById('resultBox');
+        const encryptBtn = document.getElementById('encryptBtn');
+        const decryptBtn = document.getElementById('decryptBtn');
+        const copyResultBtn = document.getElementById('copyResultBtn');
+        const clearTextBtn = document.getElementById('clearTextBtn');
+        const base64 = document.getElementById('base64');
+        const rot13 = document.getElementById('rot13');
+        const caesar = document.getElementById('caesar');
+        const caesarOptions = document.getElementById('caesarOptions');
+        const shiftValue = document.getElementById('shiftValue');
+        
+        // Show/hide Caesar cipher options
+        base64.addEventListener('change', () => {
+            caesarOptions.style.display = 'none';
+        });
+        
+        rot13.addEventListener('change', () => {
+            caesarOptions.style.display = 'none';
+        });
+        
+        caesar.addEventListener('change', () => {
+            caesarOptions.style.display = 'block';
+        });
+        
+        // Base64 functions
+        function base64Encode(text) {
+            return btoa(unescape(encodeURIComponent(text)));
+        }
+        
+        function base64Decode(text) {
+            try {
+                return decodeURIComponent(escape(atob(text)));
+            } catch (e) {
+                return "Invalid Base64 encoded text";
+            }
+        }
+        
+        // ROT13 functions
+        function rot13Encode(text) {
+            return text.replace(/[a-zA-Z]/g, function(c) {
+                return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
+            });
+        }
+        
+        function rot13Decode(text) {
+            return rot13Encode(text); // ROT13 is its own inverse
+        }
+        
+        // Caesar cipher functions
+        function caesarEncode(text, shift) {
+            return text.replace(/[a-zA-Z]/g, function(c) {
+                const base = c <= 'Z' ? 65 : 97;
+                return String.fromCharCode((c.charCodeAt(0) - base + shift) % 26 + base);
+            });
+        }
+        
+        function caesarDecode(text, shift) {
+            return text.replace(/[a-zA-Z]/g, function(c) {
+                const base = c <= 'Z' ? 65 : 97;
+                return String.fromCharCode((c.charCodeAt(0) - base - shift + 26) % 26 + base);
+            });
+        }
+        
+        // Encrypt text
+        encryptBtn.addEventListener('click', () => {
+            const text = textInput.value;
+            if (!text.trim()) {
+                resultBox.value = '';
+                resultBox.classList.remove('show');
+                return;
+            }
+            
+            let result = '';
+            
+            if (base64.checked) {
+                result = base64Encode(text);
+            } else if (rot13.checked) {
+                result = rot13Encode(text);
+            } else if (caesar.checked) {
+                const shift = parseInt(shiftValue.value) || 3;
+                result = caesarEncode(text, shift);
+            }
+            
+            resultBox.value = result;
+            resultBox.classList.add('show');
+        });
+        
+        // Decrypt text
+        decryptBtn.addEventListener('click', () => {
+            const text = textInput.value;
+            if (!text.trim()) {
+                resultBox.value = '';
+                resultBox.classList.remove('show');
+                return;
+            }
+            
+            let result = '';
+            
+            if (base64.checked) {
+                result = base64Decode(text);
+            } else if (rot13.checked) {
+                result = rot13Decode(text);
+            } else if (caesar.checked) {
+                const shift = parseInt(shiftValue.value) || 3;
+                result = caesarDecode(text, shift);
+            }
+            
+            resultBox.value = result;
+            resultBox.classList.add('show');
+        });
+        
+        // Copy result functionality
+        copyResultBtn.addEventListener('click', () => {
+            if (resultBox.value.trim() === '') {
+                alert('No result to copy. Please encrypt or decrypt text first.');
+                return;
+            }
+            
+            resultBox.select();
+            document.execCommand('copy');
+            
+            // Visual feedback
+            const originalText = copyResultBtn.innerHTML;
+            copyResultBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            copyResultBtn.style.backgroundColor = '#28a745';
+            
+            setTimeout(() => {
+                copyResultBtn.innerHTML = originalText;
+                copyResultBtn.style.backgroundColor = '';
+            }, 2000);
+        });
+        
+        // Clear text functionality
+        clearTextBtn.addEventListener('click', () => {
+            textInput.value = '';
+            resultBox.value = '';
+            resultBox.classList.remove('show');
+            
+            // Visual feedback
+            const originalText = clearTextBtn.innerHTML;
+            clearTextBtn.innerHTML = '<i class="fas fa-check"></i> Cleared!';
+            
+            setTimeout(() => {
+                clearTextBtn.innerHTML = originalText;
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

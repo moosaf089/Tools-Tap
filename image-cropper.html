@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon_io/favicon-16x16.png" type="image/x-icon">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Free online image cropper tool - crop images precisely with freeform or fixed ratio cropping. Perfect for social media, websites, and more.">
+    <meta name="keywords" content="image cropper, crop image, photo cropper, image editor, online tools, crop tool">
+    <link rel="canonical" href="https://toolstap.com/image-cropper.html">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Image Cropper - Free Online Tool | ToolsTap">
+    <meta property="og:description" content="Crop images precisely with our free online image cropper tool. Freeform or fixed ratio cropping available.">
+    <meta property="og:image" content="https://toolstap.com/og-image-cropper.png">
+    <meta property="og:url" content="https://toolstap.com/image-cropper.html">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <title>Image Cropper - Free Online Tool to Crop Images | ToolsTap</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-038FRY9P45"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-038FRY9P45');
+    </script>
+    
+    <style>
+        :root {
+            /* Light Theme */
+            --primary-color: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary-color: #7209b7;
+            --accent-color: #4895ef;
+            --success-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --light-color-2: #ffffff;
+            --dark-color: #212529;
+            --dark-color-2: #343a40;
+            --text-light: #6c757d;
+            --text-dark: #212529;
+            --border-color: #e9ecef;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --rounded: 12px;
+            --rounded-lg: 20px;
+            --transition: all 0.3s ease;
+            --white: #ffffff;
+        }
+
+        .dark-mode {
+            /* Dark Theme */
+            --primary-color: #4895ef;
+            --primary-dark: #3a7bc8;
+            --secondary-color: #7209b7;
+            --accent-color: #4361ee;
+            --success-color: #4cc9f0;
+            --light-color: #121212;
+            --light-color-2: #1e1e1e;
+            --dark-color: #f8f9fa;
+            --dark-color-2: #e9ecef;
+            --text-light: #adb5bd;
+            --text-dark: #f8f9fa;
+            --border-color: #343a40;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--text-dark);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--light-color-2);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i {
+            font-size: 28px;
+        }
+
+        .logo span {
+            color: var(--dark-color);
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: var(--rounded);
+            font-size: 0.95rem;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+
+        .contact-link {
+            color: var(--white);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 10px 20px;
+            border-radius: var(--rounded);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+
+        .contact-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark-color);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: var(--rounded);
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+
+        /* Tool Section */
+        .tool-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h1 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .tool-container {
+            background-color: var(--light-color-2);
+            border-radius: var(--rounded-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Dropzone */
+        .dropzone {
+            border: 2px dashed var(--primary-color);
+            border-radius: var(--rounded-lg);
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--text-light);
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: var(--transition);
+            background-color: var(--light-color);
+        }
+
+        .dropzone:hover, .dropzone.active {
+            background-color: rgba(67, 97, 238, 0.05);
+            border-color: var(--secondary-color);
+        }
+
+        .dropzone i {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .dropzone h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .dropzone p {
+            font-size: 1rem;
+        }
+
+        .file-info {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Canvas Container */
+        .canvas-container {
+            margin: 30px 0;
+            display: none;
+            text-align: center;
+        }
+
+        .canvas-container.active {
+            display: block;
+        }
+
+        .canvas-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .canvas-wrapper {
+            position: relative;
+            display: inline-block;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        #canvas {
+            max-width: 100%;
+            max-height: 500px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--rounded);
+            box-shadow: var(--shadow);
+            cursor: crosshair;
+        }
+
+        .canvas-info {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Controls */
+        .controls {
+            margin: 30px 0;
+        }
+
+        .control-group {
+            margin-bottom: 25px;
+        }
+
+        .control-group h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .aspect-ratios {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .aspect-btn {
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--rounded);
+            background-color: var(--light-color);
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .aspect-btn:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .aspect-btn.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-color: transparent;
+        }
+
+        .crop-info {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .crop-dimension {
+            background-color: var(--light-color);
+            padding: 10px 15px;
+            border-radius: var(--rounded);
+            border: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        .crop-dimension span {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: var(--rounded);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--light-color);
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background-color: var(--light-color-2);
+            border-radius: var(--rounded-lg);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 28px;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--light-color-2);
+            color: var(--text-dark);
+            padding: 80px 0 30px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-logo span {
+            color: var(--primary-color);
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-about p {
+            margin-bottom: 25px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: var(--light-color);
+            color: var(--text-dark);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            transform: translateY(-3px);
+            border-color: transparent;
+        }
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+            position: relative;
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            padding: 5px 0;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .footer-contact h3 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+            position: relative;
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+
+        .footer-contact p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-contact a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--light-color-2);
+                box-shadow: var(--shadow-lg);
+                padding: 20px;
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 99;
+                border-top: 1px solid var(--border-color);
+            }
+
+            nav.active {
+                transform: translateY(0);
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .tool-section {
+                padding: 60px 0;
+            }
+
+            .section-title h1 {
+                font-size: 2rem;
+            }
+
+            .tool-container {
+                padding: 25px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .crop-info {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title h1 {
+                font-size: 1.8rem;
+            }
+
+            .tool-container {
+                padding: 20px;
+            }
+
+            .dropzone {
+                padding: 30px 15px;
+            }
+
+            .aspect-ratios {
+                flex-direction: column;
+            }
+
+            .aspect-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-tools"></i>
+                <span>ToolsTap</span>
+            </a>
+            
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="mailto:moosafaisal880@gmail.com" class="contact-link">Get in Touch</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Tool Section -->
+    <section class="tool-section">
+        <div class="container">
+            <div class="section-title">
+                <h1><i class="fas fa-crop-alt"></i> Image Cropper</h1>
+                <p>Crop images to remove unwanted areas or focus on specific parts precisely. Freeform or fixed ratio cropping available.</p>
+            </div>
+            
+            <div class="tool-container">
+                <div id="dropzone" class="dropzone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Upload Your Image</h3>
+                    <p>Click or drag an image here to upload (JPG, PNG, GIF, WEBP)</p>
+                    <div class="file-info">File must be JPEG, JPG, PNG or WebP and up to 40MB</div>
+                </div>
+                <input type="file" id="fileInput" accept="image/*" style="display:none">
+                
+                <div id="canvasContainer" class="canvas-container">
+                    <h3 class="canvas-title"><i class="fas fa-crop-alt"></i> Crop Your Image</h3>
+                    <div class="canvas-wrapper">
+                        <canvas id="canvas"></canvas>
+                    </div>
+                    <div id="canvasInfo" class="canvas-info">Click and drag to select the area you want to keep</div>
+                </div>
+                
+                <div class="controls">
+                    <div class="control-group">
+                        <h3><i class="fas fa-shapes"></i> Aspect Ratios</h3>
+                        <div class="aspect-ratios">
+                            <button class="aspect-btn active" data-ratio="free">Free Form</button>
+                            <button class="aspect-btn" data-ratio="1:1">Square (1:1)</button>
+                            <button class="aspect-btn" data-ratio="16:9">Widescreen (16:9)</button>
+                            <button class="aspect-btn" data-ratio="4:3">Standard (4:3)</button>
+                            <button class="aspect-btn" data-ratio="3:2">Photo (3:2)</button>
+                            <button class="aspect-btn" data-ratio="9:16">Portrait (9:16)</button>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <h3><i class="fas fa-info-circle"></i> Crop Information</h3>
+                        <div class="crop-info">
+                            <div class="crop-dimension">Width: <span id="cropWidth">0</span>px</div>
+                            <div class="crop-dimension">Height: <span id="cropHeight">0</span>px</div>
+                            <div class="crop-dimension">Aspect Ratio: <span id="cropAspect">Free</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="cropBtn" class="btn btn-primary" disabled>
+                        <i class="fas fa-crop-alt"></i> Crop Image
+                    </button>
+                    <button id="resetBtn" class="btn btn-secondary">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Use Our Image Cropper?</h2>
+                <p>Our tool offers the best features for all your image cropping needs</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <h3>Precise Cropping</h3>
+                    <p>Crop images with pixel-perfect precision using our intuitive selection tool.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Privacy Guaranteed</h3>
+                    <p>All processing happens in your browser. Your images never leave your device.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Works perfectly on all devices - desktop, tablet, and mobile phones.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <h3>Multiple Aspect Ratios</h3>
+                    <p>Choose from preset aspect ratios or use freeform cropping for complete control.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">Tools<span>Tap</span></a>
+                    <p>Simplifying your digital life with powerful, easy-to-use tools for all your needs. Our mission is to provide free, high-quality online tools that make your work easier. All tools work directly in your browser.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/moosa.faisal.338/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/tools_tap/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="index.html#tools">All Tools</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-and-condition.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Tool Categories</h3>
+                    <ul>
+                        <li><a href="index.html#image-tools">Image Tools</a></li>
+                        <li><a href="index.html#document-tools">Document Tools</a></li>
+                        <li><a href="index.html#calculator-tools">Calculators</a></li>
+                        <li><a href="index.html#text-tools">Text Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:moosafaisal880@gmail.com">moosafaisal880@gmail.com</a></p>
+                    <p><i class="fas fa-phone"></i> (+92-03108895446)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Pakistan</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-links">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-and-condition.html">Terms of Use</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="cookies-policy.html">Cookie Policy</a>
+                </div>
+                <p>&copy; 2025 ToolsTap. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference or default to light
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply the saved theme on page load
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+        
+        // Image Cropper Functionality
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('fileInput');
+        const canvasContainer = document.getElementById('canvasContainer');
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const cropBtn = document.getElementById('cropBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const aspectBtns = document.querySelectorAll('.aspect-btn');
+        const cropWidth = document.getElementById('cropWidth');
+        const cropHeight = document.getElementById('cropHeight');
+        const cropAspect = document.getElementById('cropAspect');
+        const canvasInfo = document.getElementById('canvasInfo');
+        
+        let img = new Image();
+        let startX, startY, endX, endY, isDragging = false;
+        let currentAspectRatio = 'free';
+        let cropRect = { x: 0, y: 0, width: 0, height: 0 };
+        
+        // Dropzone events
+        dropzone.addEventListener('click', () => fileInput.click());
+        
+        dropzone.addEventListener('dragover', e => {
+            e.preventDefault();
+            dropzone.classList.add('active');
+        });
+        
+        dropzone.addEventListener('dragleave', () => {
+            dropzone.classList.remove('active');
+        });
+        
+        dropzone.addEventListener('drop', e => {
+            e.preventDefault();
+            dropzone.classList.remove('active');
+            if (e.dataTransfer.files.length) {
+                handleFile(e.dataTransfer.files[0]);
+            }
+        });
+        
+        fileInput.addEventListener('change', e => {
+            if (e.target.files.length) {
+                handleFile(e.target.files[0]);
+            }
+        });
+        
+        // Handle uploaded file
+        function handleFile(file) {
+            if (!file.type.match('image.*')) {
+                alert('Please upload an image file (JPG, PNG, GIF, WEBP)');
+                return;
+            }
+            
+            if (file.size > 40 * 1024 * 1024) {
+                alert('File size must be less than 40MB');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = e => {
+                img.onload = () => {
+                    // Set canvas dimensions
+                    const maxWidth = 800;
+                    const maxHeight = 500;
+                    let width = img.width;
+                    let height = img.height;
+                    
+                    // Scale down if image is too large
+                    if (width > maxWidth || height > maxHeight) {
+                        const ratio = Math.min(maxWidth / width, maxHeight / height);
+                        width *= ratio;
+                        height *= ratio;
+                    }
+                    
+                    canvas.width = width;
+                    canvas.height = height;
+                    
+                    // Draw image on canvas
+                    ctx.drawImage(img, 0, 0, width, height);
+                    
+                    // Show canvas container
+                    canvasContainer.classList.add('active');
+                    
+                    // Enable crop button
+                    cropBtn.disabled = false;
+                    
+                    // Reset crop info
+                    resetCropInfo();
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        // Aspect ratio buttons
+        aspectBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                aspectBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Set current aspect ratio
+                currentAspectRatio = btn.dataset.ratio;
+                cropAspect.textContent = currentAspectRatio === 'free' ? 'Free' : currentAspectRatio;
+                
+                // Reset crop selection
+                resetCropSelection();
+            });
+        });
+        
+        // Canvas events for cropping
+        canvas.addEventListener('mousedown', startSelection);
+        canvas.addEventListener('mousemove', updateSelection);
+        canvas.addEventListener('mouseup', endSelection);
+        
+        // Touch events for mobile
+        canvas.addEventListener('touchstart', handleTouchStart);
+        canvas.addEventListener('touchmove', handleTouchMove);
+        canvas.addEventListener('touchend', handleTouchEnd);
+        
+        function startSelection(e) {
+            const rect = canvas.getBoundingClientRect();
+            startX = e.clientX - rect.left;
+            startY = e.clientY - rect.top;
+            isDragging = true;
+            
+            // Clear previous selection
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        }
+        
+        function updateSelection(e) {
+            if (!isDragging) return;
+            
+            const rect = canvas.getBoundingClientRect();
+            endX = e.clientX - rect.left;
+            endY = e.clientY - rect.top;
+            
+            // Apply aspect ratio constraints
+            if (currentAspectRatio !== 'free') {
+                const [ratioX, ratioY] = currentAspectRatio.split(':').map(Number);
+                const ratio = ratioX / ratioY;
+                
+                const width = endX - startX;
+                const height = width / ratio;
+                
+                endY = startY + height;
+            }
+            
+            // Redraw image and selection
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            drawSelection();
+            
+            // Update crop info
+            updateCropInfo();
+        }
+        
+        function endSelection() {
+            isDragging = false;
+            updateCropInfo();
+        }
+        
+        function drawSelection() {
+            ctx.strokeStyle = '#4361ee';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            ctx.strokeRect(startX, startY, endX - startX, endY - startY);
+            
+            // Draw semi-transparent overlay
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Clear the selected area
+            ctx.clearRect(startX, startY, endX - startX, endY - startY);
+            ctx.drawImage(img, startX, startY, endX - startX, endY - startY, startX, startY, endX - startX, endY - startY);
+            
+            // Draw selection border again
+            ctx.strokeStyle = '#4361ee';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            ctx.strokeRect(startX, startY, endX - startX, endY - startY);
+            
+            // Reset line dash
+            ctx.setLineDash([]);
+        }
+        
+        function updateCropInfo() {
+            if (startX && endX) {
+                const width = Math.abs(endX - startX);
+                const height = Math.abs(endY - startY);
+                
+                cropWidth.textContent = Math.round(width);
+                cropHeight.textContent = Math.round(height);
+                
+                // Store crop rectangle
+                cropRect = {
+                    x: Math.min(startX, endX),
+                    y: Math.min(startY, endY),
+                    width: width,
+                    height: height
+                };
+            }
+        }
+        
+        function resetCropInfo() {
+            cropWidth.textContent = '0';
+            cropHeight.textContent = '0';
+            cropAspect.textContent = 'Free';
+            cropRect = { x: 0, y: 0, width: 0, height: 0 };
+        }
+        
+        function resetCropSelection() {
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            resetCropInfo();
+        }
+        
+        // Touch event handlers
+        function handleTouchStart(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent('mousedown', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);
+        }
+        
+        function handleTouchMove(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent('mousemove', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);
+        }
+        
+        function handleTouchEnd(e) {
+            e.preventDefault();
+            const mouseEvent = new MouseEvent('mouseup', {});
+            canvas.dispatchEvent(mouseEvent);
+        }
+        
+        // Crop button
+        cropBtn.addEventListener('click', () => {
+            if (cropRect.width === 0 || cropRect.height === 0) {
+                alert('Please select an area to crop');
+                return;
+            }
+            
+            // Create a temporary canvas for the cropped image
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = cropRect.width;
+            tempCanvas.height = cropRect.height;
+            const tempCtx = tempCanvas.getContext('2d');
+            
+            // Draw the cropped portion
+            tempCtx.drawImage(
+                canvas, 
+                cropRect.x, cropRect.y, cropRect.width, cropRect.height,
+                0, 0, cropRect.width, cropRect.height
+            );
+            
+            // Convert to blob and download
+            tempCanvas.toBlob(blob => {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = 'cropped-image.png';
+                a.click();
+            }, 'image/png');
+        });
+        
+        // Reset button
+        resetBtn.addEventListener('click', () => {
+            fileInput.value = '';
+            canvasContainer.classList.remove('active');
+            cropBtn.disabled = true;
+            resetCropInfo();
+            
+            // Remove active class from all aspect buttons except free form
+            aspectBtns.forEach(btn => {
+                if (btn.dataset.ratio === 'free') {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            currentAspectRatio = 'free';
+        });
+    </script>
+</body>
+</html>

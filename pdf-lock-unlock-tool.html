@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="icon" href="favicon_io\favicon-16x16.png" type="image/x-icon">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PDF Lock/Unlock — Bright Blue</title>
+<style>
+:root{--blue:#1677ff;--bg:#ffffff;--muted:#5b6b8a}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#f6f9ff,#fff);padding:16px;display:flex;justify-content:center}
+.app{width:100%;max-width:700px;background:var(--bg);border-radius:12px;padding:18px;box-shadow:0 12px 40px rgba(22,119,255,.06);border:1px solid #e7f3ff}
+.title{background:linear-gradient(90deg,var(--blue),#51a4ff);color:#fff;padding:10px 14px;border-radius:8px;font-weight:700;margin-bottom:16px;text-align:center}
+.panel{background:#fff;border-radius:10px;padding:14px;border:1px solid #eef6ff}
+.h{margin:0 0 8px 0;color:var(--muted);font-weight:700;text-align:center}
+.input-file{border:2px dashed #cfe1ff;padding:20px;border-radius:10px;text-align:center;cursor:pointer;color:var(--muted);display:block;margin-bottom:12px}
+input[type=text],input[type=password]{padding:8px;border:1px solid #dbeeff;border-radius:8px;width:100%;margin-top:8px}
+button{background:var(--blue);color:#fff;border:none;padding:10px 12px;border-radius:8px;cursor:pointer;font-weight:700;margin-top:12px;width:100%}
+button:disabled{background:#aacbff;cursor:not-allowed}
+.progress{height:10px;background:#eef7ff;border-radius:8px;overflow:hidden;border:1px solid #e6f0ff;margin-top:12px;display:none}
+.progress > i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--blue),#51a4ff)}
+.note{font-size:13px;color:var(--muted);margin-top:12px;text-align:center}
+</style>
+</head>
+<body>
+<div class="app" role="application" aria-label="PDF Lock Unlock">
+  <div class="title">PDF Lock / Unlock</div>
+
+  <section class="panel" aria-labelledby="lockunlock-heading">
+    <h3 id="lockunlock-heading" class="h">Protect or Unprotect Your PDF</h3>
+    <label class="input-file" id="uploadDrop">Click or drop a PDF file here</label>
+    <input type="file" id="fileInput" accept=".pdf" style="display:none">
+
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="Enter password">
+    </div>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button id="lockBtn" disabled>Lock PDF</button>
+      <button id="unlockBtn" disabled>Unlock PDF</button>
+    </div>
+
+    <div class="progress" id="progress"><i></i></div>
+  </section>
+  <div class="note">Note: This demo calls a server-side API to lock/unlock PDFs. Strong encryption and decryption requires backend processing.</div>
+</div>
+
+<script>
+const uploadDrop=document.getElementById('uploadDrop');
+const fileInput=document.getElementById('fileInput');
+const lockBtn=document.getElementById('lockBtn');
+const unlockBtn=document.getElementById('unlockBtn');
+const progress=document.getElementById('progress');
+const progFill=progress.querySelector('i');
+const passwordInput=document.getElementById('password');
+let currentFile=null;
+
+['dragenter','dragover'].forEach(e=>uploadDrop.addEventListener(e,ev=>{ev.preventDefault();uploadDrop.style.background='#eef6ff'}));
+['dragleave','drop'].forEach(e=>uploadDrop.addEventListener(e,ev=>{ev.preventDefault();uploadDrop.style.background=''}));
+uploadDrop.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(f) loadFile(f)});
+uploadDrop.addEventListener('click',()=>fileInput.click());
+fileInput.addEventListener('change',e=>{if(e.target.files[0]) loadFile(e.target.files[0])});
+
+function loadFile(file){
+  currentFile=file;
+  uploadDrop.textContent=`Loaded: ${file.name}`;
+  lockBtn.disabled=false;
+  unlockBtn.disabled=false;
+}
+
+function setProgress(p){progress.style.display=p>=1?'none':'block';progFill.style.width=Math.round(p*100)+'%';}
+
+async function sendToAPI(action){
+  if(!currentFile) return alert('Upload a file first');
+  if(!passwordInput.value) return alert('Enter a password');
+  setProgress(0.1);
+
+  const formData=new FormData();
+  formData.append('file',currentFile);
+  formData.append('password',passwordInput.value);
+  formData.append('action',action);
+
+  try{
+    const res=await fetch('/pdf-lockunlock',{ // updated relative path for same-origin
+      method:'POST',
+      body:formData
+    });
+    if(!res.ok) throw new Error('Server error');
+    const blob=await res.blob();
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;
+    a.download=currentFile.name.replace(/\.pdf$/,'')+(action==='lock'?'-locked.pdf':'-unlocked.pdf');
+    a.click();
+    URL.revokeObjectURL(url);
+  }catch(err){
+    console.error(err);
+    alert('Failed: '+err.message+' — Make sure your backend server is running.');
+  }finally{setProgress(1);}
+}
+
+lockBtn.addEventListener('click',()=>sendToAPI('lock'));
+unlockBtn.addEventListener('click',()=>sendToAPI('unlock'));
+</script>
+</body>
+</html>
+
+<!--
+Backend Example (Node.js/Express):
+
+const express=require('express');
+const multer=require('multer');
+const { PDFDocument }=require('pdf-lib');
+const fs=require('fs');
+const app=express();
+const upload=multer({dest:'uploads/'});
+
+app.post('/pdf-lockunlock',upload.single('file'),async(req,res)=>{
+  try{
+    const action=req.body.action;
+    const password=req.body.password;
+    const fileBuffer=fs.readFileSync(req.file.path);
+    const pdfDoc=await PDFDocument.load(fileBuffer, { updateMetadata: false, ignoreEncryption: true });
+
+    if(action==='lock'){
+      await pdfDoc.encrypt({ownerPassword:password,userPassword:password,permissions:{printing:'highResolution'}});
+    }else if(action==='unlock'){
+      // Unlock by re-saving without encryption (requires correct password in real scenarios)
+    }
+
+    const pdfBytes=await pdfDoc.save();
+    res.setHeader('Content-Type','application/pdf');
+    res.setHeader('Content-Disposition','attachment; filename="processed.pdf'");
+    res.send(Buffer.from(pdfBytes));
+  }catch(err){
+    console.error(err);
+    res.status(500).send('Error processing PDF: '+err.message);
+  }
+});
+
+app.listen(5000,()=>console.log('Server running on http://localhost:5000'));
+
+-->

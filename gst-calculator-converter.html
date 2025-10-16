@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GST Calculator | ToolsTap - Calculate Goods and Services Tax Online</title>
+    <meta name="description" content="Free online GST Calculator for businesses and individuals. Calculate GST inclusive and exclusive amounts with different tax slabs instantly.">
+    <meta name="keywords" content="GST calculator, goods and services tax, GST calculation, tax calculator, business calculator, GST India">
+    <link rel="canonical" href="https://toolstap.com/gst-calculator-converter-tool.html">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="GST Calculator | ToolsTap - Calculate Goods and Services Tax Online">
+    <meta property="og:description" content="Free online GST Calculator for businesses and individuals. Calculate GST inclusive and exclusive amounts with different tax slabs instantly.">
+    <meta property="og:image" content="https://toolstap.com/og-image-gst-calculator.png">
+    <meta property="og:url" content="https://toolstap.com/gst-calculator-converter-tool.html">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Light Theme */
+            --primary-color: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary-color: #7209b7;
+            --accent-color: #4895ef;
+            --success-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --light-color-2: #ffffff;
+            --dark-color: #212529;
+            --dark-color-2: #343a40;
+            --text-light: #6c757d;
+            --text-dark: #212529;
+            --border-color: #e9ecef;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --rounded: 12px;
+            --rounded-lg: 20px;
+            --transition: all 0.3s ease;
+            --white: #ffffff;
+        }
+
+        .dark-mode {
+            /* Dark Theme */
+            --primary-color: #4895ef;
+            --primary-dark: #3a7bc8;
+            --secondary-color: #7209b7;
+            --accent-color: #4361ee;
+            --success-color: #4cc9f0;
+            --light-color: #121212;
+            --light-color-2: #1e1e1e;
+            --dark-color: #f8f9fa;
+            --dark-color-2: #e9ecef;
+            --text-light: #adb5bd;
+            --text-dark: #f8f9fa;
+            --border-color: #343a40;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--text-dark);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--light-color-2);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i {
+            font-size: 28px;
+        }
+
+        .logo span {
+            color: var(--dark-color);
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: var(--rounded);
+            font-size: 0.95rem;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+
+        .contact-link {
+            color: var(--white);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 10px 20px;
+            border-radius: var(--rounded);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+
+        .contact-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark-color);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: var(--rounded);
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: var(--rounded);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Calculator Section */
+        .calculator-section {
+            padding: 60px 0;
+        }
+
+        .calculator-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .calculator-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .calculator-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .calculator-title h2 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .calculator-title p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .calculator-inputs {
+            background-color: var(--light-color-2);
+            border-radius: var(--rounded-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .calculator-results {
+            background-color: var(--light-color-2);
+            border-radius: var(--rounded-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--rounded);
+            background-color: var(--light-color);
+            color: var(--text-dark);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+
+        .tax-type-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tax-type-btn {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--rounded);
+            background-color: var(--light-color);
+            color: var(--text-dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .tax-type-btn.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-color: transparent;
+        }
+
+        .gst-rate-selector {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .gst-rate-btn {
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--rounded);
+            background-color: var(--light-color);
+            color: var(--text-dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .gst-rate-btn.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-color: transparent;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: var(--rounded);
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+        }
+
+        .result-summary {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: var(--rounded-lg);
+        }
+
+        .result-summary h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .gst-amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .result-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .result-item {
+            background-color: var(--light-color);
+            padding: 20px;
+            border-radius: var(--rounded);
+            text-align: center;
+        }
+
+        .result-item .label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .result-item .value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .calculation-breakdown {
+            margin-bottom: 30px;
+        }
+
+        .breakdown-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .breakdown-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .breakdown-step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background-color: var(--light-color);
+            border-radius: var(--rounded);
+        }
+
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .step-text {
+            flex: 1;
+            color: var(--text-dark);
+        }
+
+        /* GST Types Section */
+        .gst-types-section {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .gst-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .gst-type-card {
+            background-color: var(--light-color-2);
+            border-radius: var(--rounded-lg);
+            padding: 35px 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gst-type-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .gst-type-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .gst-type-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: white;
+            font-size: 28px;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+
+        .gst-type-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .gst-type-card p {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 25px;
+            flex-grow: 1;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--light-color-2);
+            color: var(--text-dark);
+            padding: 80px 0 30px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-logo span {
+            color: var(--primary-color);
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-about p {
+            margin-bottom: 25px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: var(--light-color);
+            color: var(--text-dark);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            transform: translateY(-3px);
+            border-color: transparent;
+        }
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+            position: relative;
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            padding: 5px 0;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .footer-contact h3 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+            position: relative;
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+
+        .footer-contact p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-contact a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--light-color-2);
+                box-shadow: var(--shadow-lg);
+                padding: 20px;
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 99;
+                border-top: 1px solid var(--border-color);
+            }
+
+            nav.active {
+                transform: translateY(0);
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 60px 0 30px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .calculator-container {
+                gap: 30px;
+            }
+
+            .result-details {
+                grid-template-columns: 1fr;
+            }
+
+            .gst-rate-selector {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 50px 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .tax-type-selector {
+                flex-direction: column;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .gst-types-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gst-type-card {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-tools"></i>
+                <span>ToolsTap</span>
+            </a>
+            
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="mailto:moosafaisal880@gmail.com" class="contact-link">Get in Touch</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content container">
+            <h1>GST Calculator</h1>
+            <p>Calculate Goods and Services Tax (GST) instantly. Add or remove GST from amounts with different tax slabs for businesses and individuals.</p>
+            <a href="#calculator" class="btn btn-primary">
+                <i class="fas fa-calculator"></i> Calculate GST
+            </a>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section" id="calculator">
+        <div class="container">
+            <div class="calculator-title">
+                <h2><i class="fas fa-percentage"></i> GST Calculator</h2>
+                <p>Calculate GST inclusive and exclusive amounts with standard tax slabs. Perfect for businesses and accounting.</p>
+            </div>
+            
+            <div class="calculator-container">
+                <div class="calculator-inputs">
+                    <div class="tax-type-selector">
+                        <button class="tax-type-btn active" data-type="exclusive">GST Exclusive (Add GST)</button>
+                        <button class="tax-type-btn" data-type="inclusive">GST Inclusive (Remove GST)</button>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount" placeholder="Enter amount" value="1000">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>GST Rate</label>
+                        <div class="gst-rate-selector">
+                            <button class="gst-rate-btn" data-rate="0">0%</button>
+                            <button class="gst-rate-btn" data-rate="5">5%</button>
+                            <button class="gst-rate-btn" data-rate="12">12%</button>
+                            <button class="gst-rate-btn active" data-rate="18">18%</button>
+                            <button class="gst-rate-btn" data-rate="28">28%</button>
+                            <button class="gst-rate-btn" data-rate="custom">Custom</button>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group" id="customRateContainer" style="display: none;">
+                        <label for="customRate">Custom GST Rate (%)</label>
+                        <input type="number" id="customRate" placeholder="Enter custom GST rate" min="0" max="100" step="0.1">
+                    </div>
+                    
+                    <button class="calculate-btn" id="calculateBtn">
+                        <i class="fas fa-calculator"></i> Calculate GST
+                    </button>
+                </div>
+                
+                <div class="calculator-results">
+                    <div class="result-summary">
+                        <h3>GST Calculation</h3>
+                        <div class="gst-amount" id="gstAmount">₹ 180</div>
+                        <p id="calculationType">GST Exclusive Calculation</p>
+                    </div>
+                    
+                    <div class="result-details">
+                        <div class="result-item">
+                            <div class="label">Original Amount</div>
+                            <div class="value" id="originalAmount">₹ 1,000</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="label">GST Amount</div>
+                            <div class="value" id="gstValue">₹ 180</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="label">Net Amount</div>
+                            <div class="value" id="netAmount">₹ 1,000</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="label">Total Amount</div>
+                            <div class="value" id="totalAmount">₹ 1,180</div>
+                        </div>
+                    </div>
+                    
+                    <div class="calculation-breakdown">
+                        <div class="breakdown-title">Calculation Steps</div>
+                        <div class="breakdown-steps">
+                            <div class="breakdown-step">
+                                <div class="step-number">1</div>
+                                <div class="step-text" id="step1">Enter the amount: ₹ 1,000</div>
+                            </div>
+                            <div class="breakdown-step">
+                                <div class="step-number">2</div>
+                                <div class="step-text" id="step2">Select GST rate: 18%</div>
+                            </div>
+                            <div class="breakdown-step">
+                                <div class="step-number">3</div>
+                                <div class="step-text" id="step3">Calculate GST amount: ₹ 1,000 × 18% = ₹ 180</div>
+                            </div>
+                            <div class="breakdown-step">
+                                <div class="step-number">4</div>
+                                <div class="step-text" id="step4">Add GST to original amount: ₹ 1,000 + ₹ 180 = ₹ 1,180</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GST Types Section -->
+    <section class="gst-types-section">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="fas fa-info-circle"></i> Types of GST in India</h2>
+                <p>Understand the different types of Goods and Services Tax applicable in India</p>
+            </div>
+            
+            <div class="gst-types-grid">
+                <div class="gst-type-card">
+                    <div class="gst-type-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h3>CGST</h3>
+                    <p>Central Goods and Services Tax (CGST) is collected by the central government for intra-state supply of goods and services. It's governed by the CGST Act.</p>
+                </div>
+                
+                <div class="gst-type-card">
+                    <div class="gst-type-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>SGST</h3>
+                    <p>State Goods and Services Tax (SGST) is collected by the state government for intra-state supply of goods and services. It's governed by the SGST Act.</p>
+                </div>
+                
+                <div class="gst-type-card">
+                    <div class="gst-type-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>IGST</h3>
+                    <p>Integrated Goods and Services Tax (IGST) is collected by the central government on inter-state supply of goods and services as well as imports.</p>
+                </div>
+                
+                <div class="gst-type-card">
+                    <div class="gst-type-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>UTGST</h3>
+                    <p>Union Territory Goods and Services Tax (UTGST) is applicable on supply of goods or services that take place in any of the seven union territories in India.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">Tools<span>Tap</span></a>
+                    <p>Simplifying your digital life with powerful, easy-to-use tools for all your needs. Our mission is to provide free, high-quality online tools that make your work easier. All tools work directly in your browser.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/moosa.faisal.338/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/tools_tap/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="index.html#tools">All Tools</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-and-condition.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Tool Categories</h3>
+                    <ul>
+                        <li><a href="index.html#image-tools">Image Tools</a></li>
+                        <li><a href="index.html#document-tools">Document Tools</a></li>
+                        <li><a href="index.html#calculator-tools">Calculators</a></li>
+                        <li><a href="index.html#text-tools">Text Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:moosafaisal880@gmail.com">moosafaisal880@gmail.com</a></p>
+                    <p><i class="fas fa-phone"></i> (+92-03108895446)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Pakistan</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-links">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-and-condition.html">Terms of Use</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="cookies-policy.html">Cookie Policy</a>
+                </div>
+                <p>&copy; 2025 ToolsTap. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference or default to light
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply the saved theme on page load
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // GST Calculator Functionality
+        const taxTypeBtns = document.querySelectorAll('.tax-type-btn');
+        const gstRateBtns = document.querySelectorAll('.gst-rate-btn');
+        const customRateContainer = document.getElementById('customRateContainer');
+        const amountInput = document.getElementById('amount');
+        const customRateInput = document.getElementById('customRate');
+        
+        let currentTaxType = 'exclusive';
+        let currentGstRate = 18;
+        let isCustomRate = false;
+        
+        // Tax Type Selector
+        taxTypeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                taxTypeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentTaxType = btn.getAttribute('data-type');
+                calculateGST();
+            });
+        });
+        
+        // GST Rate Selector
+        gstRateBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                gstRateBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const rate = btn.getAttribute('data-rate');
+                if (rate === 'custom') {
+                    isCustomRate = true;
+                    customRateContainer.style.display = 'block';
+                    currentGstRate = parseFloat(customRateInput.value) || 0;
+                } else {
+                    isCustomRate = false;
+                    customRateContainer.style.display = 'none';
+                    currentGstRate = parseFloat(rate);
+                }
+                
+                calculateGST();
+            });
+        });
+        
+        // Custom rate input
+        customRateInput.addEventListener('input', () => {
+            if (isCustomRate) {
+                currentGstRate = parseFloat(customRateInput.value) || 0;
+                calculateGST();
+            }
+        });
+        
+        // Amount input
+        amountInput.addEventListener('input', calculateGST);
+        
+        // Format currency
+        function formatCurrency(amount) {
+            return '₹ ' + amount.toLocaleString('en-IN', { maximumFractionDigits: 2 });
+        }
+        
+        // Calculate GST
+        function calculateGST() {
+            const amount = parseFloat(amountInput.value) || 0;
+            const gstRate = currentGstRate;
+            
+            let gstAmount = 0;
+            let netAmount = 0;
+            let totalAmount = 0;
+            
+            if (currentTaxType === 'exclusive') {
+                // GST Exclusive - Add GST to amount
+                gstAmount = (amount * gstRate) / 100;
+                netAmount = amount;
+                totalAmount = amount + gstAmount;
+                
+                // Update calculation steps
+                document.getElementById('step1').textContent = `Enter the amount: ${formatCurrency(amount)}`;
+                document.getElementById('step2').textContent = `Select GST rate: ${gstRate}%`;
+                document.getElementById('step3').textContent = `Calculate GST amount: ${formatCurrency(amount)} × ${gstRate}% = ${formatCurrency(gstAmount)}`;
+                document.getElementById('step4').textContent = `Add GST to original amount: ${formatCurrency(amount)} + ${formatCurrency(gstAmount)} = ${formatCurrency(totalAmount)}`;
+                
+                document.getElementById('calculationType').textContent = 'GST Exclusive Calculation';
+            } else {
+                // GST Inclusive - Remove GST from amount
+                gstAmount = (amount * gstRate) / (100 + gstRate);
+                netAmount = amount - gstAmount;
+                totalAmount = amount;
+                
+                // Update calculation steps
+                document.getElementById('step1').textContent = `Enter the amount: ${formatCurrency(amount)}`;
+                document.getElementById('step2').textContent = `Select GST rate: ${gstRate}%`;
+                document.getElementById('step3').textContent = `Calculate GST amount: ${formatCurrency(amount)} × ${gstRate}/(100+${gstRate}) = ${formatCurrency(gstAmount)}`;
+                document.getElementById('step4').textContent = `Subtract GST from total amount: ${formatCurrency(amount)} - ${formatCurrency(gstAmount)} = ${formatCurrency(netAmount)}`;
+                
+                document.getElementById('calculationType').textContent = 'GST Inclusive Calculation';
+            }
+            
+            // Update results
+            document.getElementById('gstAmount').textContent = formatCurrency(gstAmount);
+            document.getElementById('originalAmount').textContent = formatCurrency(netAmount);
+            document.getElementById('gstValue').textContent = formatCurrency(gstAmount);
+            document.getElementById('netAmount').textContent = formatCurrency(netAmount);
+            document.getElementById('totalAmount').textContent = formatCurrency(totalAmount);
+        }
+        
+        // Calculate on page load
+        document.addEventListener('DOMContentLoaded', calculateGST);
+        
+        // Calculate on button click
+        document.getElementById('calculateBtn').addEventListener('click', calculateGST);
+    </script>
+</body>
+</html>
