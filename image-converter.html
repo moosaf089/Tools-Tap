@@ -3,22 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolsTap - Image Converter Tool | Convert JPG, PNG, WEBP & More</title>
+    <title>Free Online Image Converter - Convert JPG, PNG, WEBP & More | ToolsTap</title>
     <link rel="icon" href="favicon_io/favicon-16x16.png" type="image/x-icon">
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Convert images online instantly with ToolsTap's free Image Converter Tool. Change formats between JPG, PNG, WEBP, GIF, and BMP easily.">
-    <meta name="keywords" content="image converter, jpg to png, png to jpg, webp converter, gif to png, image format changer, ToolsTap image tools">
+    <meta name="description" content="Convert images online instantly with ToolsTap's free Image Converter Tool. Change formats between JPG, PNG, WEBP, GIF, and BMP easily. No registration required.">
+    <meta name="keywords" content="image converter, jpg to png, png to jpg, webp converter, gif to png, image format changer, ToolsTap image tools, online image conversion, convert images instantly">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://moosaf089.github.io/toolstap/image-converter.html">
+    <link rel="canonical" href="https://toolstap.site/image-converter.html">
+    
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ToolsTap Image Converter",
+      "url": "https://toolstap.site/image-converter.html",
+      "description": "Free online tool to convert images between JPG, PNG, WEBP, GIF and BMP formats instantly.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "ToolsTap"
+      }
+    }
+    </script>
     
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- CropperJS CSS -->
-    <link href="https://unpkg.com/cropperjs@1.6.1/dist/cropper.min.css" rel="stylesheet"/>
     
     <style>
         :root {
@@ -119,8 +138,6 @@
             color: var(--dark-color);
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
-            background-clip: text;
-            background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -403,6 +420,7 @@
             max-width: 100%;
             max-height: 400px;
             display: block;
+            object-fit: contain;
         }
 
         .format-options {
@@ -523,6 +541,87 @@
         .preview-title i {
             margin-right: 10px;
             color: var(--primary-color);
+        }
+
+        /* Blog Section */
+        .blog-section {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+
+        .blog-container {
+            background-color: var(--light-color-2);
+            border-radius: var(--rounded-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+
+        .blog-content h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
+
+        .blog-content h2 {
+            font-size: 1.8rem;
+            margin: 30px 0 15px;
+            color: var(--text-dark);
+        }
+
+        .blog-content h3 {
+            font-size: 1.4rem;
+            margin: 25px 0 12px;
+            color: var(--text-dark);
+        }
+
+        .blog-content p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .blog-content li {
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            color: var(--text-light);
+        }
+
+        .blog-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .blog-link:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
         }
 
         /* Related Tools */
@@ -858,6 +957,18 @@
             .format-options {
                 grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             }
+
+            .blog-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .blog-content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .blog-content h3 {
+                font-size: 1.3rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -888,22 +999,6 @@
     </style>
 </head>
 <body>
-    <!-- Top Banner Ad -->
-    <div class="ad-container">
-        <div class="ad-inner">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : 'e8844b513cc060f4073fab69f7d1bcc8',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="https://www.highperformanceformat.com/e8844b513cc060f4073fab69f7d1bcc8/invoke.js"></script>
-        </div>
-    </div>
-
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -1051,21 +1146,111 @@
         </div>
     </section>
 
-    <!-- Native Ad -->
-    <div class="ad-container">
-        <div class="ad-inner">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : 'e8844b513cc060f4073fab69f7d1bcc8',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="https://www.highperformanceformat.com/e8844b513cc060f4073fab69f7d1bcc8/invoke.js"></script>
+    <!-- SEO Blog Section -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="blog-container">
+                <div class="blog-content">
+                    <h1>Free Online Image Converter - Convert JPG, PNG, WebP Instantly</h1>
+                    
+                    <p>In today's digital world, images play a crucial role in communication, marketing, and personal expression. However, different platforms and devices often require specific image formats. That's where our free online image converter comes in - a powerful tool that lets you convert images between JPG, PNG, WebP, GIF, and BMP formats instantly, without compromising quality.</p>
+                    
+                    <h2>Why Choose Our Image Converter Tool</h2>
+                    
+                    <p>Our image converter stands out from the competition for several important reasons:</p>
+                    
+                    <h3>Completely Free and No Registration Required</h3>
+                    <p>Unlike many online tools that require subscriptions or limit free usage, our image converter is 100% free with no hidden costs. You don't need to create an account or provide any personal information. Just upload your image, select your desired format, and convert instantly.</p>
+                    
+                    <h3>High-Quality Conversions</h3>
+                    <p>We understand that image quality matters. Our conversion algorithm preserves the original quality of your images while converting them to your preferred format. Whether you're converting photographs, graphics, or screenshots, you can trust that the output will maintain clarity and detail.</p>
+                    
+                    <h3>Fast and Efficient Processing</h3>
+                    <p>Time is valuable, and our tool respects that. With optimized processing algorithms, your images convert in seconds, not minutes. Even large files are handled efficiently, allowing you to complete your tasks quickly.</p>
+                    
+                    <h3>Secure and Private</h3>
+                    <p>Your privacy is our priority. All image processing happens directly in your browser - your files never leave your device or get stored on our servers. This ensures complete confidentiality for your sensitive images.</p>
+                    
+                    <h2>Supported Formats</h2>
+                    
+                    <p>Our image converter supports all major image formats:</p>
+                    
+                    <h3>JPG/JPEG</h3>
+                    <p>The most common format for photographs and complex images. JPG uses lossy compression, making it ideal for web use where file size matters.</p>
+                    
+                    <h3>PNG</h3>
+                    <p>Perfect for images requiring transparency or sharp edges. PNG uses lossless compression, preserving quality while supporting transparent backgrounds.</p>
+                    
+                    <h3>WebP</h3>
+                    <p>Google's modern image format that provides superior compression. WebP images are typically 25-35% smaller than JPG and PNG files while maintaining similar quality.</p>
+                    
+                    <h3>GIF</h3>
+                    <p>The go-to format for simple animations and graphics with limited colors. GIF supports animation and transparency.</p>
+                    
+                    <h3>BMP</h3>
+                    <p>A basic, uncompressed format that preserves all image data without any quality loss. Ideal for editing but results in large file sizes.</p>
+                    
+                    <h3>ICO</h3>
+                    <p>Used primarily for website favicons and Windows application icons. ICO files can contain multiple sizes of the same image.</p>
+                    
+                    <h2>How to Convert Images in 3 Simple Steps</h2>
+                    
+                    <ol>
+                        <li><strong>Upload Your Image:</strong> Click the upload area or drag and drop your image file. We support JPG, PNG, WebP, GIF, BMP, and TIFF formats.</li>
+                        <li><strong>Select Target Format:</strong> Choose your desired output format from the available options (JPG, PNG, WebP, GIF, BMP, or ICO).</li>
+                        <li><strong>Convert and Download:</strong> Click the convert button and download your newly formatted image instantly.</li>
+                    </ol>
+                    
+                    <h2>Common Use Cases for Image Conversion</h2>
+                    
+                    <h3>Website Optimization</h3>
+                    <p>Convert images to WebP format for faster loading websites. WebP provides superior compression while maintaining visual quality, improving your site's performance and SEO ranking.</p>
+                    
+                    <h3>Social Media Preparation</h3>
+                    <p>Different social platforms have specific format requirements. Convert your images to the optimal format for each platform to ensure they display correctly and attract maximum engagement.</p>
+                    
+                    <h3>Print and Publication</h3>
+                    <p>Prepare images for printing by converting to high-quality formats. While JPG is common for digital use, some printing processes may require specific formats like TIFF or PNG.</p>
+                    
+                    <h3>Application Development</h3>
+                    <p>Developers often need to convert images to specific formats for app icons, UI elements, or asset optimization. Our tool simplifies this process without requiring complex software.</p>
+                    
+                    <h2>Frequently Asked Questions</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Is there a limit to how many images I can convert?</div>
+                        <div class="faq-answer">No, there are no limits. You can convert as many images as you need, completely free of charge.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Will converting my image reduce its quality?</div>
+                        <div class="faq-answer">Our conversion process is designed to preserve image quality. However, converting to lossy formats like JPG may result in some quality reduction depending on the compression level.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Are my images stored on your servers?</div>
+                        <div class="faq-answer">No, all processing happens directly in your browser. Your images never leave your device, ensuring complete privacy and security.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">What is the maximum file size I can convert?</div>
+                        <div class="faq-answer">Our tool can handle files up to 50MB, which covers most common use cases. For extremely large files, we recommend resizing first using our <a href="image-resizer.html" class="blog-link">Image Resizer tool</a>.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Why should I convert to WebP format?</div>
+                        <div class="faq-answer">WebP offers superior compression compared to JPG and PNG, resulting in smaller file sizes without noticeable quality loss. This leads to faster website loading times and improved user experience.</div>
+                    </div>
+                    
+                    <h2>Conclusion</h2>
+                    
+                    <p>Whether you're a web developer optimizing site assets, a social media manager preparing content, or simply someone who needs to convert images for personal use, our free online image converter provides a fast, secure, and reliable solution. With support for all major formats and a commitment to quality, it's the perfect tool for all your image conversion needs.</p>
+                    
+                    <p>Try our image converter today and experience the simplicity of converting images without downloading software or compromising your privacy. For more image editing tools, explore our <a href="image-compressor.html" class="blog-link">Image Compressor</a>, <a href="image-resizer.html" class="blog-link">Image Resizer</a>, and other utilities in our <a href="index.html#tools" class="blog-link">Tools collection</a>.</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
     <!-- Related Image Tools Section -->
     <section class="related-tools">
@@ -1168,7 +1353,7 @@
                     <h3>Contact Us</h3>
                     <p><i class="fas fa-envelope"></i> <a href="mailto:moosafaisal880@gmail.com">moosafaisal880@gmail.com</a></p>
                     <p><i class="fas fa-map-marker-alt"></i> Pakistan</p>
-                    <p><i class="fas fa-globe"></i> <a href="https://moosaf089.github.io/toolstap/">https://moosaf089.github.io/toolstap/</a></p>
+                    <p><i class="fas fa-globe"></i> <a href="https://toolstap.site/">https://toolstap.site/</a></p>
                 </div>
             </div>
             
@@ -1178,22 +1363,10 @@
                     <a href="terms.html">Terms of Service</a>
                     <a href="faq.html">FAQ</a>
                 </div>
-                <p>&copy; 2023 ToolsTap. All rights reserved.</p>
+                <p>&copy; 2025 ToolsTap. All rights reserved.</p>
             </div>
         </div>
     </footer>
-
-    <!-- Social Bar and Popunder Ads -->
-    <script type="text/javascript">
-        atOptions = {
-            'key' : 'e8844b513cc060f4073fab69f7d1bcc8',
-            'format' : 'iframe',
-            'height' : 90,
-            'width' : 728,
-            'params' : {}
-        };
-    </script>
-    <script type="text/javascript" src="https://www.highperformanceformat.com/e8844b513cc060f4073fab69f7d1bcc8/invoke.js"></script>
 
     <!-- JavaScript -->
     <script>
@@ -1214,7 +1387,25 @@
         
         // Variables
         let selectedFormat = null;
-        let originalImage = null;
+        let originalImageData = null;
+        let convertedImageData = null;
+        
+        // Load theme preference from localStorage
+        function loadThemePreference() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                const icon = themeToggle.querySelector('i');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+        
+        // Save theme preference to localStorage
+        function saveThemePreference() {
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        }
         
         // Theme Toggle
         themeToggle.addEventListener('click', () => {
@@ -1227,7 +1418,11 @@
                 icon.classList.remove('fa-sun');
                 icon.classList.add('fa-moon');
             }
+            saveThemePreference();
         });
+        
+        // Load theme on page load
+        document.addEventListener('DOMContentLoaded', loadThemePreference);
         
         // Mobile Menu Toggle
         mobileMenuBtn.addEventListener('click', () => {
@@ -1275,18 +1470,25 @@
         });
         
         function handleImageUpload(file) {
-            if (!file.type.match('image.*')) {
-                alert('Please upload an image file.');
+            // Check if file is an image (including WebP)
+            const isImage = file.type.startsWith('image/') || /\.(jpe?g|png|webp|gif|bmp|tiff?|ico)$/i.test(file.name);
+            if (!isImage) {
+                alert('Please upload a valid image file (JPG, PNG, WebP, GIF, BMP, TIFF, or ICO).');
                 return;
             }
             
+            // Use FileReader to read the file as data URL
             const reader = new FileReader();
             
             reader.onload = (e) => {
                 image.src = e.target.result;
-                originalImage = e.target.result;
                 image.style.display = 'block';
+                originalImageData = e.target.result;
                 convertBtn.disabled = false;
+            };
+            
+            reader.onerror = () => {
+                alert('Error reading the image file. Please try again.');
             };
             
             reader.readAsDataURL(file);
@@ -1308,7 +1510,7 @@
                 return;
             }
             
-            if (!originalImage) {
+            if (!originalImageData) {
                 alert('Please upload an image first.');
                 return;
             }
@@ -1317,39 +1519,95 @@
             const img = new Image();
             
             img.onload = () => {
+                // Set canvas dimensions to match image
                 canvas.width = img.width;
                 canvas.height = img.height;
+                
+                // Clear canvas and draw image
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.drawImage(img, 0, 0);
                 
-                previewContainer.style.display = 'block';
-                downloadBtn.disabled = false;
+                // Get the converted image data
+                let mimeType;
+                let quality = 0.92; // Default quality for lossy formats
                 
-                // Scroll to preview
-                previewContainer.scrollIntoView({ behavior: 'smooth' });
+                switch(selectedFormat) {
+                    case 'jpg':
+                    case 'jpeg':
+                        mimeType = 'image/jpeg';
+                        break;
+                    case 'png':
+                        mimeType = 'image/png';
+                        quality = 1.0; // PNG is lossless
+                        break;
+                    case 'gif':
+                        mimeType = 'image/gif';
+                        quality = 1.0;
+                        break;
+                    case 'webp':
+                        mimeType = 'image/webp';
+                        break;
+                    case 'bmp':
+                        mimeType = 'image/bmp';
+                        quality = 1.0;
+                        break;
+                    case 'ico':
+                        mimeType = 'image/x-icon';
+                        quality = 1.0;
+                        break;
+                    default:
+                        mimeType = 'image/png';
+                        quality = 1.0;
+                }
+                
+                try {
+                    // Convert to data URL with specified format
+                    convertedImageData = canvas.toDataURL(mimeType, quality);
+                    
+                    // Show preview and enable download
+                    previewContainer.style.display = 'block';
+                    canvas.style.display = 'block';
+                    downloadBtn.disabled = false;
+                    
+                    // Scroll to preview
+                    previewContainer.scrollIntoView({ behavior: 'smooth' });
+                    
+                } catch (error) {
+                    console.error('Conversion error:', error);
+                    alert('Error converting image. The selected format might not be supported by your browser. Try a different format.');
+                }
             };
             
-            img.src = originalImage;
+            img.onerror = () => {
+                alert('Error loading image. Please try again with a different image.');
+            };
+            
+            img.src = originalImageData;
         });
         
         // Download Image
         downloadBtn.addEventListener('click', () => {
-            if (!selectedFormat) return;
+            if (!convertedImageData) return;
             
-            const dataURL = canvas.toDataURL(`image/${selectedFormat}`);
             const link = document.createElement('a');
             link.download = `converted-image.${selectedFormat}`;
-            link.href = dataURL;
+            link.href = convertedImageData;
+            document.body.appendChild(link);
             link.click();
+            document.body.removeChild(link);
         });
         
         // Reset
         resetBtn.addEventListener('click', () => {
             imageInput.value = '';
             image.style.display = 'none';
-            originalImage = null;
+            
+            originalImageData = null;
+            convertedImageData = null;
             formatOptions.forEach(opt => opt.classList.remove('active'));
             selectedFormat = null;
             previewContainer.style.display = 'none';
+            canvas.style.display = 'none';
             convertBtn.disabled = true;
             downloadBtn.disabled = true;
         });
