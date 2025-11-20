@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Compressor | ToolsTap</title>
+    <title>Image Compressor | ToolsTap - Compress JPG, PNG, WEBP Online</title>
     <link rel="icon" href="favicon_io/favicon-16x16.png" type="image/x-icon">
     
     <!-- SEO Meta Tags -->
@@ -124,6 +124,7 @@
             color: var(--dark-color);
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -258,16 +259,16 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
         .btn-secondary {
             background: transparent;
             color: var(--white);
             border: 1px solid rgba(255,255,255,0.12);
             box-shadow: none;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
         /* Tool Section */
@@ -608,9 +609,10 @@
             opacity: 0.9;
         }
 
-        /* Related Tools */
-        .related-tools {
-            padding: 60px 0;
+        /* Blog Section */
+        .blog-section {
+            padding: 80px 0;
+            background-color: var(--light-color);
         }
 
         .section-title {
@@ -634,6 +636,95 @@
             margin: 0 auto;
             font-size: 1.1rem;
             line-height: 1.7;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background-color: var(--light-color-2);
+            border-radius: var(--rounded-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .blog-meta i {
+            margin-right: 5px;
+        }
+
+        .blog-date {
+            margin-right: 15px;
+        }
+
+        .blog-category {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .blog-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .blog-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .blog-link:hover {
+            color: var(--secondary-color);
+            gap: 8px;
+        }
+
+        /* Related Tools */
+        .related-tools {
+            padding: 60px 0;
         }
 
         .tools-grid {
@@ -742,6 +833,7 @@
             color: var(--primary-color);
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -960,6 +1052,14 @@
             .quality-presets {
                 flex-direction: column;
             }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 576px) {
@@ -983,7 +1083,7 @@
                 font-size: 2.5rem;
             }
 
-            .tools-grid {
+            .footer-container {
                 grid-template-columns: 1fr;
             }
         }
@@ -1136,6 +1236,57 @@
         </div>
     </section>
 
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="fas fa-newspaper"></i> Image Optimization Blog</h2>
+                <p>Learn about image compression, optimization techniques, and best practices</p>
+            </div>
+            
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgNDAwIDIwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzQzNjFlZSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5JbWFnZSBDb21wcmVzc2lvbiBUaXBzPC90ZXh0Pjwvc3ZnPg==" alt="Image Compression Tips" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="far fa-calendar"></i> Nov 20, 2025</span>
+                            <span class="blog-category">Optimization</span>
+                        </div>
+                        <h3 class="blog-title">5 Essential Image Compression Tips for Better Website Performance</h3>
+                        <p class="blog-excerpt">Learn how to properly compress images without losing quality to improve your website loading speed and user experience.</p>
+                        <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgNDAwIDIwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzcyMDliNyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Gb3JtYXQgQ29tcGFyaXNvbjwvdGV4dD48L3N2Zz4=" alt="Image Format Comparison" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="far fa-calendar"></i> Nov 15, 2025</span>
+                            <span class="blog-category">Formats</span>
+                        </div>
+                        <h3 class="blog-title">JPG vs PNG vs WEBP: Which Image Format Should You Use?</h3>
+                        <p class="blog-excerpt">A comprehensive comparison of popular image formats and when to use each one for optimal quality and file size.</p>
+                        <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgNDAwIDIwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzQ4OTVlZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Nb2JpbGUgT3B0aW1pemF0aW9uPC90ZXh0Pjwvc3ZnPg==" alt="Mobile Image Optimization" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="far fa-calendar"></i> Nov 10, 2025</span>
+                            <span class="blog-category">Mobile</span>
+                        </div>
+                        <h3 class="blog-title">Optimizing Images for Mobile: Best Practices and Tools</h3>
+                        <p class="blog-excerpt">Discover techniques to optimize images specifically for mobile devices to enhance user experience and reduce data usage.</p>
+                        <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Related Tools -->
     <section class="related-tools">
         <div class="container">
@@ -1174,9 +1325,18 @@
                 
                 <div class="tool-card-small">
                     <div class="tool-icon-small">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <h3>Image to Text (OCR)</h3>
+                    <p>Extract text from images with our accurate optical character recognition.</p>
+                    <a href="image-to-text.html" class="btn">Use Tool</a>
+                </div>
+                
+                <div class="tool-card-small">
+                    <div class="tool-icon-small">
                         <i class="fas fa-sync-alt"></i>
                     </div>
-                    <h3>Image Rotator</h3>
+                    <h3>Image Rotator/Flipper</h3>
                     <p>Rotate or flip images horizontally or vertically with one click.</p>
                     <a href="image-rotater.html" class="btn">Use Tool</a>
                 </div>
@@ -1194,7 +1354,7 @@
                     <div class="social-links">
                         <a href="https://www.facebook.com/moosa.faisal.338/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/tools_tap/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://x.com/moosaf880" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
@@ -1211,13 +1371,14 @@
                 </div>
                 
                 <div class="footer-links">
-                    <h3>Tool Categories</h3>
+                    <h3>Image Tools</h3>
                     <ul>
-                        <li><a href="index.html#qr-tools">QR Code Tools</a></li>
-                        <li><a href="index.html#image-tools">Image Tools</a></li>
-                        <li><a href="index.html#document-tools">Document Tools</a></li>
-                        <li><a href="index.html#calculator-tools">Calculators</a></li>
-                        <li><a href="index.html#text-tools">Text Tools</a></li>
+                        <li><a href="image-compressor.html">Image Compressor</a></li>
+                        <li><a href="image-converter.html">Image Converter</a></li>
+                        <li><a href="image-resizer.html">Image Resizer</a></li>
+                        <li><a href="image-cropper.html">Image Cropper</a></li>
+                        <li><a href="image-to-text.html">Image to Text (OCR)</a></li>
+                        <li><a href="image-rotater.html">Image Rotator/Flipper</a></li>
                     </ul>
                 </div>
                 
