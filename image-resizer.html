@@ -6,17 +6,17 @@
     <link rel="icon" href="favicon_io/favicon-16x16.png" type="image/x-icon">
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Free online image resizer tool - resize images to any dimension while maintaining quality. Perfect for social media, websites, and more.">
-    <meta name="keywords" content="image resizer, resize image, photo resizer, image size, image editor, online tools">
-    <link rel="canonical" href="https://toolstap.com/image-resizer.html">
+    <meta name="description" content="Free online image cropper tool - crop images precisely with freeform or fixed ratio cropping. Perfect for social media, websites, and more.">
+    <meta name="keywords" content="image cropper, crop image, photo cropper, image editor, online tools, crop tool">
+    <link rel="canonical" href="https://toolstap.com/image-cropper.html">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Image Resizer - Free Online Tool | ToolsTap">
-    <meta property="og:description" content="Resize images to any dimension while maintaining quality with our free online image resizer tool.">
-    <meta property="og:image" content="https://toolstap.com/og-image-resizer.png">
-    <meta property="og:url" content="https://toolstap.com/image-resizer.html">
+    <meta property="og:title" content="Image Cropper - Free Online Tool | ToolsTap">
+    <meta property="og:description" content="Crop images precisely with our free online image cropper tool. Freeform or fixed ratio cropping available.">
+    <meta property="og:image" content="https://toolstap.com/og-image-cropper.png">
+    <meta property="og:url" content="https://toolstap.com/image-cropper.html">
     <meta name="twitter:card" content="summary_large_image">
     
-    <title>Image Resizer - Free Online Tool to Resize Images | ToolsTap</title>
+    <title>Image Cropper - Free Online Tool to Crop Images | ToolsTap</title>
     
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -277,55 +277,50 @@
             font-size: 1rem;
         }
 
-        /* Preview */
-        .preview-container {
-            margin: 30px 0;
-            display: none;
+        .file-info {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--text-light);
         }
 
-        .preview-container.active {
+        /* Canvas Container */
+        .canvas-container {
+            margin: 30px 0;
+            display: none;
+            text-align: center;
+        }
+
+        .canvas-container.active {
             display: block;
         }
 
-        .preview-title {
+        .canvas-title {
             font-size: 1.3rem;
             margin-bottom: 15px;
             color: var(--text-dark);
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
         }
 
-        .preview-content {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .preview-box {
-            flex: 1;
-            min-width: 300px;
-            background-color: var(--light-color);
-            border-radius: var(--rounded);
-            padding: 20px;
-            border: 1px solid var(--border-color);
-        }
-
-        .preview-box h4 {
-            margin-bottom: 15px;
-            color: var(--text-dark);
-            font-size: 1.1rem;
-        }
-
-        .preview-image {
+        .canvas-wrapper {
+            position: relative;
+            display: inline-block;
             max-width: 100%;
-            border-radius: var(--rounded);
-            display: block;
             margin: 0 auto;
-            box-shadow: var(--shadow);
         }
 
-        .image-info {
+        #canvas {
+            max-width: 100%;
+            max-height: 500px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--rounded);
+            box-shadow: var(--shadow);
+            cursor: crosshair;
+        }
+
+        .canvas-info {
             margin-top: 15px;
             font-size: 0.9rem;
             color: var(--text-light);
@@ -349,66 +344,15 @@
             gap: 10px;
         }
 
-        .dimension-controls {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .dimension-input {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .dimension-input label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--text-dark);
-        }
-
-        .dimension-input input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--border-color);
-            border-radius: var(--rounded);
-            background-color: var(--light-color);
-            color: var(--text-dark);
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .dimension-input input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
-        }
-
-        .aspect-ratio {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .aspect-ratio input {
-            margin-right: 5px;
-        }
-
-        .aspect-ratio label {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .preset-sizes {
+        .aspect-ratios {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
-            margin-top: 15px;
+            margin-bottom: 15px;
         }
 
-        .preset-btn {
-            padding: 8px 15px;
+        .aspect-btn {
+            padding: 10px 15px;
             border: 1px solid var(--border-color);
             border-radius: var(--rounded);
             background-color: var(--light-color);
@@ -418,15 +362,35 @@
             font-size: 0.9rem;
         }
 
-        .preset-btn:hover {
+        .aspect-btn:hover {
             background-color: rgba(67, 97, 238, 0.1);
             border-color: var(--primary-color);
         }
 
-        .preset-btn.active {
+        .aspect-btn.active {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             border-color: transparent;
+        }
+
+        .crop-info {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .crop-dimension {
+            background-color: var(--light-color);
+            padding: 10px 15px;
+            border-radius: var(--rounded);
+            border: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        .crop-dimension span {
+            font-weight: 600;
+            color: var(--primary-color);
         }
 
         /* Action Buttons */
@@ -744,10 +708,6 @@
                 padding: 25px;
             }
 
-            .preview-content {
-                flex-direction: column;
-            }
-
             .action-buttons {
                 flex-direction: column;
             }
@@ -755,6 +715,10 @@
             .btn {
                 width: 100%;
                 justify-content: center;
+            }
+
+            .crop-info {
+                flex-direction: column;
             }
         }
 
@@ -771,11 +735,17 @@
                 padding: 30px 15px;
             }
 
-            .dimension-controls {
+            .aspect-ratios {
                 flex-direction: column;
+            }
+
+            .aspect-btn {
+                width: 100%;
             }
         }
     </style>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7831586644567090" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Header -->
@@ -811,8 +781,8 @@
     <section class="tool-section">
         <div class="container">
             <div class="section-title">
-                <h1><i class="fas fa-expand-alt"></i> Image Resizer</h1>
-                <p>Resize images to any dimension while maintaining aspect ratio and quality. Perfect for social media, websites, and more.</p>
+                <h1><i class="fas fa-crop-alt"></i> Image Cropper</h1>
+                <p>Crop images to remove unwanted areas or focus on specific parts precisely. Freeform or fixed ratio cropping available.</p>
             </div>
             
             <div class="tool-container">
@@ -820,62 +790,44 @@
                     <i class="fas fa-cloud-upload-alt"></i>
                     <h3>Upload Your Image</h3>
                     <p>Click or drag an image here to upload (JPG, PNG, GIF, WEBP)</p>
+                    <div class="file-info">File must be JPEG, JPG, PNG or WebP and up to 40MB</div>
                 </div>
                 <input type="file" id="fileInput" accept="image/*" style="display:none">
                 
-                <div id="previewContainer" class="preview-container">
-                    <h3 class="preview-title"><i class="fas fa-eye"></i> Preview</h3>
-                    <div class="preview-content">
-                        <div class="preview-box">
-                            <h4>Original Image</h4>
-                            <img id="originalPreview" class="preview-image" alt="Original image preview">
-                            <div id="originalInfo" class="image-info"></div>
-                        </div>
-                        <div class="preview-box">
-                            <h4>Resized Image</h4>
-                            <img id="resizedPreview" class="preview-image" alt="Resized image preview">
-                            <div id="resizedInfo" class="image-info"></div>
-                        </div>
+                <div id="canvasContainer" class="canvas-container">
+                    <h3 class="canvas-title"><i class="fas fa-crop-alt"></i> Crop Your Image</h3>
+                    <div class="canvas-wrapper">
+                        <canvas id="canvas"></canvas>
                     </div>
+                    <div id="canvasInfo" class="canvas-info">Click and drag to select the area you want to keep</div>
                 </div>
                 
                 <div class="controls">
                     <div class="control-group">
-                        <h3><i class="fas fa-ruler-combined"></i> Dimensions</h3>
-                        <div class="dimension-controls">
-                            <div class="dimension-input">
-                                <label for="width">Width (px)</label>
-                                <input type="number" id="width" placeholder="Enter width">
-                            </div>
-                            <div class="dimension-input">
-                                <label for="height">Height (px)</label>
-                                <input type="number" id="height" placeholder="Enter height">
-                            </div>
-                        </div>
-                        <div class="aspect-ratio">
-                            <input type="checkbox" id="maintainAspect" checked>
-                            <label for="maintainAspect">Maintain aspect ratio</label>
+                        <h3><i class="fas fa-shapes"></i> Aspect Ratios</h3>
+                        <div class="aspect-ratios">
+                            <button class="aspect-btn active" data-ratio="free">Free Form</button>
+                            <button class="aspect-btn" data-ratio="1:1">Square (1:1)</button>
+                            <button class="aspect-btn" data-ratio="16:9">Widescreen (16:9)</button>
+                            <button class="aspect-btn" data-ratio="4:3">Standard (4:3)</button>
+                            <button class="aspect-btn" data-ratio="3:2">Photo (3:2)</button>
+                            <button class="aspect-btn" data-ratio="9:16">Portrait (9:16)</button>
                         </div>
                     </div>
                     
                     <div class="control-group">
-                        <h3><i class="fas fa-th-large"></i> Preset Sizes</h3>
-                        <div class="preset-sizes">
-                            <button class="preset-btn" data-width="1920" data-height="1080">HD (1920x1080)</button>
-                            <button class="preset-btn" data-width="1280" data-height="720">HD Ready (1280x720)</button>
-                            <button class="preset-btn" data-width="1080" data-height="1080">Instagram Square (1080x1080)</button>
-                            <button class="preset-btn" data-width="1200" data-height="630">Facebook (1200x630)</button>
-                            <button class="preset-btn" data-width="150" data-height="150">Thumbnail (150x150)</button>
+                        <h3><i class="fas fa-info-circle"></i> Crop Information</h3>
+                        <div class="crop-info">
+                            <div class="crop-dimension">Width: <span id="cropWidth">0</span>px</div>
+                            <div class="crop-dimension">Height: <span id="cropHeight">0</span>px</div>
+                            <div class="crop-dimension">Aspect Ratio: <span id="cropAspect">Free</span></div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="action-buttons">
-                    <button id="resizeBtn" class="btn btn-primary" disabled>
-                        <i class="fas fa-expand-alt"></i> Resize Image
-                    </button>
-                    <button id="downloadBtn" class="btn btn-secondary" disabled>
-                        <i class="fas fa-download"></i> Download
+                    <button id="cropBtn" class="btn btn-primary" disabled>
+                        <i class="fas fa-crop-alt"></i> Crop Image
                     </button>
                     <button id="resetBtn" class="btn btn-secondary">
                         <i class="fas fa-redo"></i> Reset
@@ -889,17 +841,17 @@
     <section class="features-section">
         <div class="container">
             <div class="section-title">
-                <h2>Why Use Our Image Resizer?</h2>
-                <p>Our tool offers the best features for all your image resizing needs</p>
+                <h2>Why Use Our Image Cropper?</h2>
+                <p>Our tool offers the best features for all your image cropping needs</p>
             </div>
             
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
+                        <i class="fas fa-ruler-combined"></i>
                     </div>
-                    <h3>Lightning Fast</h3>
-                    <p>Resize images in seconds with our optimized processing algorithm. No waiting, no delays.</p>
+                    <h3>Precise Cropping</h3>
+                    <p>Crop images with pixel-perfect precision using our intuitive selection tool.</p>
                 </div>
                 
                 <div class="feature-card">
@@ -920,10 +872,10 @@
                 
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-file-image"></i>
+                        <i class="fas fa-expand-arrows-alt"></i>
                     </div>
-                    <h3>Multiple Formats</h3>
-                    <p>Supports JPG, PNG, GIF, WEBP and more. Convert between formats if needed.</p>
+                    <h3>Multiple Aspect Ratios</h3>
+                    <p>Choose from preset aspect ratios or use freeform cropping for complete control.</p>
                 </div>
             </div>
         </div>
@@ -985,9 +937,6 @@
         </div>
     </footer>
 
-    <!-- Hidden Canvas for Processing -->
-    <canvas id="canvas" style="display:none"></canvas>
-
     <script>
         // Theme Toggle Functionality
         const themeToggle = document.getElementById('themeToggle');
@@ -1039,29 +988,24 @@
             });
         });
         
-        // Image Resizer Functionality
+        // Image Cropper Functionality
         const dropzone = document.getElementById('dropzone');
         const fileInput = document.getElementById('fileInput');
-        const previewContainer = document.getElementById('previewContainer');
-        const originalPreview = document.getElementById('originalPreview');
-        const resizedPreview = document.getElementById('resizedPreview');
-        const originalInfo = document.getElementById('originalInfo');
-        const resizedInfo = document.getElementById('resizedInfo');
-        const widthInput = document.getElementById('width');
-        const heightInput = document.getElementById('height');
-        const maintainAspect = document.getElementById('maintainAspect');
-        const resizeBtn = document.getElementById('resizeBtn');
-        const downloadBtn = document.getElementById('downloadBtn');
-        const resetBtn = document.getElementById('resetBtn');
-        const presetBtns = document.querySelectorAll('.preset-btn');
+        const canvasContainer = document.getElementById('canvasContainer');
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
+        const cropBtn = document.getElementById('cropBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const aspectBtns = document.querySelectorAll('.aspect-btn');
+        const cropWidth = document.getElementById('cropWidth');
+        const cropHeight = document.getElementById('cropHeight');
+        const cropAspect = document.getElementById('cropAspect');
+        const canvasInfo = document.getElementById('canvasInfo');
         
-        let originalImage = new Image();
-        let resizedImageUrl = null;
-        let originalWidth = 0;
-        let originalHeight = 0;
-        let aspectRatio = 1;
+        let img = new Image();
+        let startX, startY, endX, endY, isDragging = false;
+        let currentAspectRatio = 'free';
+        let cropRect = { x: 0, y: 0, width: 0, height: 0 };
         
         // Dropzone events
         dropzone.addEventListener('click', () => fileInput.click());
@@ -1096,120 +1040,241 @@
                 return;
             }
             
+            if (file.size > 40 * 1024 * 1024) {
+                alert('File size must be less than 40MB');
+                return;
+            }
+            
             const reader = new FileReader();
             reader.onload = e => {
-                originalImage.onload = () => {
-                    originalWidth = originalImage.width;
-                    originalHeight = originalImage.height;
-                    aspectRatio = originalWidth / originalHeight;
+                img.onload = () => {
+                    // Set canvas dimensions
+                    const maxWidth = 800;
+                    const maxHeight = 500;
+                    let width = img.width;
+                    let height = img.height;
                     
-                    // Set initial dimensions
-                    widthInput.value = originalWidth;
-                    heightInput.value = originalHeight;
+                    // Scale down if image is too large
+                    if (width > maxWidth || height > maxHeight) {
+                        const ratio = Math.min(maxWidth / width, maxHeight / height);
+                        width *= ratio;
+                        height *= ratio;
+                    }
                     
-                    // Show preview
-                    originalPreview.src = e.target.result;
-                    resizedPreview.src = e.target.result;
+                    canvas.width = width;
+                    canvas.height = height;
                     
-                    // Update info
-                    originalInfo.textContent = `${originalWidth} × ${originalHeight} pixels`;
-                    resizedInfo.textContent = `${originalWidth} × ${originalHeight} pixels`;
+                    // Draw image on canvas
+                    ctx.drawImage(img, 0, 0, width, height);
                     
-                    // Show preview container
-                    previewContainer.classList.add('active');
+                    // Show canvas container
+                    canvasContainer.classList.add('active');
                     
-                    // Enable resize button
-                    resizeBtn.disabled = false;
+                    // Enable crop button
+                    cropBtn.disabled = false;
                     
-                    // Update download button
-                    downloadBtn.disabled = true;
+                    // Reset crop info
+                    resetCropInfo();
                 };
-                originalImage.src = e.target.result;
+                img.src = e.target.result;
             };
             reader.readAsDataURL(file);
         }
         
-        // Dimension inputs
-        widthInput.addEventListener('input', updateDimensions);
-        heightInput.addEventListener('input', updateDimensions);
-        
-        function updateDimensions() {
-            if (maintainAspect.checked) {
-                if (this === widthInput) {
-                    heightInput.value = Math.round(widthInput.value / aspectRatio);
-                } else {
-                    widthInput.value = Math.round(heightInput.value * aspectRatio);
-                }
-            }
-        }
-        
-        // Preset buttons
-        presetBtns.forEach(btn => {
+        // Aspect ratio buttons
+        aspectBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 // Remove active class from all buttons
-                presetBtns.forEach(b => b.classList.remove('active'));
+                aspectBtns.forEach(b => b.classList.remove('active'));
                 // Add active class to clicked button
                 btn.classList.add('active');
                 
-                // Set dimensions
-                widthInput.value = btn.dataset.width;
-                heightInput.value = btn.dataset.height;
+                // Set current aspect ratio
+                currentAspectRatio = btn.dataset.ratio;
+                cropAspect.textContent = currentAspectRatio === 'free' ? 'Free' : currentAspectRatio;
+                
+                // Reset crop selection
+                resetCropSelection();
             });
         });
         
-        // Resize button
-        resizeBtn.addEventListener('click', resizeImage);
+        // Canvas events for cropping
+        canvas.addEventListener('mousedown', startSelection);
+        canvas.addEventListener('mousemove', updateSelection);
+        canvas.addEventListener('mouseup', endSelection);
         
-        function resizeImage() {
-            const targetWidth = parseInt(widthInput.value);
-            const targetHeight = parseInt(heightInput.value);
+        // Touch events for mobile
+        canvas.addEventListener('touchstart', handleTouchStart);
+        canvas.addEventListener('touchmove', handleTouchMove);
+        canvas.addEventListener('touchend', handleTouchEnd);
+        
+        function startSelection(e) {
+            const rect = canvas.getBoundingClientRect();
+            startX = e.clientX - rect.left;
+            startY = e.clientY - rect.top;
+            isDragging = true;
             
-            if (isNaN(targetWidth) || isNaN(targetHeight) || targetWidth <= 0 || targetHeight <= 0) {
-                alert('Please enter valid dimensions');
+            // Clear previous selection
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        }
+        
+        function updateSelection(e) {
+            if (!isDragging) return;
+            
+            const rect = canvas.getBoundingClientRect();
+            endX = e.clientX - rect.left;
+            endY = e.clientY - rect.top;
+            
+            // Apply aspect ratio constraints
+            if (currentAspectRatio !== 'free') {
+                const [ratioX, ratioY] = currentAspectRatio.split(':').map(Number);
+                const ratio = ratioX / ratioY;
+                
+                const width = endX - startX;
+                const height = width / ratio;
+                
+                endY = startY + height;
+            }
+            
+            // Redraw image and selection
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            drawSelection();
+            
+            // Update crop info
+            updateCropInfo();
+        }
+        
+        function endSelection() {
+            isDragging = false;
+            updateCropInfo();
+        }
+        
+        function drawSelection() {
+            ctx.strokeStyle = '#4361ee';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            ctx.strokeRect(startX, startY, endX - startX, endY - startY);
+            
+            // Draw semi-transparent overlay
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Clear the selected area
+            ctx.clearRect(startX, startY, endX - startX, endY - startY);
+            ctx.drawImage(img, startX, startY, endX - startX, endY - startY, startX, startY, endX - startX, endY - startY);
+            
+            // Draw selection border again
+            ctx.strokeStyle = '#4361ee';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            ctx.strokeRect(startX, startY, endX - startX, endY - startY);
+            
+            // Reset line dash
+            ctx.setLineDash([]);
+        }
+        
+        function updateCropInfo() {
+            if (startX && endX) {
+                const width = Math.abs(endX - startX);
+                const height = Math.abs(endY - startY);
+                
+                cropWidth.textContent = Math.round(width);
+                cropHeight.textContent = Math.round(height);
+                
+                // Store crop rectangle
+                cropRect = {
+                    x: Math.min(startX, endX),
+                    y: Math.min(startY, endY),
+                    width: width,
+                    height: height
+                };
+            }
+        }
+        
+        function resetCropInfo() {
+            cropWidth.textContent = '0';
+            cropHeight.textContent = '0';
+            cropAspect.textContent = 'Free';
+            cropRect = { x: 0, y: 0, width: 0, height: 0 };
+        }
+        
+        function resetCropSelection() {
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            resetCropInfo();
+        }
+        
+        // Touch event handlers
+        function handleTouchStart(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent('mousedown', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);
+        }
+        
+        function handleTouchMove(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent('mousemove', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);
+        }
+        
+        function handleTouchEnd(e) {
+            e.preventDefault();
+            const mouseEvent = new MouseEvent('mouseup', {});
+            canvas.dispatchEvent(mouseEvent);
+        }
+        
+        // Crop button
+        cropBtn.addEventListener('click', () => {
+            if (cropRect.width === 0 || cropRect.height === 0) {
+                alert('Please select an area to crop');
                 return;
             }
             
-            // Set canvas dimensions
-            canvas.width = targetWidth;
-            canvas.height = targetHeight;
+            // Create a temporary canvas for the cropped image
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = cropRect.width;
+            tempCanvas.height = cropRect.height;
+            const tempCtx = tempCanvas.getContext('2d');
             
-            // Draw resized image
-            ctx.drawImage(originalImage, 0, 0, targetWidth, targetHeight);
+            // Draw the cropped portion
+            tempCtx.drawImage(
+                canvas, 
+                cropRect.x, cropRect.y, cropRect.width, cropRect.height,
+                0, 0, cropRect.width, cropRect.height
+            );
             
-            // Get resized image data URL
-            resizedImageUrl = canvas.toDataURL('image/png');
-            
-            // Update preview
-            resizedPreview.src = resizedImageUrl;
-            
-            // Update info
-            resizedInfo.textContent = `${targetWidth} × ${targetHeight} pixels`;
-            
-            // Enable download button
-            downloadBtn.disabled = false;
-        }
-        
-        // Download button
-        downloadBtn.addEventListener('click', () => {
-            if (!resizedImageUrl) return;
-            
-            const link = document.createElement('a');
-            link.download = `resized-image-${widthInput.value}x${heightInput.value}.png`;
-            link.href = resizedImageUrl;
-            link.click();
+            // Convert to blob and download
+            tempCanvas.toBlob(blob => {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = 'cropped-image.png';
+                a.click();
+            }, 'image/png');
         });
         
         // Reset button
         resetBtn.addEventListener('click', () => {
             fileInput.value = '';
-            previewContainer.classList.remove('active');
-            widthInput.value = '';
-            heightInput.value = '';
-            resizeBtn.disabled = true;
-            downloadBtn.disabled = true;
+            canvasContainer.classList.remove('active');
+            cropBtn.disabled = true;
+            resetCropInfo();
             
-            // Remove active class from preset buttons
-            presetBtns.forEach(btn => btn.classList.remove('active'));
+            // Remove active class from all aspect buttons except free form
+            aspectBtns.forEach(btn => {
+                if (btn.dataset.ratio === 'free') {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            currentAspectRatio = 'free';
         });
     </script>
 </body>
