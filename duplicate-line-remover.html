@@ -825,6 +825,12 @@
       .site-mini-footer .site-mini-social { display:flex; gap:12px; justify-content:center; align-items:center; margin:10px 0; }
       .site-mini-footer .site-mini-social .social-icon { font-size:16px; }
     </style>
+
+    <!-- AdSense no-fill handling: hide only ad slots that Google explicitly marks unfilled. -->
+    <style id="toolstap-adsense-unfilled-fix">
+      ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
+    </style>
+
 </head>
 <body>
     <!-- Header -->
