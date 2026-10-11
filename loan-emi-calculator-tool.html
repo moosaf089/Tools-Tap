@@ -953,6 +953,20 @@
       ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
     </style>
 
+
+<style id="toolstap-related-tools-style">
+.toolstap-related-tools{padding:34px 0;margin-top:36px;border-top:1px solid var(--border-color,#e5e7eb)}
+.toolstap-related-tools .container{width:min(1120px,92%);margin:0 auto}
+.toolstap-related-tools h2{font-size:clamp(1.35rem,2vw,1.8rem);margin:0 0 8px;color:var(--text-dark,#1f2937)}
+.toolstap-related-tools .related-intro{margin:0 0 20px;color:var(--text-light,#64748b);line-height:1.65}
+.toolstap-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.toolstap-related-card{display:flex;flex-direction:column;gap:8px;padding:18px;border:1px solid var(--border-color,#e5e7eb);border-radius:14px;background:var(--light-color-2,#fff);text-decoration:none;color:var(--text-dark,#1f2937);transition:transform .2s ease,border-color .2s ease}
+.toolstap-related-card:hover{transform:translateY(-2px);border-color:var(--primary-color,#4361ee)}
+.toolstap-related-card strong{font-size:1rem;color:var(--text-dark,#1f2937)}
+.toolstap-related-card span{font-size:.92rem;line-height:1.5;color:var(--text-light,#64748b)}
+.toolstap-related-card:focus-visible{outline:3px solid var(--primary-color,#4361ee);outline-offset:3px}
+</style>
+
 </head>
 <body>
     <!-- Header -->
@@ -975,10 +989,11 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="index.html#categories">Categories</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry" class="contact-link">Get in Touch</a></li>
+                    <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer" class="contact-link">Get in Touch</a></li>
                 </ul>
             </nav>
         </div>
@@ -1165,7 +1180,9 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    
+<section class="toolstap-related-tools" aria-labelledby="relatedToolsHeading"><div class="container"><h2 id="relatedToolsHeading">Related Calculator Tools from ToolsTap</h2><p class="related-intro">Continue with another ToolsTap tool in the same category. Each tool opens on its own page.</p><div class="toolstap-related-grid"><a class="toolstap-related-card" href="scientific-calculator.html"><strong>Scientific Calculator</strong><span>Perform arithmetic and scientific functions.</span></a><a class="toolstap-related-card" href="age-calculator-tool.html"><strong>Age Calculator</strong><span>Calculate age between two dates.</span></a><a class="toolstap-related-card" href="bmi-calculator-tool.html"><strong>BMI Calculator</strong><span>Calculate Body Mass Index from height and weight.</span></a><a class="toolstap-related-card" href="gst-calculator-converter.html"><strong>GST Calculator</strong><span>Calculate GST-inclusive and GST-exclusive totals.</span></a></div></div></section>
+<footer id="contact">
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
@@ -1197,12 +1214,13 @@
                         <li><a href="index.html#document-tools">Document Tools</a></li>
                         <li><a href="index.html#calculator-tools">Calculators</a></li>
                         <li><a href="index.html#text-tools">Text Tools</a></li>
+                        <li><a href="index.html#qr-tools">QR &amp; Barcode Tools</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry">toolstap8@gmail.com</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer">toolstap8@gmail.com</a></p>
                     <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+923108895446">+92 3108895446</a></p>
                     <p><i class="fas fa-map-marker-alt"></i> Pakistan</p>
                 </div>
@@ -1384,16 +1402,16 @@
             const currency = document.getElementById('currency').value;
             const loanAmount = parseFloat(loanAmountInput.value);
             const interestRate = parseFloat(interestRateInput.value) / 12 / 100; // Monthly interest rate
-            const loanTenure = parseFloat(loanTenureInput.value) * 12; // Convert to months
+            const loanTenure = Math.round(parseFloat(loanTenureInput.value) * 12); // Convert years to whole monthly periods
             
-            if (!loanAmount || !interestRate || !loanTenure) {
-                alert("Please enter all fields!");
+            if (!Number.isFinite(loanAmount) || loanAmount <= 0 || !Number.isFinite(loanTenure) || loanTenure <= 0 || !Number.isFinite(interestRate) || interestRate < 0) {
+                alert("Enter a positive loan amount and term, and a valid non-negative interest rate.");
                 return;
             }
-            
-            // EMI formula: P * r * (1+r)^n / ((1+r)^n - 1)
-            const emi = (loanAmount * interestRate * Math.pow(1 + interestRate, loanTenure)) / 
-                        (Math.pow(1 + interestRate, loanTenure) - 1);
+            // Zero-interest loans are valid: split principal evenly across all monthly payments.
+            const emi = interestRate === 0 ? (loanAmount / loanTenure) :
+                (loanAmount * interestRate * Math.pow(1 + interestRate, loanTenure)) /
+                (Math.pow(1 + interestRate, loanTenure) - 1);
             
             const totalPayment = emi * loanTenure;
             const totalInterest = totalPayment - loanAmount;
@@ -1428,66 +1446,54 @@
         }
         
         // Generate Amortization Schedule
+        let scheduleMode = 'yearly';
         function generateAmortizationSchedule(principal, monthlyRate, tenure, emi, currency) {
             const scheduleBody = document.getElementById('scheduleBody');
+            const firstHeading = document.querySelector('#scheduleTable thead th');
             scheduleBody.innerHTML = '';
-            
+            if (firstHeading) firstHeading.textContent = scheduleMode === 'monthly' ? 'Month' : 'Year';
             let balance = principal;
-            let totalPrincipal = 0;
-            let totalInterest = 0;
-            
-            for (let year = 1; year <= tenure / 12; year++) {
-                let yearPrincipal = 0;
-                let yearInterest = 0;
-                
-                for (let month = 1; month <= 12; month++) {
+            let cumulativePrincipal = 0;
+            const monthCount = Math.max(1, Math.round(tenure));
+            const groupSize = scheduleMode === 'monthly' ? 1 : 12;
+            for (let firstMonth = 1; firstMonth <= monthCount; firstMonth += groupSize) {
+                let periodPrincipal = 0;
+                let periodInterest = 0;
+                let periodPayment = 0;
+                const lastMonth = Math.min(monthCount, firstMonth + groupSize - 1);
+                for (let month = firstMonth; month <= lastMonth; month++) {
+                    if (balance <= 0) break;
                     const interestPayment = balance * monthlyRate;
-                    const principalPayment = emi - interestPayment;
-                    
-                    yearPrincipal += principalPayment;
-                    yearInterest += interestPayment;
-                    
-                    balance -= principalPayment;
-                    
-                    // Stop if balance is zero or negative
-                    if (balance <= 0) {
-                        balance = 0;
-                        break;
-                    }
+                    const principalPayment = Math.min(balance, Math.max(0, emi - interestPayment));
+                    const payment = principalPayment + interestPayment;
+                    periodPrincipal += principalPayment;
+                    periodInterest += interestPayment;
+                    periodPayment += payment;
+                    cumulativePrincipal += principalPayment;
+                    balance = Math.max(0, balance - principalPayment);
                 }
-                
-                totalPrincipal += yearPrincipal;
-                totalInterest += yearInterest;
-                
+                const label = scheduleMode === 'monthly' ? `Month ${firstMonth}` : `Year ${Math.ceil(firstMonth / 12)}`;
                 const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${new Date().getFullYear() + year - 1}</td>
-                    <td>${formatCurrency(yearPrincipal, currency)}</td>
-                    <td>${formatCurrency(yearInterest, currency)}</td>
-                    <td>${formatCurrency(yearPrincipal + yearInterest, currency)}</td>
-                    <td>${formatCurrency(balance, currency)}</td>
-                    <td>${((totalPrincipal / principal) * 100).toFixed(2)}%</td>
-                `;
-                
+                [label, formatCurrency(periodPrincipal, currency), formatCurrency(periodInterest, currency),
+                 formatCurrency(periodPayment, currency), formatCurrency(balance, currency),
+                 `${Math.min(100, (cumulativePrincipal / principal) * 100).toFixed(2)}%`].forEach(value => {
+                    const cell = document.createElement('td'); cell.textContent = value; row.appendChild(cell);
+                });
                 scheduleBody.appendChild(row);
-                
-                // Stop if balance is zero
                 if (balance <= 0) break;
             }
         }
-        
-        // Schedule Tabs
+        // Schedule Tabs: toggle the data grouping and regenerate the schedule.
         const scheduleTabs = document.querySelectorAll('.schedule-tab');
         scheduleTabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 scheduleTabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
-                
-                // In a real implementation, this would switch between yearly and monthly views
-                // For this demo, we're only showing yearly schedule
+                scheduleMode = tab.getAttribute('data-schedule') === 'monthly' ? 'monthly' : 'yearly';
+                calculateEMI();
             });
         });
-        
+
         // Calculate on page load
         document.addEventListener('DOMContentLoaded', calculateEMI);
         

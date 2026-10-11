@@ -281,6 +281,8 @@
             margin-bottom: 20px;
         }
 
+        .file-input-area:focus-within { outline: 3px solid var(--primary-color); outline-offset: 3px; }
+
         .file-input {
             position: absolute;
             top: 0;
@@ -705,6 +707,20 @@
       ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
     </style>
 
+
+<style id="toolstap-related-tools-style">
+.toolstap-related-tools{padding:34px 0;margin-top:36px;border-top:1px solid var(--border-color,#e5e7eb)}
+.toolstap-related-tools .container{width:min(1120px,92%);margin:0 auto}
+.toolstap-related-tools h2{font-size:clamp(1.35rem,2vw,1.8rem);margin:0 0 8px;color:var(--text-dark,#1f2937)}
+.toolstap-related-tools .related-intro{margin:0 0 20px;color:var(--text-light,#64748b);line-height:1.65}
+.toolstap-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.toolstap-related-card{display:flex;flex-direction:column;gap:8px;padding:18px;border:1px solid var(--border-color,#e5e7eb);border-radius:14px;background:var(--light-color-2,#fff);text-decoration:none;color:var(--text-dark,#1f2937);transition:transform .2s ease,border-color .2s ease}
+.toolstap-related-card:hover{transform:translateY(-2px);border-color:var(--primary-color,#4361ee)}
+.toolstap-related-card strong{font-size:1rem;color:var(--text-dark,#1f2937)}
+.toolstap-related-card span{font-size:.92rem;line-height:1.5;color:var(--text-light,#64748b)}
+.toolstap-related-card:focus-visible{outline:3px solid var(--primary-color,#4361ee);outline-offset:3px}
+</style>
+
 </head>
 <body>
     <!-- Header -->
@@ -727,10 +743,11 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="index.html#categories">Categories</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry" class="contact-link">Get in Touch</a></li>
+                    <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer" class="contact-link">Get in Touch</a></li>
                 </ul>
             </nav>
         </div>
@@ -742,14 +759,14 @@
             <div class="tool-container">
                 <div class="tool-title">
                     <h1><i class="fas fa-file-word"></i> PDF to Word Converter</h1>
-                    <p>Convert your PDF to WORD documents with incredible accuracy.</p>
+                    <p>Extract selectable text from a PDF into an editable Word document. Complex layouts, images, columns and scanned pages may need separate adjustment or OCR.</p>
                 </div>
 
                 <div class="file-input-area" id="fileInputArea">
                     <i class="fas fa-file-pdf"></i>
                     <h3>Select PDF file</h3>
                     <p>or drop PDF here</p>
-                    <input type="file" id="pdfFile" class="file-input" accept="application/pdf">
+                    <input type="file" id="pdfFile" class="file-input" accept="application/pdf,.pdf" aria-label="Choose a PDF file">
                 </div>
 
                 <div class="file-info" id="fileInfo">
@@ -773,14 +790,16 @@
                 </div>
 
                 <div class="powered-by">
-                    Powered by Solid Documents.
+                    Browser-based PDF text extraction. Scanned/image-only PDFs need OCR, which this tool does not currently provide.
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    
+<section class="toolstap-related-tools" aria-labelledby="relatedToolsHeading"><div class="container"><h2 id="relatedToolsHeading">Related Document & PDF Tools from ToolsTap</h2><p class="related-intro">Continue with another ToolsTap tool in the same category. Each tool opens on its own page.</p><div class="toolstap-related-grid"><a class="toolstap-related-card" href="pdf-compressor-tool.html"><strong>PDF Compressor</strong><span>Reduce PDF file size.</span></a><a class="toolstap-related-card" href="pdf-merger-splitter-tool.html"><strong>PDF Merger &amp; Splitter</strong><span>Combine PDF files or extract pages.</span></a><a class="toolstap-related-card" href="document-converter-tool.html"><strong>Document Converter</strong><span>Convert supported text-based document formats.</span></a></div></div></section>
+<footer id="contact">
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
@@ -812,12 +831,13 @@
                         <li><a href="index.html#document-tools">Document Tools</a></li>
                         <li><a href="index.html#calculator-tools">Calculators</a></li>
                         <li><a href="index.html#text-tools">Text Tools</a></li>
+                        <li><a href="index.html#qr-tools">QR &amp; Barcode Tools</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry">toolstap8@gmail.com</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer">toolstap8@gmail.com</a></p>
                     <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+923108895446">+92 3108895446</a></p>
                     <p><i class="fas fa-map-marker-alt"></i> Pakistan</p>
                 </div>
@@ -835,6 +855,8 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
     <script>
         // Theme Toggle Functionality
         const themeToggle = document.getElementById('themeToggle');
@@ -886,7 +908,7 @@
             });
         });
 
-        // PDF to Word Converter Functionality
+        // PDF to Word Converter Functionality (actual text extraction; no simulated DOCX output).
         const pdfFile = document.getElementById('pdfFile');
         const fileInputArea = document.getElementById('fileInputArea');
         const fileInfo = document.getElementById('fileInfo');
@@ -896,106 +918,80 @@
         const downloadBtn = document.getElementById('downloadBtn');
         const statusEl = document.getElementById('status');
         const progressBar = document.getElementById('progressBar');
-
         let convertedFile = null;
 
-        // File selection handling
+        function escapeXml(value) {
+            return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+        }
+        async function extractPdfText(file) {
+            if (!window.pdfjsLib) throw new Error('PDF reader did not load. Check the internet connection and reload the page.');
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+            const pdf = await pdfjsLib.getDocument({ data: await file.arrayBuffer() }).promise;
+            const pages = [];
+            for (let pageNo = 1; pageNo <= pdf.numPages; pageNo++) {
+                statusEl.textContent = `Reading PDF page ${pageNo} of ${pdf.numPages}…`;
+                progressBar.style.width = `${Math.round((pageNo / pdf.numPages) * 65)}%`;
+                const page = await pdf.getPage(pageNo);
+                const content = await page.getTextContent();
+                const lines = [];
+                for (const item of content.items) {
+                    if (!item.str || !item.str.trim()) continue;
+                    const y = Math.round(item.transform?.[5] || 0);
+                    let line = lines.find(entry => Math.abs(entry.y - y) <= 2);
+                    if (!line) { line = { y, items: [] }; lines.push(line); }
+                    line.items.push({ x: item.transform?.[4] || 0, text: item.str });
+                }
+                lines.sort((a,b) => b.y-a.y);
+                pages.push(lines.map(line => line.items.sort((a,b) => a.x-b.x).map(item=>item.text).join(' ').trim()).filter(Boolean).join('\n'));
+            }
+            return pages.join('\n\n');
+        }
+        async function buildDocx(text) {
+            if (!window.JSZip) throw new Error('Word document library did not load. Check the internet connection and reload.');
+            const zip = new JSZip();
+            const paragraphs = String(text).replace(/\r/g,'').split('\n');
+            const paragraphXml = paragraphs.map(line => `<w:p><w:r><w:t xml:space="preserve">${escapeXml(line || ' ')}</w:t></w:r></w:p>`).join('');
+            zip.file('[Content_Types].xml', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>');
+            zip.file('_rels/.rels', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>');
+            zip.file('word/document.xml', `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>${paragraphXml}<w:sectPr><w:pgSz w:w="12240" w:h="15840"/><w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440" w:header="720" w:footer="720"/></w:sectPr></w:body></w:document>`);
+            return zip.generateAsync({ type:'blob', mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document', compression:'DEFLATE' });
+        }
         pdfFile.addEventListener('change', () => {
-            if (pdfFile.files.length) {
-                const file = pdfFile.files[0];
-                fileName.textContent = file.name;
-                
-                // Format file size
-                const sizeInBytes = file.size;
-                let sizeText = '';
-                if (sizeInBytes < 1024) {
-                    sizeText = sizeInBytes + ' bytes';
-                } else if (sizeInBytes < 1048576) {
-                    sizeText = (sizeInBytes / 1024).toFixed(2) + ' KB';
-                } else {
-                    sizeText = (sizeInBytes / 1048576).toFixed(2) + ' MB';
-                }
-                fileSize.textContent = sizeText;
-                
-                fileInfo.classList.add('active');
-                fileInputArea.classList.add('active');
-                statusEl.textContent = `Selected: ${file.name}`;
-            } else {
-                fileInfo.classList.remove('active');
-                fileInputArea.classList.remove('active');
-                statusEl.textContent = 'No PDF selected yet.';
+            convertedFile = null; downloadBtn.disabled = true; progressBar.style.width = '0%';
+            const file = pdfFile.files?.[0];
+            if (!file) { fileInfo.classList.remove('active'); fileInputArea.classList.remove('active'); statusEl.textContent='No PDF selected yet.'; return; }
+            if (!file.name.toLowerCase().endsWith('.pdf') && file.type !== 'application/pdf') {
+                pdfFile.value=''; fileInfo.classList.remove('active'); statusEl.textContent='Please select a PDF file.'; return;
             }
+            if (file.size > 40 * 1024 * 1024) { pdfFile.value=''; fileInfo.classList.remove('active'); statusEl.textContent='File exceeds the 40 MB limit. Choose a smaller PDF.'; return; }
+            fileName.textContent = file.name;
+            fileSize.textContent = file.size < 1048576 ? `${(file.size/1024).toFixed(2)} KB` : `${(file.size/1048576).toFixed(2)} MB`;
+            fileInfo.classList.add('active'); fileInputArea.classList.add('active'); statusEl.textContent=`Ready to extract selectable text from ${file.name}.`;
         });
-
-        // Drag and drop functionality
-        fileInputArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            fileInputArea.classList.add('active');
+        fileInputArea.addEventListener('dragover', e=>{e.preventDefault();fileInputArea.classList.add('active');});
+        fileInputArea.addEventListener('dragleave', ()=>{if(!pdfFile.files.length)fileInputArea.classList.remove('active');});
+        fileInputArea.addEventListener('drop', e=>{
+            e.preventDefault();const file=e.dataTransfer?.files?.[0];if(!file)return;
+            if(!file.name.toLowerCase().endsWith('.pdf')&&file.type!=='application/pdf'){statusEl.textContent='Please drop a PDF file.';return;}
+            const dt=new DataTransfer();dt.items.add(file);pdfFile.files=dt.files;pdfFile.dispatchEvent(new Event('change'));
         });
-
-        fileInputArea.addEventListener('dragleave', () => {
-            if (!pdfFile.files.length) {
-                fileInputArea.classList.remove('active');
-            }
+        convertBtn.addEventListener('click', async ()=>{
+            const file=pdfFile.files?.[0];if(!file){statusEl.textContent='Please upload a PDF first.';return;}
+            convertedFile=null;downloadBtn.disabled=true;convertBtn.disabled=true;progressBar.style.width='5%';
+            try {
+                const text=await extractPdfText(file);
+                if(!text.trim()) throw new Error('No selectable text was found. This may be a scanned/image-only PDF; OCR is not available in this converter yet.');
+                progressBar.style.width='75%';statusEl.textContent='Building a valid Word document…';
+                convertedFile=await buildDocx(text);progressBar.style.width='100%';downloadBtn.disabled=false;
+                statusEl.textContent='Conversion complete. Text is editable; complex layout, tables and images may need manual adjustment.';
+            } catch(error) { console.error('PDF-to-Word conversion failed:',error);statusEl.textContent=error.message||'Conversion failed. Try another text-based PDF.';progressBar.style.width='0%'; }
+            finally {convertBtn.disabled=false;}
         });
-
-        fileInputArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            if (e.dataTransfer.files.length) {
-                const file = e.dataTransfer.files[0];
-                if (file.type === 'application/pdf') {
-                    pdfFile.files = e.dataTransfer.files;
-                    const event = new Event('change');
-                    pdfFile.dispatchEvent(event);
-                } else {
-                    statusEl.textContent = 'Please drop a PDF file.';
-                    fileInputArea.classList.remove('active');
-                }
-            }
-        });
-
-        // Convert button functionality
-        convertBtn.addEventListener('click', () => {
-            if (!pdfFile.files.length) {
-                statusEl.textContent = 'Please upload a PDF first.';
-                return;
-            }
-
-            statusEl.textContent = 'Converting...';
-            progressBar.style.width = '0%';
-            convertBtn.disabled = true;
-            let progress = 0;
-
-            const simulate = setInterval(() => {
-                progress += 20;
-                progressBar.style.width = progress + '%';
-                
-                if (progress >= 100) {
-                    clearInterval(simulate);
-                    // Simulated conversion result (for demo)
-                    const blob = new Blob(["Simulated Word content"], { 
-                        type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" 
-                    });
-                    convertedFile = blob;
-                    statusEl.textContent = 'Conversion complete!';
-                    downloadBtn.disabled = false;
-                    convertBtn.disabled = false;
-                }
-            }, 500);
-        });
-
-        // Download button functionality
-        downloadBtn.addEventListener('click', () => {
-            if (!convertedFile) return;
-            
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(convertedFile);
-            link.download = 'converted.docx';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            statusEl.textContent = 'Download started!';
+        downloadBtn.addEventListener('click', ()=>{
+            if(!convertedFile)return;const base=(pdfFile.files?.[0]?.name||'converted.pdf').replace(/\.pdf$/i,'')||'converted';
+            const url=URL.createObjectURL(convertedFile);const link=document.createElement('a');link.href=url;link.download=`${base}.docx`;document.body.appendChild(link);link.click();link.remove();
+            setTimeout(()=>URL.revokeObjectURL(url),60000);statusEl.textContent='Word document download started.';
         });
 
         // Performance optimization: Preload critical resources

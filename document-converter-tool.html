@@ -853,6 +853,20 @@
       ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
     </style>
 
+
+<style id="toolstap-related-tools-style">
+.toolstap-related-tools{padding:34px 0;margin-top:36px;border-top:1px solid var(--border-color,#e5e7eb)}
+.toolstap-related-tools .container{width:min(1120px,92%);margin:0 auto}
+.toolstap-related-tools h2{font-size:clamp(1.35rem,2vw,1.8rem);margin:0 0 8px;color:var(--text-dark,#1f2937)}
+.toolstap-related-tools .related-intro{margin:0 0 20px;color:var(--text-light,#64748b);line-height:1.65}
+.toolstap-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.toolstap-related-card{display:flex;flex-direction:column;gap:8px;padding:18px;border:1px solid var(--border-color,#e5e7eb);border-radius:14px;background:var(--light-color-2,#fff);text-decoration:none;color:var(--text-dark,#1f2937);transition:transform .2s ease,border-color .2s ease}
+.toolstap-related-card:hover{transform:translateY(-2px);border-color:var(--primary-color,#4361ee)}
+.toolstap-related-card strong{font-size:1rem;color:var(--text-dark,#1f2937)}
+.toolstap-related-card span{font-size:.92rem;line-height:1.5;color:var(--text-light,#64748b)}
+.toolstap-related-card:focus-visible{outline:3px solid var(--primary-color,#4361ee);outline-offset:3px}
+</style>
+
 </head>
 <body>
     <!-- Header -->
@@ -875,10 +889,11 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="index.html#categories">Categories</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry" class="contact-link">Get in Touch</a></li>
+                    <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer" class="contact-link">Get in Touch</a></li>
                 </ul>
             </nav>
         </div>
@@ -890,7 +905,7 @@
             <div class="tool-container">
                 <div class="tool-title">
                     <h1><i class="fas fa-exchange-alt"></i> Document Converter</h1>
-                    <p>Convert your documents between various formats with incredible accuracy. All processing happens in your browser for maximum privacy.</p>
+                    <p>Convert text-based PDF, DOCX, TXT, RTF and HTML files in your browser. Complex page layouts, images, spreadsheets and presentations may not be preserved.</p>
                 </div>
 
                 <div class="converter-grid">
@@ -901,14 +916,14 @@
                             <h2>Convert Document</h2>
                         </div>
                         <div class="panel-description">
-                            Upload your document and convert it to your desired format. We support a wide range of document formats.
+                            Choose a supported document and output format. This browser-based tool converts readable text; advanced layout, images, tables, and office-specific formatting may change.
                         </div>
 
                         <div class="file-input-area" id="fileInputArea">
                             <i class="fas fa-file-upload"></i>
                             <h3>Select Document</h3>
                             <p>or drop document here</p>
-                            <input type="file" id="fileInput" class="file-input" accept=".pdf,.doc,.docx,.txt,.rtf,.odt,.html,.ppt,.pptx,.xls,.xlsx">
+                            <input type="file" id="fileInput" class="file-input" accept=".pdf,.docx,.txt,.rtf,.html,.htm" aria-label="Choose a PDF, DOCX, TXT, RTF, or HTML document">
                         </div>
 
                         <div class="file-info" id="fileInfo">
@@ -922,13 +937,9 @@
                                 <select id="targetFormat">
                                     <option value="pdf">PDF Document</option>
                                     <option value="docx">Microsoft Word (DOCX)</option>
-                                    <option value="doc">Microsoft Word (DOC)</option>
                                     <option value="txt">Plain Text (TXT)</option>
                                     <option value="rtf">Rich Text Format (RTF)</option>
-                                    <option value="odt">OpenDocument Text (ODT)</option>
                                     <option value="html">Web Page (HTML)</option>
-                                    <option value="pptx">Microsoft PowerPoint (PPTX)</option>
-                                    <option value="xlsx">Microsoft Excel (XLSX)</option>
                                 </select>
                             </div>
                         </div>
@@ -958,73 +969,35 @@
                             <h2>Supported Formats</h2>
                         </div>
                         <div class="panel-description">
-                            Our document converter supports a wide range of file formats for conversion.
+                            ToolsTap Document Converter supports text extraction and conversion for PDF, DOCX, TXT, RTF, and HTML files. Complex layout and formatting may change.
                         </div>
 
                         <div class="supported-formats">
                             <div class="formats-grid">
                                 <div class="format-card">
-                                    <div class="format-icon">
-                                        <i class="fas fa-file-pdf"></i>
-                                    </div>
+                                    <div class="format-icon"><i class="fas fa-file-pdf"></i></div>
                                     <h3>PDF</h3>
-                                    <p>Portable Document Format - Convert to and from PDF with high accuracy.</p>
+                                    <p>Extract selectable text from PDFs or create a simple text-based PDF. Scanned pages need OCR, which is not included.</p>
                                 </div>
-
                                 <div class="format-card">
-                                    <div class="format-icon">
-                                        <i class="fas fa-file-word"></i>
-                                    </div>
-                                    <h3>DOC/DOCX</h3>
-                                    <p>Microsoft Word documents - Convert to and from Word format with formatting preserved.</p>
+                                    <div class="format-icon"><i class="fas fa-file-word"></i></div>
+                                    <h3>DOCX</h3>
+                                    <p>Extract readable text from Word DOCX files. Original page layout, images, and complex formatting may change.</p>
                                 </div>
-
                                 <div class="format-card">
-                                    <div class="format-icon">
-                                        <i class="fas fa-file-alt"></i>
-                                    </div>
+                                    <div class="format-icon"><i class="fas fa-file-alt"></i></div>
                                     <h3>TXT</h3>
-                                    <p>Plain text format - Convert to and from simple text files.</p>
+                                    <p>Convert plain text files to supported document formats and back to text.</p>
                                 </div>
-
                                 <div class="format-card">
-                                    <div class="format-icon">
-                                        <i class="fas fa-file-code"></i>
-                                    </div>
+                                    <div class="format-icon"><i class="fas fa-file-code"></i></div>
                                     <h3>HTML</h3>
-                                    <p>Web page format - Convert documents to HTML for web publishing.</p>
+                                    <p>Extract page text and create a simple HTML document for editing or publishing.</p>
                                 </div>
-
                                 <div class="format-card">
-                                    <div class="format-icon">
-                                        <i class="fas fa-file-powerpoint"></i>
-                                    </div>
-                                    <h3>PPT/PPTX</h3>
-                                    <p>Microsoft PowerPoint presentations - Convert presentation files.</p>
-                                </div>
-
-                                <div class="format-card">
-                                    <div class="format-icon">
-                                        <i class="fas fa-file-excel"></i>
-                                    </div>
-                                    <h3>XLS/XLSX</h3>
-                                    <p>Microsoft Excel spreadsheets - Convert spreadsheet files.</p>
-                                </div>
-
-                                <div class="format-card">
-                                    <div class="format-icon">
-                                        <i class="fas fa-file-contract"></i>
-                                    </div>
+                                    <div class="format-icon"><i class="fas fa-file-contract"></i></div>
                                     <h3>RTF</h3>
-                                    <p>Rich Text Format - Convert to and from RTF with formatting.</p>
-                                </div>
-
-                                <div class="format-card">
-                                    <div class="format-icon">
-                                        <i class="fab fa-openid"></i>
-                                    </div>
-                                    <h3>ODT</h3>
-                                    <p>OpenDocument Text - Convert to and from open document format.</p>
+                                    <p>Convert basic Rich Text Format content. Advanced styles and embedded objects may not be retained.</p>
                                 </div>
                             </div>
                         </div>
@@ -1035,7 +1008,9 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    
+<section class="toolstap-related-tools" aria-labelledby="relatedToolsHeading"><div class="container"><h2 id="relatedToolsHeading">Related Document & PDF Tools from ToolsTap</h2><p class="related-intro">Continue with another ToolsTap tool in the same category. Each tool opens on its own page.</p><div class="toolstap-related-grid"><a class="toolstap-related-card" href="pdf-to-word.html"><strong>PDF to Word</strong><span>Extract selectable PDF text into an editable DOCX file.</span></a><a class="toolstap-related-card" href="pdf-compressor-tool.html"><strong>PDF Compressor</strong><span>Reduce PDF file size.</span></a><a class="toolstap-related-card" href="pdf-merger-splitter-tool.html"><strong>PDF Merger &amp; Splitter</strong><span>Combine PDF files or extract pages.</span></a></div></div></section>
+<footer id="contact">
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
@@ -1067,12 +1042,13 @@
                         <li><a href="index.html#document-tools">Document Tools</a></li>
                         <li><a href="index.html#calculator-tools">Calculators</a></li>
                         <li><a href="index.html#text-tools">Text Tools</a></li>
+                        <li><a href="index.html#qr-tools">QR &amp; Barcode Tools</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry">toolstap8@gmail.com</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer">toolstap8@gmail.com</a></p>
                     <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+923108895446">+92 3108895446</a></p>
                     <p><i class="fas fa-map-marker-alt"></i> Pakistan</p>
                 </div>
@@ -1090,285 +1066,57 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.9.0/mammoth.browser.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
     <script>
-        // Theme Toggle Functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
-        
-        // Check for saved theme preference or default to light
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        
-        // Apply the saved theme on page load
-        if (currentTheme === 'dark') {
-            document.body.classList.add('dark-mode');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-        }
-        
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            } else {
-                localStorage.setItem('theme', 'light');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
+        const themeToggle=document.getElementById('themeToggle');
+        const themeIcon=themeToggle?.querySelector('i');
+        const mobileMenuBtn=document.getElementById('mobileMenuBtn');
+        const mainNav=document.getElementById('mainNav');
+        try { if(localStorage.getItem('theme')==='dark'){document.body.classList.add('dark-mode');themeIcon?.classList.replace('fa-moon','fa-sun');} } catch(_){}
+        themeToggle?.addEventListener('click',()=>{document.body.classList.toggle('dark-mode');const dark=document.body.classList.contains('dark-mode');try{localStorage.setItem('theme',dark?'dark':'light');}catch(_){} if(themeIcon){themeIcon.classList.toggle('fa-moon',!dark);themeIcon.classList.toggle('fa-sun',dark);}});
+        mobileMenuBtn?.addEventListener('click',()=>{mainNav?.classList.toggle('active');mobileMenuBtn.innerHTML=mainNav?.classList.contains('active')?'<i class="fas fa-times"></i>':'<i class="fas fa-bars"></i>';});
+        document.querySelectorAll('nav ul li a').forEach(link=>link.addEventListener('click',()=>{mainNav?.classList.remove('active');if(mobileMenuBtn)mobileMenuBtn.innerHTML='<i class="fas fa-bars"></i>';}));
+
+        const fileInput=document.getElementById('fileInput');
+        const fileInputArea=document.getElementById('fileInputArea');
+        const fileInfo=document.getElementById('fileInfo');
+        const fileName=document.getElementById('fileName');
+        const fileSize=document.getElementById('fileSize');
+        const targetFormat=document.getElementById('targetFormat');
+        const convertBtn=document.getElementById('convertBtn');
+        const downloadBtn=document.getElementById('downloadBtn');
+        const statusTitle=document.getElementById('statusTitle');
+        const statusText=document.getElementById('statusText');
+        const progressBar=document.getElementById('progressBar');
+        let convertedFile=null,currentFile=null;
+        function setStatus(title,text){statusTitle.textContent=title;statusText.textContent=text;}
+        function updateProgress(percent){progressBar.style.width=`${percent}%`;}
+        function getFileExtension(file){return (file.name.split('.').pop()||'').toLowerCase();}
+        function isValidFileType(file){return ['pdf','docx','txt','rtf','html','htm'].includes(getFileExtension(file));}
+        function escapeXml(text){return String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;');}
+        function escapeHtml(text){return String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+        fileInput.addEventListener('change',()=>{
+          convertedFile=null;downloadBtn.disabled=true;updateProgress(0);
+          const file=fileInput.files?.[0];if(!file){currentFile=null;fileInfo.classList.remove('active');fileInputArea.classList.remove('active');setStatus('Ready','Upload a supported text-based document to get started.');return;}
+          if(!isValidFileType(file)){fileInput.value='';fileInfo.classList.remove('active');setStatus('Unsupported format','Use PDF, DOCX, TXT, RTF, or HTML files.');return;}
+          if(file.size>40*1024*1024){fileInput.value='';fileInfo.classList.remove('active');setStatus('File too large','Please choose a file smaller than 40 MB.');return;}
+          currentFile=file;fileName.textContent=file.name;fileSize.textContent=file.size<1048576?`${(file.size/1024).toFixed(2)} KB`:`${(file.size/1048576).toFixed(2)} MB`;
+          fileInfo.classList.add('active');fileInputArea.classList.add('active');setStatus('Ready',`Selected: ${file.name}. Choose an output format and convert.`);
         });
-
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mainNav = document.getElementById('mainNav');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
-        
-        // Close mobile menu when clicking on a link
-        const navLinks = document.querySelectorAll('nav ul li a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (mainNav.classList.contains('active')) {
-                    mainNav.classList.remove('active');
-                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                }
-            });
-        });
-
-        // Document Converter Functionality
-        const fileInput = document.getElementById('fileInput');
-        const fileInputArea = document.getElementById('fileInputArea');
-        const fileInfo = document.getElementById('fileInfo');
-        const fileName = document.getElementById('fileName');
-        const fileSize = document.getElementById('fileSize');
-        const targetFormat = document.getElementById('targetFormat');
-        const convertBtn = document.getElementById('convertBtn');
-        const downloadBtn = document.getElementById('downloadBtn');
-        const statusTitle = document.getElementById('statusTitle');
-        const statusText = document.getElementById('statusText');
-        const progressBar = document.getElementById('progressBar');
-
-        let convertedFile = null;
-        let currentFile = null;
-
-        // Setup file input area for drag and drop
-        fileInputArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            fileInputArea.classList.add('active');
-        });
-
-        fileInputArea.addEventListener('dragleave', () => {
-            if (!fileInput.files.length) {
-                fileInputArea.classList.remove('active');
-            }
-        });
-
-        fileInputArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            if (e.dataTransfer.files.length) {
-                const file = e.dataTransfer.files[0];
-                if (isValidFileType(file)) {
-                    // Create a new FileList object
-                    const dataTransfer = new DataTransfer();
-                    dataTransfer.items.add(file);
-                    fileInput.files = dataTransfer.files;
-                    
-                    // Trigger change event
-                    const event = new Event('change');
-                    fileInput.dispatchEvent(event);
-                } else {
-                    setStatus('Error', 'Please drop a valid document file.');
-                    fileInputArea.classList.remove('active');
-                }
-            }
-        });
-
-        // Check if file type is valid
-        function isValidFileType(file) {
-            const validTypes = [
-                'application/pdf',
-                'application/msword',
-                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-                'text/plain',
-                'application/rtf',
-                'application/vnd.oasis.opendocument.text',
-                'text/html',
-                'application/vnd.ms-powerpoint',
-                'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-                'application/vnd.ms-excel',
-                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-            ];
-            
-            return validTypes.includes(file.type);
-        }
-
-        // File input change handler
-        fileInput.addEventListener('change', () => {
-            if (fileInput.files.length) {
-                const file = fileInput.files[0];
-                currentFile = file;
-                
-                if (!isValidFileType(file)) {
-                    setStatus('Error', 'Please select a valid document file.');
-                    fileInfo.classList.remove('active');
-                    fileInputArea.classList.remove('active');
-                    return;
-                }
-                
-                fileName.textContent = file.name;
-                
-                // Format file size
-                const sizeInBytes = file.size;
-                let sizeText = '';
-                if (sizeInBytes < 1024) {
-                    sizeText = sizeInBytes + ' bytes';
-                } else if (sizeInBytes < 1048576) {
-                    sizeText = (sizeInBytes / 1024).toFixed(2) + ' KB';
-                } else {
-                    sizeText = (sizeInBytes / 1048576).toFixed(2) + ' MB';
-                }
-                fileSize.textContent = sizeText;
-                
-                fileInfo.classList.add('active');
-                fileInputArea.classList.add('active');
-                setStatus('Ready', `Selected: ${file.name}`);
-            } else {
-                fileInfo.classList.remove('active');
-                fileInputArea.classList.remove('active');
-                setStatus('Ready', 'Upload a document to get started.');
-            }
-        });
-
-        // Set status message
-        function setStatus(title, text) {
-            statusTitle.textContent = title;
-            statusText.textContent = text;
-        }
-
-        // Update progress bar
-        function updateProgress(percent) {
-            progressBar.style.width = percent + '%';
-        }
-
-        // Convert document
-        convertBtn.addEventListener('click', async () => {
-            if (!fileInput.files.length) {
-                setStatus('Error', 'Please upload a document first.');
-                return;
-            }
-
-            const file = fileInput.files[0];
-            const targetFormatValue = targetFormat.value;
-            
-            setStatus('Processing', 'Converting document...');
-            updateProgress(10);
-            convertBtn.disabled = true;
-            
-            try {
-                // Simulate conversion process
-                await simulateConversion(file, targetFormatValue);
-                
-                // Create a simulated converted file
-                const fileExtension = getFileExtension(targetFormatValue);
-                const fileNameWithoutExt = file.name.replace(/\.[^/.]+$/, "");
-                const convertedFileName = `${fileNameWithoutExt}.${fileExtension}`;
-                
-                // In a real implementation, you would process the file here
-                // For demo purposes, we'll create a simple text file
-                const fileContent = `This is a simulated ${targetFormatValue.toUpperCase()} file converted from ${file.name}`;
-                convertedFile = new Blob([fileContent], { 
-                    type: getMimeType(targetFormatValue) 
-                });
-                
-                setStatus('Success', `Document converted to ${targetFormatValue.toUpperCase()} successfully!`);
-                downloadBtn.disabled = false;
-                updateProgress(100);
-                
-                setTimeout(() => updateProgress(0), 2000);
-            } catch (error) {
-                console.error('Conversion error:', error);
-                setStatus('Error', 'Failed to convert document: ' + error.message);
-                updateProgress(0);
-            } finally {
-                convertBtn.disabled = false;
-            }
-        });
-
-        // Simulate conversion process
-        function simulateConversion(file, targetFormat) {
-            return new Promise((resolve) => {
-                let progress = 10;
-                const interval = setInterval(() => {
-                    progress += 10;
-                    updateProgress(progress);
-                    
-                    if (progress >= 90) {
-                        clearInterval(interval);
-                        setTimeout(resolve, 500);
-                    }
-                }, 200);
-            });
-        }
-
-        // Get file extension for target format
-        function getFileExtension(format) {
-            const extensions = {
-                'pdf': 'pdf',
-                'docx': 'docx',
-                'doc': 'doc',
-                'txt': 'txt',
-                'rtf': 'rtf',
-                'odt': 'odt',
-                'html': 'html',
-                'pptx': 'pptx',
-                'xlsx': 'xlsx'
-            };
-            
-            return extensions[format] || 'txt';
-        }
-
-        // Get MIME type for target format
-        function getMimeType(format) {
-            const mimeTypes = {
-                'pdf': 'application/pdf',
-                'docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-                'doc': 'application/msword',
-                'txt': 'text/plain',
-                'rtf': 'application/rtf',
-                'odt': 'application/vnd.oasis.opendocument.text',
-                'html': 'text/html',
-                'pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-                'xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-            };
-            
-            return mimeTypes[format] || 'text/plain';
-        }
-
-        // Download converted file
-        downloadBtn.addEventListener('click', () => {
-            if (!convertedFile) return;
-            
-            const fileExtension = getFileExtension(targetFormat.value);
-            const fileNameWithoutExt = currentFile.name.replace(/\.[^/.]+$/, "");
-            const convertedFileName = `${fileNameWithoutExt}.${fileExtension}`;
-            
-            const url = URL.createObjectURL(convertedFile);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = convertedFileName;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            
-            setStatus('Success', 'Download started!');
-        });
+        fileInputArea.addEventListener('dragover',e=>{e.preventDefault();fileInputArea.classList.add('active');});
+        fileInputArea.addEventListener('dragleave',()=>{if(!fileInput.files.length)fileInputArea.classList.remove('active');});
+        fileInputArea.addEventListener('drop',e=>{e.preventDefault();const file=e.dataTransfer?.files?.[0];if(!file)return;if(!isValidFileType(file)){setStatus('Unsupported format','Use PDF, DOCX, TXT, RTF, or HTML files.');return;}const dt=new DataTransfer();dt.items.add(file);fileInput.files=dt.files;fileInput.dispatchEvent(new Event('change'));});
+        async function extractPdfText(file){if(!window.pdfjsLib)throw new Error('PDF reader did not load. Reload while connected to the internet.');pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';const pdf=await pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise;const pages=[];for(let p=1;p<=pdf.numPages;p++){updateProgress(Math.round(p/pdf.numPages*60));statusText.textContent=`Reading PDF page ${p} of ${pdf.numPages}…`;const content=await(await pdf.getPage(p)).getTextContent();pages.push(content.items.map(x=>x.str).join(' '));}return pages.join('\n\n');}
+        async function extractInputText(file){const ext=getFileExtension(file);if(ext==='txt')return await file.text();if(ext==='pdf')return await extractPdfText(file);if(ext==='html'||ext==='htm'){const doc=new DOMParser().parseFromString(await file.text(),'text/html');doc.querySelectorAll('script,style,svg,noscript').forEach(el=>el.remove());return(doc.body?.innerText||doc.body?.textContent||'').replace(/\n{3,}/g,'\n\n').trim();}if(ext==='rtf'){return(await file.text()).replace(/\\'[0-9a-fA-F]{2}/g,' ').replace(/\\par[d]?\b/g,'\n').replace(/\\line\b/g,'\n').replace(/\\[a-zA-Z]+-?\d* ?/g,'').replace(/[{}]/g,'').replace(/\n{3,}/g,'\n\n').trim();}if(ext==='docx'){if(!window.mammoth)throw new Error('Word reader did not load. Reload while connected to the internet.');return(await mammoth.extractRawText({arrayBuffer:await file.arrayBuffer()})).value||'';}throw new Error('This source format is not supported.');}
+        async function makeDocx(text){if(!window.JSZip)throw new Error('Word writer did not load. Reload while connected to the internet.');const zip=new JSZip();const xml=String(text).replace(/\r/g,'').split('\n').map(line=>`<w:p><w:r><w:t xml:space="preserve">${escapeXml(line||' ')}</w:t></w:r></w:p>`).join('');zip.file('[Content_Types].xml','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>');zip.file('_rels/.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>');zip.file('word/document.xml',`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>${xml}<w:sectPr><w:pgSz w:w="12240" w:h="15840"/><w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440"/></w:sectPr></w:body></w:document>`);return zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',compression:'DEFLATE'});}
+        async function makePdf(text){if(!window.jspdf?.jsPDF)throw new Error('PDF writer did not load. Reload while connected to the internet.');const {jsPDF}=window.jspdf;const pdf=new jsPDF({unit:'pt',format:'a4'});const margin=42;let y=margin;for(const raw of String(text).split('\n')){for(const line of pdf.splitTextToSize(raw||' ',pdf.internal.pageSize.getWidth()-margin*2)){if(y>pdf.internal.pageSize.getHeight()-margin){pdf.addPage();y=margin;}pdf.text(line,margin,y);y+=14;}y+=4;}return pdf.output('blob');}
+        function makeRtf(text){const body=String(text).replace(/\\/g,'\\\\').replace(/[{}]/g,m=>'\\'+m).replace(/\r/g,'').split('\n').join('\\par\n');return new Blob([`{\\rtf1\\ansi\\deff0 {\\fonttbl {\\f0 Arial;}}\\f0\\fs22 ${body}}`],{type:'application/rtf'});}
+        function makeHtml(text){return new Blob([`<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Converted by ToolsTap</title><style>body{font:16px/1.6 Arial,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem}pre{white-space:pre-wrap;overflow-wrap:anywhere}</style></head><body><pre>${escapeHtml(text)}</pre></body></html>`],{type:'text/html;charset=utf-8'});}
+        convertBtn.addEventListener('click',async()=>{const file=fileInput.files?.[0];if(!file){setStatus('Error','Please upload a supported document first.');return;}const source=getFileExtension(file)==='htm'?'html':getFileExtension(file);const target=targetFormat.value;if(source===target){setStatus('Choose another format',`The uploaded file is already ${target.toUpperCase()}. Choose another output format.`);return;}convertBtn.disabled=true;downloadBtn.disabled=true;convertedFile=null;updateProgress(3);try{setStatus('Processing','Extracting readable text…');const text=await extractInputText(file);if(!text.trim())throw new Error('No selectable text was found. Scanned PDFs or image-only documents need OCR and cannot be converted by this tool yet.');updateProgress(70);setStatus('Processing',`Building ${target.toUpperCase()} output…`);if(target==='txt')convertedFile=new Blob([text],{type:'text/plain;charset=utf-8'});else if(target==='html')convertedFile=makeHtml(text);else if(target==='rtf')convertedFile=makeRtf(text);else if(target==='docx')convertedFile=await makeDocx(text);else if(target==='pdf')convertedFile=await makePdf(text);else throw new Error('Choose PDF, DOCX, TXT, RTF, or HTML.');updateProgress(100);downloadBtn.disabled=false;setStatus('Success','Conversion finished. Text is editable; formatting, tables and images may need adjustment.');}catch(error){console.error('Document conversion failed:',error);updateProgress(0);setStatus('Conversion failed',error.message||'Please try another supported document.');}finally{convertBtn.disabled=false;}});
+        downloadBtn.addEventListener('click',()=>{if(!convertedFile||!currentFile)return;const ext=targetFormat.value;const base=currentFile.name.replace(/\.[^.]+$/,'')||'converted';const url=URL.createObjectURL(convertedFile);const a=document.createElement('a');a.href=url;a.download=`${base}.${ext}`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);setStatus('Download started',`Saved ${base}.${ext}`);});
     </script>
 </body>
 </html>

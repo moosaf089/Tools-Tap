@@ -20,6 +20,10 @@ button:disabled{background:#aacbff;cursor:not-allowed}
 .progress{height:10px;background:#eef7ff;border-radius:8px;overflow:hidden;border:1px solid #e6f0ff;margin-top:12px;display:none}
 .progress > i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--blue),#51a4ff)}
 .note{font-size:13px;color:var(--muted);margin-top:12px;text-align:center}
+.site-tool-nav { width:min(700px,100%); display:flex; gap:18px; align-items:center; flex-wrap:wrap; padding:8px 2px; font-size:14px; }
+.site-tool-nav a { color:#1677ff; text-decoration:none; font-weight:600; }
+.site-tool-nav a:hover { text-decoration:underline; }
+.site-tool-nav .nav-brand { margin-right:auto; font-size:18px; color:#1677ff; }
 </style>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7831586644567090" crossorigin="anonymous"></script>
@@ -78,8 +82,27 @@ button:disabled{background:#aacbff;cursor:not-allowed}
       ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
     </style>
 
+
+<style id="toolstap-related-tools-style">
+.toolstap-related-tools{padding:34px 0;margin-top:36px;border-top:1px solid var(--border-color,#e5e7eb)}
+.toolstap-related-tools .container{width:min(1120px,92%);margin:0 auto}
+.toolstap-related-tools h2{font-size:clamp(1.35rem,2vw,1.8rem);margin:0 0 8px;color:var(--text-dark,#1f2937)}
+.toolstap-related-tools .related-intro{margin:0 0 20px;color:var(--text-light,#64748b);line-height:1.65}
+.toolstap-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.toolstap-related-card{display:flex;flex-direction:column;gap:8px;padding:18px;border:1px solid var(--border-color,#e5e7eb);border-radius:14px;background:var(--light-color-2,#fff);text-decoration:none;color:var(--text-dark,#1f2937);transition:transform .2s ease,border-color .2s ease}
+.toolstap-related-card:hover{transform:translateY(-2px);border-color:var(--primary-color,#4361ee)}
+.toolstap-related-card strong{font-size:1rem;color:var(--text-dark,#1f2937)}
+.toolstap-related-card span{font-size:.92rem;line-height:1.5;color:var(--text-light,#64748b)}
+.toolstap-related-card:focus-visible{outline:3px solid var(--primary-color,#4361ee);outline-offset:3px}
+</style>
+
 </head>
 <body>
+<nav class="site-tool-nav" aria-label="ToolsTap site navigation">
+  <a href="index.html" class="nav-brand">ToolsTap</a>
+  <a href="index.html#categories">Categories</a>
+  <a href="index.html#tools">All Tools</a>
+</nav>
 <div class="app" role="application" aria-label="PDF Lock Unlock">
   <h1 class="title">PDF Lock / Unlock PDF Online</h1>
 
@@ -94,17 +117,17 @@ button:disabled{background:#aacbff;cursor:not-allowed}
     </div>
 
     <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <button id="lockBtn" disabled>Lock PDF</button>
-      <button id="unlockBtn" disabled>Unlock PDF</button>
+      <button id="lockBtn" disabled>Lock PDF (backend required)</button>
+      <button id="unlockBtn" disabled>Unlock PDF (backend required)</button>
     </div>
 
     <div class="progress" id="progress"><i></i></div>
   </section>
-  <div class="note">Note: This demo calls a server-side API to lock/unlock PDFs. Strong encryption and decryption requires backend processing.</div>
+  <div class="note" role="status">This tool needs a PDF processing backend, which GitHub Pages does not provide. Lock/Unlock will not work on the static site until a backend is deployed. Do not upload confidential PDFs to an unverified service.</div>
 </div>
 
 <footer class="site-mini-footer" aria-label="ToolsTap contact and social links">
-  <strong>ToolsTap</strong> · <a href="index.html">Home</a> · <a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry">toolstap8@gmail.com</a> · <a href="tel:+923108895446">+92 3108895446</a>
+  <strong>ToolsTap</strong> · <a href="index.html">Home</a> · <a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer">toolstap8@gmail.com</a> · <a href="tel:+923108895446">+92 3108895446</a>
   <div class="site-mini-social social-links" aria-label="Social profiles">
     <span class="social-icon" role="img" aria-label="Facebook account not connected"><i class="fab fa-facebook-f" aria-hidden="true"></i></span>
     <span class="social-icon" role="img" aria-label="Instagram account not connected"><i class="fab fa-instagram" aria-hidden="true"></i></span>
@@ -132,9 +155,9 @@ fileInput.addEventListener('change',e=>{if(e.target.files[0]) loadFile(e.target.
 
 function loadFile(file){
   currentFile=file;
-  uploadDrop.textContent=`Loaded: ${file.name}`;
-  lockBtn.disabled=false;
-  unlockBtn.disabled=false;
+  uploadDrop.textContent=`Selected: ${file.name}. Processing is unavailable until a PDF backend is deployed.`;
+  lockBtn.disabled=true;
+  unlockBtn.disabled=true;
 }
 
 function setProgress(p){progress.style.display=p>=1?'none':'block';progFill.style.width=Math.round(p*100)+'%';}
@@ -173,40 +196,3 @@ unlockBtn.addEventListener('click',()=>sendToAPI('unlock'));
 </script>
 </body>
 </html>
-
-<!--
-Backend Example (Node.js/Express):
-
-const express=require('express');
-const multer=require('multer');
-const { PDFDocument }=require('pdf-lib');
-const fs=require('fs');
-const app=express();
-const upload=multer({dest:'uploads/'});
-
-app.post('/pdf-lockunlock',upload.single('file'),async(req,res)=>{
-  try{
-    const action=req.body.action;
-    const password=req.body.password;
-    const fileBuffer=fs.readFileSync(req.file.path);
-    const pdfDoc=await PDFDocument.load(fileBuffer, { updateMetadata: false, ignoreEncryption: true });
-
-    if(action==='lock'){
-      await pdfDoc.encrypt({ownerPassword:password,userPassword:password,permissions:{printing:'highResolution'}});
-    }else if(action==='unlock'){
-      // Unlock by re-saving without encryption (requires correct password in real scenarios)
-    }
-
-    const pdfBytes=await pdfDoc.save();
-    res.setHeader('Content-Type','application/pdf');
-    res.setHeader('Content-Disposition','attachment; filename="processed.pdf'");
-    res.send(Buffer.from(pdfBytes));
-  }catch(err){
-    console.error(err);
-    res.status(500).send('Error processing PDF: '+err.message);
-  }
-});
-
-app.listen(5000,()=>console.log('Server running on http://localhost:5000'));
-
--->

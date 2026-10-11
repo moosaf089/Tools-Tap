@@ -837,6 +837,20 @@
       ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
     </style>
 
+
+<style id="toolstap-related-tools-style">
+.toolstap-related-tools{padding:34px 0;margin-top:36px;border-top:1px solid var(--border-color,#e5e7eb)}
+.toolstap-related-tools .container{width:min(1120px,92%);margin:0 auto}
+.toolstap-related-tools h2{font-size:clamp(1.35rem,2vw,1.8rem);margin:0 0 8px;color:var(--text-dark,#1f2937)}
+.toolstap-related-tools .related-intro{margin:0 0 20px;color:var(--text-light,#64748b);line-height:1.65}
+.toolstap-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.toolstap-related-card{display:flex;flex-direction:column;gap:8px;padding:18px;border:1px solid var(--border-color,#e5e7eb);border-radius:14px;background:var(--light-color-2,#fff);text-decoration:none;color:var(--text-dark,#1f2937);transition:transform .2s ease,border-color .2s ease}
+.toolstap-related-card:hover{transform:translateY(-2px);border-color:var(--primary-color,#4361ee)}
+.toolstap-related-card strong{font-size:1rem;color:var(--text-dark,#1f2937)}
+.toolstap-related-card span{font-size:.92rem;line-height:1.5;color:var(--text-light,#64748b)}
+.toolstap-related-card:focus-visible{outline:3px solid var(--primary-color,#4361ee);outline-offset:3px}
+</style>
+
 </head>
 <body>
     <!-- Header -->
@@ -859,10 +873,11 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="index.html#categories">Categories</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry" class="contact-link">Get in Touch</a></li>
+                    <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer" class="contact-link">Get in Touch</a></li>
                 </ul>
             </nav>
         </div>
@@ -872,7 +887,7 @@
     <div class="container tool-container">
         <div class="tool-header">
             <h1><i class="fas fa-file-pdf"></i> PDF Compressor Tool</h1>
-            <p>Reduce your PDF file size while maintaining quality. Compress PDFs for easier sharing and storage.</p>
+            <p>Reduce PDF file size by converting each page to a compressed image. This can reduce searchability and vector sharpness, so review the output before using it.</p>
         </div>
 
         <!-- Upload Area -->
@@ -919,8 +934,8 @@
         <!-- Result Section -->
         <div class="result-section" id="resultSection">
             <div class="result-header">
-                <h3>PDF Successfully Compressed!</h3>
-                <p>Your file has been optimized and is ready for download</p>
+                <h3>PDF Processing Complete</h3>
+                <p>Review the measured size change and the visual quality before downloading.</p>
             </div>
             <div class="result-stats">
                 <div class="stat">
@@ -960,7 +975,7 @@
                         <i class="fas fa-bolt"></i>
                     </div>
                     <h3>Fast Compression</h3>
-                    <p>Quickly reduce your PDF file size without long waiting times or quality loss.</p>
+                    <p>Compression speed and output quality depend on document length, page size, and chosen settings. The output may be larger than the source.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -981,7 +996,9 @@
     </div>
 
     <!-- Footer -->
-    <footer id="contact">
+    
+<section class="toolstap-related-tools" aria-labelledby="relatedToolsHeading"><div class="container"><h2 id="relatedToolsHeading">Related Document & PDF Tools from ToolsTap</h2><p class="related-intro">Continue with another ToolsTap tool in the same category. Each tool opens on its own page.</p><div class="toolstap-related-grid"><a class="toolstap-related-card" href="pdf-to-word.html"><strong>PDF to Word</strong><span>Extract selectable PDF text into an editable DOCX file.</span></a><a class="toolstap-related-card" href="pdf-merger-splitter-tool.html"><strong>PDF Merger &amp; Splitter</strong><span>Combine PDF files or extract pages.</span></a><a class="toolstap-related-card" href="document-converter-tool.html"><strong>Document Converter</strong><span>Convert supported text-based document formats.</span></a></div></div></section>
+<footer id="contact">
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
@@ -1013,12 +1030,13 @@
                         <li><a href="index.html#document-tools">Document Tools</a></li>
                         <li><a href="index.html#calculator-tools">Calculators</a></li>
                         <li><a href="index.html#text-tools">Text Tools</a></li>
+                        <li><a href="index.html#qr-tools">QR &amp; Barcode Tools</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry">toolstap8@gmail.com</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer">toolstap8@gmail.com</a></p>
                     <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+923108895446">+92 3108895446</a></p>
                     <p><i class="fas fa-map-marker-alt"></i> Pakistan</p>
                 </div>
@@ -1214,7 +1232,7 @@
                 
                 // Copy pages from the original PDF
                 const totalPages = pdf.numPages;
-                const pagesToProcess = Math.min(totalPages, 5); // Limit to 5 pages for demo
+                const pagesToProcess = totalPages; // Process every page; never silently omit the rest of the document
                 
                 for (let i = 1; i <= pagesToProcess; i++) {
                     updateProgress(40 + (i / pagesToProcess) * 30, `Processing page ${i} of ${pagesToProcess}...`);
@@ -1226,7 +1244,8 @@
                     const viewport = page.getViewport({ scale: 1.0 });
 
                     // Limit max dimensions for canvas to avoid extremely large canvases
-                    const MAX_DIMENSION = 1600;
+                    const targetRatio = Math.max(0.05, Math.min(1, targetSizeKB / Math.max(1, file.size / 1024)));
+                    const MAX_DIMENSION = targetRatio < 0.25 ? 1200 : (targetRatio < 0.6 ? 1600 : 2200);
                     let scale = 1;
                     if (viewport.width > MAX_DIMENSION || viewport.height > MAX_DIMENSION) {
                         scale = Math.min(MAX_DIMENSION / viewport.width, MAX_DIMENSION / viewport.height);
@@ -1247,7 +1266,8 @@
                     }).promise;
                     
                     // Convert canvas to image with compression
-                    const imageDataUrl = canvas.toDataURL('image/jpeg', 0.7);
+                    const jpegQuality = Math.max(0.28, Math.min(0.82, 0.78 * Math.pow(targetRatio, 0.22)));
+                    const imageDataUrl = canvas.toDataURL('image/jpeg', jpegQuality);
                     
                     // Embed the image in the new PDF
                     const image = await pdfDoc.embedJpg(imageDataUrl);
@@ -1294,7 +1314,7 @@
             
             originalSize.textContent = formatFileSize(originalFileSize);
             compressedSize.textContent = formatFileSize(compressedFileSize);
-            reductionPercent.textContent = Math.round(reduction) + '%';
+            reductionPercent.textContent = reduction >= 0 ? `${Math.round(reduction)}% smaller` : `${Math.round(Math.abs(reduction))}% larger`; 
             
             progressContainer.style.display = 'none';
             resultSection.classList.add('active');

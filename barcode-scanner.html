@@ -419,6 +419,10 @@
             display: none;
         }
 
+
+        .quagga-camera-target { position:absolute; inset:0; width:100%; height:100%; overflow:hidden; border-radius:var(--rounded); }
+        .quagga-camera-target video, .quagga-camera-target canvas { width:100% !important; height:100% !important; object-fit:contain; }
+        .quagga-camera-target video { display:block; }
         #imagePreview {
             max-width: 100%;
             max-height: 300px;
@@ -427,6 +431,7 @@
             display: none;
         }
 
+        .scanner-status { margin: 0 0 18px; color: var(--text-light); line-height: 1.5; }
         .scanner-overlay {
             position: absolute;
             top: 0;
@@ -920,6 +925,20 @@
       ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
     </style>
 
+
+<style id="toolstap-related-tools-style">
+.toolstap-related-tools{padding:34px 0;margin-top:36px;border-top:1px solid var(--border-color,#e5e7eb)}
+.toolstap-related-tools .container{width:min(1120px,92%);margin:0 auto}
+.toolstap-related-tools h2{font-size:clamp(1.35rem,2vw,1.8rem);margin:0 0 8px;color:var(--text-dark,#1f2937)}
+.toolstap-related-tools .related-intro{margin:0 0 20px;color:var(--text-light,#64748b);line-height:1.65}
+.toolstap-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.toolstap-related-card{display:flex;flex-direction:column;gap:8px;padding:18px;border:1px solid var(--border-color,#e5e7eb);border-radius:14px;background:var(--light-color-2,#fff);text-decoration:none;color:var(--text-dark,#1f2937);transition:transform .2s ease,border-color .2s ease}
+.toolstap-related-card:hover{transform:translateY(-2px);border-color:var(--primary-color,#4361ee)}
+.toolstap-related-card strong{font-size:1rem;color:var(--text-dark,#1f2937)}
+.toolstap-related-card span{font-size:.92rem;line-height:1.5;color:var(--text-light,#64748b)}
+.toolstap-related-card:focus-visible{outline:3px solid var(--primary-color,#4361ee);outline-offset:3px}
+</style>
+
 </head>
 <body>
     <!-- Header -->
@@ -942,10 +961,11 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="index.html#categories">Categories</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry" class="contact-link">Get in Touch</a></li>
+                    <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer" class="contact-link">Get in Touch</a></li>
                 </ul>
             </nav>
         </div>
@@ -958,7 +978,7 @@
                 <i class="fas fa-arrow-left"></i> Back to Home
             </a>
             <h1>Barcode Scanner</h1>
-            <p>Scan barcodes instantly using your camera or uploaded image. Fast, secure, and works directly in your browser.</p>
+            <p>Decode supported barcodes using your camera or an uploaded image. Results depend on barcode type, focus, and image quality; product database lookup is not included.</p>
         </div>
     </section>
 
@@ -983,7 +1003,7 @@
                                 <h3>Camera Preview</h3>
                                 <p>Click "Start Scanning" to activate your camera</p>
                             </div>
-                            <video id="cameraPreview" autoplay playsinline></video>
+                            <div id="quaggaCameraTarget" class="quagga-camera-target" aria-label="Live barcode camera preview"></div>
                             <div class="scanner-overlay" id="cameraOverlay">
                                 <div>Scanning for barcodes...</div>
                             </div>
@@ -997,6 +1017,7 @@
                                 <i class="fas fa-stop"></i> Stop Scanning
                             </button>
                         </div>
+                        <p id="scannerStatus" class="scanner-status" role="status" aria-live="polite">Start the camera to scan a real barcode.</p>
                     </div>
                     
                     <!-- Upload Mode -->
@@ -1048,7 +1069,9 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    
+<section class="toolstap-related-tools" aria-labelledby="relatedToolsHeading"><div class="container"><h2 id="relatedToolsHeading">Related QR & Barcode Tools from ToolsTap</h2><p class="related-intro">Continue with another ToolsTap tool in the same category. Each tool opens on its own page.</p><div class="toolstap-related-grid"><a class="toolstap-related-card" href="qrcode-generator.html"><strong>QR Code Generator</strong><span>Generate QR codes from links and text.</span></a><a class="toolstap-related-card" href="qr-code-scanner.html"><strong>QR Code Scanner</strong><span>Scan QR codes from a camera or image.</span></a></div></div></section>
+<footer id="contact">
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
@@ -1081,12 +1104,13 @@
                         <li><a href="index.html#document-tools">Document Tools</a></li>
                         <li><a href="index.html#calculator-tools">Calculators</a></li>
                         <li><a href="index.html#text-tools">Text Tools</a></li>
+                        <li><a href="index.html#qr-tools">QR &amp; Barcode Tools</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry">toolstap8@gmail.com</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer">toolstap8@gmail.com</a></p>
                     <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+923108895446">+92 3108895446</a></p>
                     <p><i class="fas fa-map-marker-alt"></i> Pakistan</p>
                 </div>
@@ -1158,7 +1182,7 @@
         // Barcode Scanner Functionality
         const modeTabs = document.querySelectorAll('.mode-tab');
         const scannerModes = document.querySelectorAll('.scanner-mode');
-        const cameraPreview = document.getElementById('cameraPreview');
+        const quaggaCameraTarget = document.getElementById('quaggaCameraTarget');
         const imagePreview = document.getElementById('imagePreview');
         const startCameraBtn = document.getElementById('startCameraBtn');
         const stopCameraBtn = document.getElementById('stopCameraBtn');
@@ -1171,8 +1195,8 @@
         const cameraOverlay = document.getElementById('cameraOverlay');
         const imageOverlay = document.getElementById('imageOverlay');
         
-        let stream = null;
         let isScanning = false;
+        let detectedHandler = null;
         
         // Mode switching
         modeTabs.forEach(tab => {
@@ -1188,7 +1212,7 @@
                 document.getElementById(`${mode}Mode`).classList.add('active');
                 
                 // Stop camera if switching away from camera mode
-                if (mode !== 'camera' && stream) {
+                if (mode !== 'camera' && isScanning) {
                     stopCamera();
                 }
             });
@@ -1199,44 +1223,79 @@
         stopCameraBtn.addEventListener('click', stopCamera);
         
         async function startCamera() {
-            try {
-                stream = await navigator.mediaDevices.getUserMedia({ 
-                    video: { 
-                        facingMode: 'environment',
-                        width: { ideal: 1280 },
-                        height: { ideal: 720 }
-                    } 
-                });
-                
-                cameraPreview.srcObject = stream;
-                cameraPreview.style.display = 'block';
-                document.querySelector('#cameraPreviewContainer .scanner-placeholder').style.display = 'none';
-                startCameraBtn.disabled = true;
-                stopCameraBtn.disabled = false;
-                
-                // Start barcode scanning
-                startBarcodeScanning();
-            } catch (err) {
-                console.error('Error accessing camera:', err);
-                alert('Unable to access camera. Please check permissions and try again.');
+            if (!window.Quagga) {
+                alert('Barcode scanning library could not load. Check your internet connection and reload the page.');
+                return;
             }
+            if (!navigator.mediaDevices?.getUserMedia && !window.isSecureContext) {
+                alert('Camera access requires HTTPS or localhost. Open this website using https://toolstap.site/.');
+                return;
+            }
+            startCameraBtn.disabled = true;
+            statusMessage('Starting camera…');
+            Quagga.init({
+                inputStream: {
+                    name: 'ToolsTap Live Barcode Scanner',
+                    type: 'LiveStream',
+                    target: quaggaCameraTarget,
+                    constraints: { facingMode: 'environment', width: { ideal: 1280 }, height: { ideal: 720 } }
+                },
+                locator: { patchSize: 'medium', halfSample: true },
+                numOfWorkers: Math.max(0, Math.min(4, (navigator.hardwareConcurrency || 2) - 1)),
+                frequency: 10,
+                decoder: { readers: ['ean_reader','ean_8_reader','upc_reader','upc_e_reader','code_128_reader','code_39_reader','code_93_reader','codabar_reader','i2of5_reader'] },
+                locate: true
+            }, function(error) {
+                if (error) {
+                    console.error('Quagga camera initialization failed:', error);
+                    startCameraBtn.disabled = false;
+                    stopCameraBtn.disabled = true;
+                    alert('Camera could not start. Allow camera permission and use HTTPS.');
+                    statusMessage('Camera could not start. Check browser permissions.');
+                    return;
+                }
+                try {
+                    detectedHandler = result => {
+                        const code = result?.codeResult?.code;
+                        const confidence = result?.codeResult?.decodedCodes?.filter(x => x.error !== undefined).reduce((sum,x,_,a)=>sum+x.error/a.length,0);
+                        if (code && (confidence === undefined || confidence < 0.35)) {
+                            displayResult(code);
+                            stopCamera();
+                            statusMessage('Barcode detected successfully.');
+                        }
+                    };
+                    Quagga.onDetected(detectedHandler);
+                    Quagga.start();
+                    isScanning = true;
+                    document.querySelector('#cameraPreviewContainer .scanner-placeholder').style.display = 'none';
+                    document.querySelector('#cameraPreviewContainer').classList.add('active');
+                    cameraOverlay.style.display = 'none'; // Keep live video visible; status is shown below the preview.
+                    startCameraBtn.disabled = true;
+                    stopCameraBtn.disabled = false;
+                    statusMessage('Point the camera steadily at a barcode.');
+                } catch (startError) {
+                    console.error(startError);
+                    startCameraBtn.disabled = false;
+                    stopCameraBtn.disabled = true;
+                    alert('Unable to begin barcode scanning. Please reload the page and try again.');
+                }
+            });
         }
-        
+
+        function statusMessage(message) {
+            const status = document.getElementById('scannerStatus');
+            if (status) status.textContent = message;
+        }
+
         function stopCamera() {
-            if (stream) {
-                stream.getTracks().forEach(track => track.stop());
-                stream = null;
-            }
-            
-            cameraPreview.style.display = 'none';
-            document.querySelector('#cameraPreviewContainer .scanner-placeholder').style.display = 'block';
+            stopBarcodeScanning();
             startCameraBtn.disabled = false;
             stopCameraBtn.disabled = true;
-            
-            // Stop barcode scanning
-            stopBarcodeScanning();
+            document.querySelector('#cameraPreviewContainer .scanner-placeholder').style.display = 'block';
+            document.querySelector('#cameraPreviewContainer').classList.remove('active');
+            cameraOverlay.style.display = 'none';
         }
-        
+
         // Image upload functionality
         imageUpload.addEventListener('change', function(e) {
             const file = e.target.files[0];
@@ -1255,60 +1314,54 @@
         scanImageBtn.addEventListener('click', scanImage);
         
         function scanImage() {
-            if (!imagePreview.src) return;
-            
+            if (!imagePreview.src || !imagePreview.complete) {
+                statusMessage('Choose an image first and wait for its preview to load.');
+                return;
+            }
+            if (!window.Quagga) {
+                statusMessage('Barcode scanning library could not load. Check your connection and reload.');
+                return;
+            }
             imageOverlay.style.display = 'flex';
-            
-            // Simulate barcode scanning (in a real implementation, use Quagga or ZXing)
-            setTimeout(() => {
-                // This is a simulation - replace with actual barcode scanning
-                const simulatedBarcodes = [
-                    "1234567890128",
-                    "978020137962",
-                    "4006381333931",
-                    "6922266445773"
-                ];
-                
-                const randomBarcode = simulatedBarcodes[Math.floor(Math.random() * simulatedBarcodes.length)];
-                
-                displayResult(randomBarcode);
+            scanImageBtn.disabled = true;
+            Quagga.decodeSingle({
+                src: imagePreview.src,
+                numOfWorkers: 0,
+                locate: true,
+                locator: { patchSize: 'medium', halfSample: false },
+                decoder: { readers: ['ean_reader','ean_8_reader','upc_reader','upc_e_reader','code_128_reader','code_39_reader','code_93_reader','codabar_reader','i2of5_reader'] }
+            }, result => {
                 imageOverlay.style.display = 'none';
-            }, 1500);
+                scanImageBtn.disabled = false;
+                const code = result?.codeResult?.code;
+                if (code) {
+                    displayResult(code);
+                    statusMessage('Barcode detected successfully.');
+                } else {
+                    statusMessage('No barcode detected. Try a sharper, well-lit image with the barcode fully visible.');
+                }
+            });
         }
-        
-        // Barcode scanning functions (simulated)
+
         function startBarcodeScanning() {
+            // The Quagga live-stream decoder is started by startCamera(). No simulated values are generated.
             isScanning = true;
-            cameraOverlay.style.display = 'flex';
-            
-            // Simulate continuous barcode scanning
-            const scanInterval = setInterval(() => {
-                if (!isScanning) {
-                    clearInterval(scanInterval);
-                    return;
-                }
-                
-                // Simulate finding a barcode (replace with actual detection)
-                if (Math.random() > 0.7) {
-                    const simulatedBarcodes = [
-                        "1234567890128",
-                        "978020137962",
-                        "4006381333931",
-                        "6922266445773"
-                    ];
-                    
-                    const randomBarcode = simulatedBarcodes[Math.floor(Math.random() * simulatedBarcodes.length)];
-                    displayResult(randomBarcode);
-                    stopBarcodeScanning();
-                }
-            }, 500);
+            cameraOverlay.style.display = 'none';
         }
-        
+
         function stopBarcodeScanning() {
             isScanning = false;
             cameraOverlay.style.display = 'none';
+            if (window.Quagga) {
+                if (detectedHandler && typeof Quagga.offDetected === 'function') {
+                    try { Quagga.offDetected(detectedHandler); } catch (_) {}
+                }
+                try { Quagga.stop(); } catch (_) {}
+            }
+            detectedHandler = null;
+            quaggaCameraTarget.innerHTML = '';
         }
-        
+
         // Result handling
         function displayResult(barcodeData) {
             barcodeResult.textContent = barcodeData;
@@ -1343,7 +1396,7 @@
         document.addEventListener('keydown', function(e) {
             // Escape to stop camera or clear results
             if (e.key === 'Escape') {
-                if (stream) {
+                if (isScanning) {
                     stopCamera();
                 } else {
                     resultDisplay.classList.remove('active');
@@ -1353,7 +1406,7 @@
         
         // Clean up on page unload
         window.addEventListener('beforeunload', () => {
-            if (stream) {
+            if (isScanning) {
                 stopCamera();
             }
         });

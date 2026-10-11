@@ -4,7 +4,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Converter Online | JPG PNG WebP GIF | ToolsTap</title>
+    <title>Image Converter Online | JPG PNG WebP | ToolsTap</title>
     <link rel="icon" href="favicon_io/favicon-16x16.png" type="image/x-icon">
     
     <!-- SEO Meta Tags -->
@@ -19,7 +19,7 @@
     "@type": "WebApplication",
     "name": "ToolsTap Image Converter",
     "url": "https://toolstap.site/image-converter.html",
-    "description": "Free online tool to convert images between JPG, PNG, WEBP, GIF and BMP formats instantly.",
+    "description": "Free online tool to convert images to JPG, PNG, and WebP formats in your browser.",
     "applicationCategory": "MultimediaApplication",
     "operatingSystem": "Any",
     "offers": {
@@ -524,6 +524,15 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
+        #convertedPreview {
+            display: none;
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--rounded);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
         .preview-container {
             margin-top: 30px;
             display: none;
@@ -1000,20 +1009,20 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7831586644567090" crossorigin="anonymous"></script>
 
     <!-- ToolsTap SEO metadata -->
-    <meta name="description" content="Convert images between supported formats such as JPG, PNG, WebP and GIF with ToolsTap Image Converter. Process compatible files in your browser.">
+    <meta name="description" content="Convert compatible images to JPG, PNG, or WebP with ToolsTap Image Converter. Process files in your browser.">
     <meta name="author" content="ToolsTap">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <link rel="canonical" href="https://toolstap.site/image-converter.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="ToolsTap">
-    <meta property="og:title" content="Image Converter Online | JPG PNG WebP GIF | ToolsTap">
-    <meta property="og:description" content="Convert images between supported formats such as JPG, PNG, WebP and GIF with ToolsTap Image Converter. Process compatible files in your browser.">
+    <meta property="og:title" content="Image Converter Online | JPG PNG WebP | ToolsTap">
+    <meta property="og:description" content="Convert compatible images to JPG, PNG, or WebP with ToolsTap Image Converter. Process files in your browser.">
     <meta property="og:url" content="https://toolstap.site/image-converter.html">
     <meta property="og:image" content="https://toolstap.site/assets/toolstap-social-preview.png">
     <meta property="og:image:alt" content="ToolsTap free online image, PDF, QR, text and calculator tools">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Image Converter Online | JPG PNG WebP GIF | ToolsTap">
-    <meta name="twitter:description" content="Convert images between supported formats such as JPG, PNG, WebP and GIF with ToolsTap Image Converter. Process compatible files in your browser.">
+    <meta name="twitter:title" content="Image Converter Online | JPG PNG WebP | ToolsTap">
+    <meta name="twitter:description" content="Convert compatible images to JPG, PNG, or WebP with ToolsTap Image Converter. Process files in your browser.">
     <meta name="twitter:image" content="https://toolstap.site/assets/toolstap-social-preview.png">
     <meta name="twitter:image:alt" content="ToolsTap free online tools">
 
@@ -1052,6 +1061,20 @@
       ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
     </style>
 
+
+<style id="toolstap-related-tools-style">
+.toolstap-related-tools{padding:34px 0;margin-top:36px;border-top:1px solid var(--border-color,#e5e7eb)}
+.toolstap-related-tools .container{width:min(1120px,92%);margin:0 auto}
+.toolstap-related-tools h2{font-size:clamp(1.35rem,2vw,1.8rem);margin:0 0 8px;color:var(--text-dark,#1f2937)}
+.toolstap-related-tools .related-intro{margin:0 0 20px;color:var(--text-light,#64748b);line-height:1.65}
+.toolstap-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.toolstap-related-card{display:flex;flex-direction:column;gap:8px;padding:18px;border:1px solid var(--border-color,#e5e7eb);border-radius:14px;background:var(--light-color-2,#fff);text-decoration:none;color:var(--text-dark,#1f2937);transition:transform .2s ease,border-color .2s ease}
+.toolstap-related-card:hover{transform:translateY(-2px);border-color:var(--primary-color,#4361ee)}
+.toolstap-related-card strong{font-size:1rem;color:var(--text-dark,#1f2937)}
+.toolstap-related-card span{font-size:.92rem;line-height:1.5;color:var(--text-light,#64748b)}
+.toolstap-related-card:focus-visible{outline:3px solid var(--primary-color,#4361ee);outline-offset:3px}
+</style>
+
 </head>
 <body>
     <!-- Header -->
@@ -1074,10 +1097,11 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="index.html#categories">Categories</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry" class="contact-link">Get in Touch</a></li>
+                    <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer" class="contact-link">Get in Touch</a></li>
                 </ul>
             </nav>
         </div>
@@ -1087,7 +1111,7 @@
     <section class="tool-hero">
         <div class="tool-hero-content container">
             <h1>Image Converter</h1>
-            <p>Convert images between JPG, PNG, GIF, WEBP and more formats with just a few clicks. Fast, secure, and completely free.</p>
+            <p>Convert compatible images to JPG, PNG, or WebP with a few clicks. Fast, secure, and free; supported source files depend on your browser.</p>
             <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                 <a href="#converter" class="btn btn-primary">
                     <i class="fas fa-exchange-alt"></i> Convert Images
@@ -1119,7 +1143,7 @@
                         </div>
                         <div class="upload-text">
                             <p>Drag & drop your image here or click to browse</p>
-                            <p class="small-text">Supports JPG, PNG, GIF, WEBP, BMP, and TIFF formats</p>
+                            <p class="small-text">Supports common image files that your browser can decode</p>
                         </div>
                         <button class="upload-btn" id="browseBtn">
                             <i class="fas fa-folder-open"></i> Browse Files
@@ -1147,29 +1171,11 @@
                             </div>
                             <div class="format-name">PNG</div>
                         </div>
-                        <div class="format-option" data-format="gif">
-                            <div class="format-icon">
-                                <i class="fas fa-file-image"></i>
-                            </div>
-                            <div class="format-name">GIF</div>
-                        </div>
                         <div class="format-option" data-format="webp">
                             <div class="format-icon">
                                 <i class="fas fa-file-image"></i>
                             </div>
                             <div class="format-name">WEBP</div>
-                        </div>
-                        <div class="format-option" data-format="bmp">
-                            <div class="format-icon">
-                                <i class="fas fa-file-image"></i>
-                            </div>
-                            <div class="format-name">BMP</div>
-                        </div>
-                        <div class="format-option" data-format="ico">
-                            <div class="format-icon">
-                                <i class="fas fa-file-image"></i>
-                            </div>
-                            <div class="format-name">ICO</div>
                         </div>
                     </div>
                     
@@ -1195,7 +1201,8 @@
                         <i class="fas fa-eye"></i>
                         <span>Converted Image Preview</span>
                     </div>
-                    <canvas id="canvas"></canvas>
+                    <canvas id="canvas" aria-hidden="true"></canvas>
+                    <img id="convertedPreview" alt="Converted image preview">
                 </div>
             </div>
         </div>
@@ -1208,7 +1215,7 @@
                 <div class="blog-content">
                     <h2>Free Online Image Converter - Convert JPG, PNG, WebP Instantly</h2>
                     
-                    <p>In today's digital world, images play a crucial role in communication, marketing, and personal expression. However, different platforms and devices often require specific image formats. That's where our free online image converter comes in - a powerful tool that lets you convert images between JPG, PNG, WebP, GIF, and BMP formats instantly, without compromising quality.</p>
+                    <p>In today's digital world, images play a crucial role in communication, marketing, and personal expression. However, different platforms and devices often require specific image formats. That's where our free online image converter comes in - a browser-based tool that converts compatible image files to JPG, PNG, or WebP. Output quality and metadata can vary by format and source file.</p>
                     
                     <h2>Why Choose Our Image Converter Tool</h2>
                     
@@ -1218,7 +1225,7 @@
                     <p>Unlike many online tools that require subscriptions or limit free usage, our image converter is 100% free with no hidden costs. You don't need to create an account or provide any personal information. Just upload your image, select your desired format, and convert instantly.</p>
                     
                     <h3>High-Quality Conversions</h3>
-                    <p>We understand that image quality matters. Our conversion algorithm preserves the original quality of your images while converting them to your preferred format. Whether you're converting photographs, graphics, or screenshots, you can trust that the output will maintain clarity and detail.</p>
+                    <p>We understand that image quality matters. PNG output uses lossless encoding, while JPG and WebP can reduce detail depending on the selected format and browser encoder. Check the converted preview before downloading, especially for images with transparency or fine text.</p>
                     
                     <h3>Fast and Efficient Processing</h3>
                     <p>Time is valuable, and our tool respects that. With optimized processing algorithms, your images convert in seconds, not minutes. Even large files are handled efficiently, allowing you to complete your tasks quickly.</p>
@@ -1228,7 +1235,7 @@
                     
                     <h2>Supported Formats</h2>
                     
-                    <p>Our image converter supports all major image formats:</p>
+                    <p>Our tool provides JPG/JPEG, PNG, and WebP output. Supported input formats depend on your browser:</p>
                     
                     <h3>JPG/JPEG</h3>
                     <p>The most common format for photographs and complex images. JPG uses lossy compression, making it ideal for web use where file size matters.</p>
@@ -1239,20 +1246,11 @@
                     <h3>WebP</h3>
                     <p>Google's modern image format that provides superior compression. WebP images are typically 25-35% smaller than JPG and PNG files while maintaining similar quality.</p>
                     
-                    <h3>GIF</h3>
-                    <p>The go-to format for simple animations and graphics with limited colors. GIF supports animation and transparency.</p>
-                    
-                    <h3>BMP</h3>
-                    <p>A basic, uncompressed format that preserves all image data without any quality loss. Ideal for editing but results in large file sizes.</p>
-                    
-                    <h3>ICO</h3>
-                    <p>Used primarily for website favicons and Windows application icons. ICO files can contain multiple sizes of the same image.</p>
-                    
                     <h2>How to Convert Images in 3 Simple Steps</h2>
                     
                     <ol>
-                        <li><strong>Upload Your Image:</strong> Click the upload area or drag and drop your image file. We support JPG, PNG, WebP, GIF, BMP, and TIFF formats.</li>
-                        <li><strong>Select Target Format:</strong> Choose your desired output format from the available options (JPG, PNG, WebP, GIF, BMP, or ICO).</li>
+                        <li><strong>Upload Your Image:</strong> Click the upload area or drag and drop your image file. Most common image formats are supported as source files, depending on browser compatibility.</li>
+                        <li><strong>Select Target Format:</strong> Choose JPG, PNG, or WebP as the output format.</li>
                         <li><strong>Convert and Download:</strong> Click the convert button and download your newly formatted image instantly.</li>
                     </ol>
                     
@@ -1274,7 +1272,7 @@
                     
                     <div class="faq-item">
                         <div class="faq-question">Is there a limit to how many images I can convert?</div>
-                        <div class="faq-answer">No, there are no limits. You can convert as many images as you need, completely free of charge.</div>
+                        <div class="faq-answer">There is no fixed daily conversion quota, but browser memory and device performance limit the size of each image you can process reliably.</div>
                     </div>
                     
                     <div class="faq-item">
@@ -1321,7 +1319,7 @@
                         <i class="fas fa-compress-alt"></i>
                     </div>
                     <h3>Image Compressor</h3>
-                    <p>Compress your images without losing quality for faster websites and sharing.</p>
+                    <p>Compress images with adjustable quality settings to balance file size and visual detail.</p>
                     <a href="image-compressor.html" class="btn">Use Tool</a>
                 </div>
                 
@@ -1406,7 +1404,7 @@
                 
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry">toolstap8@gmail.com</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer">toolstap8@gmail.com</a></p>
                     <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+923108895446">+92 3108895446</a></p>
                     <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Pakistan</p>
                     <p><i class="fas fa-globe"></i> <a href="https://toolstap.site/">https://toolstap.site/</a></p>
@@ -1439,6 +1437,7 @@
         const downloadBtn = document.getElementById('downloadBtn');
         const resetBtn = document.getElementById('resetBtn');
         const canvas = document.getElementById('canvas');
+        const convertedPreview = document.getElementById('convertedPreview');
         const previewContainer = document.getElementById('previewContainer');
         
         // Variables
@@ -1529,7 +1528,7 @@
             // Check if file is an image (including WebP)
             const isImage = file.type.startsWith('image/') || /\.(jpe?g|png|webp|gif|bmp|tiff?|ico)$/i.test(file.name);
             if (!isImage) {
-                alert('Please upload a valid image file (JPG, PNG, WebP, GIF, BMP, TIFF, or ICO).');
+                alert('Please select an image format your browser can open (for example JPG, PNG, WebP, or GIF).')
                 return;
             }
             
@@ -1556,6 +1555,8 @@
                 formatOptions.forEach(opt => opt.classList.remove('active'));
                 option.classList.add('active');
                 selectedFormat = option.getAttribute('data-format');
+                convertedImageData = null;
+                downloadBtn.disabled = true;
             });
         });
         
@@ -1579,8 +1580,12 @@
                 canvas.width = img.width;
                 canvas.height = img.height;
                 
-                // Clear canvas and draw image
+                // Clear canvas. JPEG has no transparency, so flatten transparent pixels onto white.
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
+                if (selectedFormat === 'jpg' || selectedFormat === 'jpeg') {
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                }
                 ctx.drawImage(img, 0, 0);
                 
                 // Get the converted image data
@@ -1596,20 +1601,8 @@
                         mimeType = 'image/png';
                         quality = 1.0; // PNG is lossless
                         break;
-                    case 'gif':
-                        mimeType = 'image/gif';
-                        quality = 1.0;
-                        break;
                     case 'webp':
                         mimeType = 'image/webp';
-                        break;
-                    case 'bmp':
-                        mimeType = 'image/bmp';
-                        quality = 1.0;
-                        break;
-                    case 'ico':
-                        mimeType = 'image/x-icon';
-                        quality = 1.0;
                         break;
                     default:
                         mimeType = 'image/png';
@@ -1619,10 +1612,17 @@
                 try {
                     // Convert to data URL with specified format
                     convertedImageData = canvas.toDataURL(mimeType, quality);
+                    const encodedMime = (convertedImageData.match(/^data:([^;,]+)/) || [])[1] || 'image/png';
+                    if (encodedMime !== mimeType) {
+                        convertedImageData = null;
+                        throw new Error(`${selectedFormat.toUpperCase()} encoding is not supported by this browser. Please choose JPG, PNG, or WebP that your browser supports.`);
+                    }
                     
-                    // Show preview and enable download
+                    // Show the encoded output itself, so lossy-format changes are reflected in preview.
                     previewContainer.style.display = 'block';
-                    canvas.style.display = 'block';
+                    canvas.style.display = 'none';
+                    convertedPreview.src = convertedImageData;
+                    convertedPreview.style.display = 'block';
                     downloadBtn.disabled = false;
                     
                     // Scroll to preview
@@ -1630,7 +1630,7 @@
                     
                 } catch (error) {
                     console.error('Conversion error:', error);
-                    alert('Error converting image. The selected format might not be supported by your browser. Try a different format.');
+                    alert(error.message || 'Error converting image. Please try a different format or image.');
                 }
             };
             
@@ -1646,7 +1646,9 @@
             if (!convertedImageData) return;
             
             const link = document.createElement('a');
-            link.download = `converted-image.${selectedFormat}`;
+            const actualMime = (convertedImageData.match(/^data:([^;,]+)/) || [])[1] || 'image/png';
+            const actualExtension = actualMime === 'image/jpeg' ? 'jpg' : (actualMime === 'image/webp' ? 'webp' : 'png');
+            link.download = `converted-image.${actualExtension}`;
             link.href = convertedImageData;
             document.body.appendChild(link);
             link.click();
@@ -1664,6 +1666,8 @@
             selectedFormat = null;
             previewContainer.style.display = 'none';
             canvas.style.display = 'none';
+            convertedPreview.removeAttribute('src');
+            convertedPreview.style.display = 'none';
             convertBtn.disabled = true;
             downloadBtn.disabled = true;
         });

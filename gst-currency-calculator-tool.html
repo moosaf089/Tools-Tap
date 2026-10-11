@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currency Converter Online | Exchange Rates | ToolsTap</title>
     
-    <meta name="keywords" content="currency converter, exchange rates, forex calculator, money converter, real-time currency, financial tools">
+    <meta name="keywords" content="currency converter, daily exchange rates, forex calculator, money converter, world currency calculator, ToolsTap">
     
     
     
@@ -949,6 +949,20 @@
       ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
     </style>
 
+
+<style id="toolstap-related-tools-style">
+.toolstap-related-tools{padding:34px 0;margin-top:36px;border-top:1px solid var(--border-color,#e5e7eb)}
+.toolstap-related-tools .container{width:min(1120px,92%);margin:0 auto}
+.toolstap-related-tools h2{font-size:clamp(1.35rem,2vw,1.8rem);margin:0 0 8px;color:var(--text-dark,#1f2937)}
+.toolstap-related-tools .related-intro{margin:0 0 20px;color:var(--text-light,#64748b);line-height:1.65}
+.toolstap-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.toolstap-related-card{display:flex;flex-direction:column;gap:8px;padding:18px;border:1px solid var(--border-color,#e5e7eb);border-radius:14px;background:var(--light-color-2,#fff);text-decoration:none;color:var(--text-dark,#1f2937);transition:transform .2s ease,border-color .2s ease}
+.toolstap-related-card:hover{transform:translateY(-2px);border-color:var(--primary-color,#4361ee)}
+.toolstap-related-card strong{font-size:1rem;color:var(--text-dark,#1f2937)}
+.toolstap-related-card span{font-size:.92rem;line-height:1.5;color:var(--text-light,#64748b)}
+.toolstap-related-card:focus-visible{outline:3px solid var(--primary-color,#4361ee);outline-offset:3px}
+</style>
+
 </head>
 <body>
     <!-- Header -->
@@ -971,10 +985,11 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="index.html#categories">Categories</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry" class="contact-link">Get in Touch</a></li>
+                    <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer" class="contact-link">Get in Touch</a></li>
                 </ul>
             </nav>
         </div>
@@ -984,7 +999,7 @@
     <section class="hero">
         <div class="hero-content container">
             <h1>Currency Converter</h1>
-            <p>Convert between 150+ currencies with real-time exchange rates. Get accurate, up-to-date currency conversions for travel, business, and investments.</p>
+            <p>Convert between currencies supported by our exchange-rate provider using the latest available daily reference rates. For bank transfers and trading, confirm the rate with your provider.</p>
             <a href="#converter" class="btn btn-primary">
                 <i class="fas fa-exchange-alt"></i> Convert Currency
             </a>
@@ -996,7 +1011,7 @@
         <div class="container">
             <div class="converter-title">
                 <h2><i class="fas fa-money-bill-wave"></i> Currency Converter</h2>
-                <p>Modify the values and click the Calculate button to convert between currencies with live exchange rates</p>
+                <p>Enter an amount and choose currencies to convert using the latest available daily rates</p>
             </div>
             
             <div class="converter-container">
@@ -1039,33 +1054,33 @@
                 <div class="converter-results">
                     <div class="result-summary">
                         <h3>Conversion Result</h3>
-                        <div class="converted-amount" id="convertedAmount">1.51 AUD</div>
-                        <div class="exchange-rate" id="exchangeRate">1 USD = 1.51 AUD</div>
+                        <div class="converted-amount" id="convertedAmount">Loading rates…</div>
+                        <div class="exchange-rate" id="exchangeRate">Loading daily reference rates…</div>
                     </div>
                     
                     <div class="result-details">
                         <div class="result-item">
                             <div class="label">Original Amount</div>
-                            <div class="value" id="originalAmount">1 USD</div>
+                            <div class="value" id="originalAmount">—</div>
                         </div>
                         <div class="result-item">
                             <div class="label">Converted Amount</div>
-                            <div class="value" id="convertedValue">1.51 AUD</div>
+                            <div class="value" id="convertedValue">—</div>
                         </div>
                         <div class="result-item">
                             <div class="label">Exchange Rate</div>
-                            <div class="value" id="rateValue">1.5126</div>
+                            <div class="value" id="rateValue">—</div>
                         </div>
                         <div class="result-item">
                             <div class="label">Last Updated</div>
-                            <div class="value" id="lastUpdated">Just now</div>
+                            <div class="value" id="lastUpdated">Waiting for provider data…</div>
                         </div>
                     </div>
                     
                     <div class="input-group">
                         <label for="customRate">Custom Exchange Rate (Optional)</label>
                         <input type="number" id="customRate" placeholder="Enter custom exchange rate" step="0.0001">
-                        <small>Leave empty to use live rates</small>
+                        <small>Leave empty to use the latest available daily reference rate</small>
                     </div>
                 </div>
             </div>
@@ -1077,7 +1092,7 @@
         <div class="container">
             <div class="section-title">
                 <h2><i class="fas fa-table"></i> Market Exchange Rates</h2>
-                <p>Current exchange rates for major world currencies. Data updates automatically.</p>
+                <p>Daily reference exchange rates. Provider data updates once per day; actual bank or card rates may differ.</p>
             </div>
             
             <div class="rates-filter">
@@ -1103,6 +1118,7 @@
                     </tbody>
                 </table>
             </div>
+            <p class="rates-attribution" style="margin-top:16px;font-size:.9rem;line-height:1.6;color:var(--text-light);">Rates by <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener noreferrer">ExchangeRate-API</a> (open access), updated daily. This is reference information, not a guaranteed bank, card, remittance, or trading rate.</p>
         </div>
     </section>
 
@@ -1119,8 +1135,8 @@
                     <div class="feature-icon">
                         <i class="fas fa-bolt"></i>
                     </div>
-                    <h3>Real-Time Rates</h3>
-                    <p>Get live exchange rates updated every minute from reliable financial data sources for accurate conversions.</p>
+                    <h3>Daily Reference Rates</h3>
+                    <p>Rates are fetched from the ExchangeRate-API Open Access endpoint and cached until its next scheduled update.</p>
                 </div>
                 
                 <div class="feature-card">
@@ -1135,8 +1151,8 @@
                     <div class="feature-icon">
                         <i class="fas fa-history"></i>
                     </div>
-                    <h3>Historical Data</h3>
-                    <p>View historical exchange rate trends and charts to make informed financial decisions.</p>
+                    <h3>Cross-Currency Conversion</h3>
+                    <p>Convert between supported currencies by calculating rates from the same daily USD-base table.</p>
                 </div>
                 
                 <div class="feature-card">
@@ -1151,7 +1167,9 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    
+<section class="toolstap-related-tools" aria-labelledby="relatedToolsHeading"><div class="container"><h2 id="relatedToolsHeading">Related Calculator Tools from ToolsTap</h2><p class="related-intro">Continue with another ToolsTap tool in the same category. Each tool opens on its own page.</p><div class="toolstap-related-grid"><a class="toolstap-related-card" href="scientific-calculator.html"><strong>Scientific Calculator</strong><span>Perform arithmetic and scientific functions.</span></a><a class="toolstap-related-card" href="age-calculator-tool.html"><strong>Age Calculator</strong><span>Calculate age between two dates.</span></a><a class="toolstap-related-card" href="bmi-calculator-tool.html"><strong>BMI Calculator</strong><span>Calculate Body Mass Index from height and weight.</span></a><a class="toolstap-related-card" href="loan-emi-calculator-tool.html"><strong>Loan EMI Calculator</strong><span>Estimate monthly loan instalments.</span></a></div></div></section>
+<footer id="contact">
         <div class="container">
             <div class="footer-container">
                 <div class="footer-about">
@@ -1183,12 +1201,13 @@
                         <li><a href="index.html#document-tools">Document Tools</a></li>
                         <li><a href="index.html#calculator-tools">Calculators</a></li>
                         <li><a href="index.html#text-tools">Text Tools</a></li>
+                        <li><a href="index.html#qr-tools">QR &amp; Barcode Tools</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry">toolstap8@gmail.com</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer">toolstap8@gmail.com</a></p>
                     <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+923108895446">+92 3108895446</a></p>
                     <p><i class="fas fa-map-marker-alt"></i> Pakistan</p>
                 </div>
@@ -1275,240 +1294,233 @@
             });
         });
 
-        // Currency Converter Functionality
+        // Currency Converter: actual daily reference rates from ExchangeRate-API Open Access.
+        // The provider publishes a broad list of currency codes, updates once per day, and requires attribution.
         const fromCurrencySelect = document.getElementById('fromCurrency');
         const toCurrencySelect = document.getElementById('toCurrency');
         const amountInput = document.getElementById('amount');
         const customRateInput = document.getElementById('customRate');
         const swapBtn = document.getElementById('swapCurrencies');
         const calculateBtn = document.getElementById('calculateBtn');
-        
         const convertedAmount = document.getElementById('convertedAmount');
         const exchangeRate = document.getElementById('exchangeRate');
         const originalAmount = document.getElementById('originalAmount');
         const convertedValue = document.getElementById('convertedValue');
         const rateValue = document.getElementById('rateValue');
         const lastUpdated = document.getElementById('lastUpdated');
-        
         const ratesTableBody = document.getElementById('ratesTableBody');
         const filterBtns = document.querySelectorAll('.filter-btn');
-        
-        // Currency data with flags and names
-        const currencies = [
-            { code: 'USD', name: 'United States Dollar', flag: '🇺🇸' },
-            { code: 'EUR', name: 'Euro', flag: '🇪🇺' },
-            { code: 'GBP', name: 'British Pound', flag: '🇬🇧' },
-            { code: 'JPY', name: 'Japanese Yen', flag: '🇯🇵' },
-            { code: 'AUD', name: 'Australian Dollar', flag: '🇦🇺' },
-            { code: 'CAD', name: 'Canadian Dollar', flag: '🇨🇦' },
-            { code: 'CHF', name: 'Swiss Franc', flag: '🇨🇭' },
-            { code: 'CNY', name: 'Chinese Yuan', flag: '🇨🇳' },
-            { code: 'INR', name: 'Indian Rupee', flag: '🇮🇳' },
-            { code: 'PKR', name: 'Pakistani Rupee', flag: '🇵🇰' },
-            { code: 'SGD', name: 'Singapore Dollar', flag: '🇸🇬' },
-            { code: 'NZD', name: 'New Zealand Dollar', flag: '🇳🇿' },
-            { code: 'KRW', name: 'South Korean Won', flag: '🇰🇷' },
-            { code: 'BRL', name: 'Brazilian Real', flag: '🇧🇷' },
-            { code: 'RUB', name: 'Russian Ruble', flag: '🇷🇺' },
-            { code: 'ZAR', name: 'South African Rand', flag: '🇿🇦' },
-            { code: 'MXN', name: 'Mexican Peso', flag: '🇲🇽' },
-            { code: 'AED', name: 'UAE Dirham', flag: '🇦🇪' },
-            { code: 'SAR', name: 'Saudi Riyal', flag: '🇸🇦' },
-            { code: 'TRY', name: 'Turkish Lira', flag: '🇹🇷' },
-            { code: 'SEK', name: 'Swedish Krona', flag: '🇸🇪' },
-            { code: 'NOK', name: 'Norwegian Krone', flag: '🇳🇴' },
-            { code: 'DKK', name: 'Danish Krone', flag: '🇩🇰' },
-            { code: 'PLN', name: 'Polish Zloty', flag: '🇵🇱' },
-            { code: 'HKD', name: 'Hong Kong Dollar', flag: '🇭🇰' },
-            { code: 'THB', name: 'Thai Baht', flag: '🇹🇭' },
-            { code: 'IDR', name: 'Indonesian Rupiah', flag: '🇮🇩' },
-            { code: 'MYR', name: 'Malaysian Ringgit', flag: '🇲🇾' },
-            { code: 'PHP', name: 'Philippine Peso', flag: '🇵🇭' },
-            { code: 'EGP', name: 'Egyptian Pound', flag: '🇪🇬' }
-        ];
-
-        // Popular currencies for quick access
-        const popularCurrencies = ['USD', 'EUR', 'GBP', 'JPY', 'AUD', 'CAD', 'CHF', 'CNY'];
-        
-        // Exchange rates (in a real app, these would come from an API)
-        let exchangeRates = {
-            USD: 1,
-            EUR: 0.93,
-            GBP: 0.80,
-            JPY: 147.12,
-            AUD: 1.51,
-            CAD: 1.36,
-            CHF: 0.90,
-            CNY: 7.24,
-            INR: 83.17,
-            PKR: 280.50,
-            SGD: 1.35,
-            NZD: 1.63,
-            KRW: 1320.45,
-            BRL: 5.05,
-            RUB: 96.50,
-            ZAR: 18.72,
-            MXN: 17.25,
-            AED: 3.67,
-            SAR: 3.75,
-            TRY: 27.85,
-            SEK: 10.68,
-            NOK: 10.45,
-            DKK: 6.92,
-            PLN: 4.22,
-            HKD: 7.82,
-            THB: 35.80,
-            IDR: 15520.50,
-            MYR: 4.67,
-            PHP: 56.25,
-            EGP: 30.90
+        const liveRateLabel = document.querySelector('.live-rate-indicator span');
+        const RATE_URL = 'https://open.er-api.com/v6/latest/USD';
+        const CACHE_KEY = 'toolstap_currency_rates_v1';
+        const knownFlags = {
+          USD:'🇺🇸', EUR:'🇪🇺', GBP:'🇬🇧', JPY:'🇯🇵', AUD:'🇦🇺', CAD:'🇨🇦', CHF:'🇨🇭', CNY:'🇨🇳',
+          INR:'🇮🇳', PKR:'🇵🇰', SGD:'🇸🇬', NZD:'🇳🇿', KRW:'🇰🇷', BRL:'🇧🇷', RUB:'🇷🇺', ZAR:'🇿🇦',
+          MXN:'🇲🇽', AED:'🇦🇪', SAR:'🇸🇦', TRY:'🇹🇷', SEK:'🇸🇪', NOK:'🇳🇴', DKK:'🇩🇰', PLN:'🇵🇱',
+          HKD:'🇭🇰', THB:'🇹🇭', IDR:'🇮🇩', MYR:'🇲🇾', PHP:'🇵🇭', EGP:'🇪🇬'
         };
+        const knownNames = {
+          USD:'United States Dollar', EUR:'Euro', GBP:'British Pound', JPY:'Japanese Yen', AUD:'Australian Dollar',
+          CAD:'Canadian Dollar', CHF:'Swiss Franc', CNY:'Chinese Yuan', INR:'Indian Rupee', PKR:'Pakistani Rupee',
+          SGD:'Singapore Dollar', NZD:'New Zealand Dollar', KRW:'South Korean Won', BRL:'Brazilian Real',
+          RUB:'Russian Ruble', ZAR:'South African Rand', MXN:'Mexican Peso', AED:'UAE Dirham', SAR:'Saudi Riyal',
+          TRY:'Turkish Lira', SEK:'Swedish Krona', NOK:'Norwegian Krone', DKK:'Danish Krone', PLN:'Polish Zloty',
+          HKD:'Hong Kong Dollar', THB:'Thai Baht', IDR:'Indonesian Rupiah', MYR:'Malaysian Ringgit',
+          PHP:'Philippine Peso', EGP:'Egyptian Pound'
+        };
+        let currencies = [];
+        let exchangeRates = {};
+        let rateUpdatedLabel = 'Waiting for rate data…';
+        let ratesLoaded = false;
 
-        // Populate currency dropdowns
-        function populateCurrencyDropdowns() {
-            currencies.forEach(currency => {
-                const fromOption = document.createElement('option');
-                fromOption.value = currency.code;
-                fromOption.textContent = `${currency.flag} ${currency.code} - ${currency.name}`;
-                if (currency.code === 'USD') fromOption.selected = true;
-                fromCurrencySelect.appendChild(fromOption);
-                
-                const toOption = document.createElement('option');
-                toOption.value = currency.code;
-                toOption.textContent = `${currency.flag} ${currency.code} - ${currency.name}`;
-                if (currency.code === 'AUD') toOption.selected = true;
-                toCurrencySelect.appendChild(toOption);
-            });
+        function currencyName(code) {
+          if (knownNames[code]) return knownNames[code];
+          try {
+            const names = new Intl.DisplayNames(['en'], { type: 'currency' });
+            const value = names.of(code);
+            return value && value !== code ? value : code;
+          } catch (_) { return code; }
         }
 
-        // Swap currencies
-        swapBtn.addEventListener('click', () => {
-            const fromValue = fromCurrencySelect.value;
-            const toValue = toCurrencySelect.value;
-            
-            fromCurrencySelect.value = toValue;
-            toCurrencySelect.value = fromValue;
-            
-            calculateConversion();
-        });
+        function populateCurrencyDropdowns(preferredFrom='USD', preferredTo='PKR') {
+          const previousFrom = fromCurrencySelect.value || preferredFrom;
+          const previousTo = toCurrencySelect.value || preferredTo;
+          fromCurrencySelect.innerHTML = '';
+          toCurrencySelect.innerHTML = '';
+          const codes = Object.keys(exchangeRates).sort((a,b) => a.localeCompare(b));
+          currencies = codes.map(code => ({code, name: currencyName(code), flag: knownFlags[code] || '💱'}));
+          for (const currency of currencies) {
+            const label = `${currency.flag} ${currency.code} - ${currency.name}`;
+            fromCurrencySelect.add(new Option(label, currency.code));
+            toCurrencySelect.add(new Option(label, currency.code));
+          }
+          fromCurrencySelect.value = exchangeRates[previousFrom] ? previousFrom : (exchangeRates.USD ? 'USD' : codes[0]);
+          toCurrencySelect.value = exchangeRates[previousTo] ? previousTo : (exchangeRates.PKR ? 'PKR' : (codes.find(c=>c!=='USD') || codes[0]));
+        }
 
-        // Calculate conversion
-        function calculateConversion() {
-            const amount = parseFloat(amountInput.value) || 0;
-            const fromCurrency = fromCurrencySelect.value;
-            const toCurrency = toCurrencySelect.value;
-            const customRate = parseFloat(customRateInput.value);
-            
-            if (amount <= 0) {
-                convertedAmount.textContent = '0.00';
-                exchangeRate.textContent = `Enter a valid amount`;
-                return;
-            }
-            
-            let rate;
-            if (customRate && customRate > 0) {
-                rate = customRate;
+        function fmt(value, maximumFractionDigits=4) {
+          return Number(value).toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits});
+        }
+
+        function renderStatus(message, isError=false) {
+          if (liveRateLabel) liveRateLabel.textContent = message;
+          if (lastUpdated && isError && !ratesLoaded) lastUpdated.textContent = 'Rate data unavailable';
+        }
+
+        async function loadExchangeRates() {
+          renderStatus('Loading daily exchange rates…');
+          const now = Date.now();
+          try {
+            const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
+            if (cached && cached.rates && cached.nextUpdateUnix && now < cached.nextUpdateUnix * 1000) {
+              exchangeRates = cached.rates;
+              rateUpdatedLabel = cached.lastUpdated || 'Cached daily rates';
+              ratesLoaded = true;
             } else {
-                // Convert via USD as base currency
-                const fromRate = exchangeRates[fromCurrency] || 1;
-                const toRate = exchangeRates[toCurrency] || 1;
-                rate = toRate / fromRate;
+              const response = await fetch(RATE_URL, {cache: 'no-store'});
+              if (!response.ok) throw new Error(`Rate provider returned HTTP ${response.status}`);
+              const data = await response.json();
+              if (data.result !== 'success' || !data.rates || !data.rates.USD) throw new Error('The rate provider returned an unexpected response.');
+              exchangeRates = data.rates;
+              exchangeRates.USD = 1;
+              rateUpdatedLabel = data.time_last_update_utc || data.time_last_update || 'Latest available daily rates';
+              ratesLoaded = true;
+              try {
+                localStorage.setItem(CACHE_KEY, JSON.stringify({
+                  rates: exchangeRates,
+                  lastUpdated: rateUpdatedLabel,
+                  nextUpdateUnix: Number(data.time_next_update_unix) || Math.floor(now/1000) + 86400
+                }));
+              } catch (_) { /* storage may be disabled; current rates still work */ }
             }
-            
-            const converted = amount * rate;
-            
-            // Update results
-            convertedAmount.textContent = `${converted.toFixed(2)} ${toCurrency}`;
-            exchangeRate.textContent = `1 ${fromCurrency} = ${rate.toFixed(4)} ${toCurrency}`;
-            originalAmount.textContent = `${amount} ${fromCurrency}`;
-            convertedValue.textContent = `${converted.toFixed(2)} ${toCurrency}`;
-            rateValue.textContent = rate.toFixed(4);
-            lastUpdated.textContent = new Date().toLocaleTimeString();
-            
-            // Update table if needed
-            updateRatesTable();
-        }
-
-        // Update rates table
-        function updateRatesTable() {
-            ratesTableBody.innerHTML = '';
-            
-            const baseCurrency = fromCurrencySelect.value;
-            const filter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-            
-            let displayCurrencies = currencies;
-            if (filter === 'major') {
-                displayCurrencies = currencies.filter(c => 
-                    ['USD', 'EUR', 'GBP', 'JPY', 'CNY', 'CAD', 'AUD'].includes(c.code)
-                );
-            } else if (filter === 'popular') {
-                displayCurrencies = currencies.filter(c => popularCurrencies.includes(c.code));
-            }
-            
-            displayCurrencies.forEach(currency => {
-                if (currency.code === baseCurrency) return;
-                
-                const row = document.createElement('tr');
-                
-                // Calculate rates relative to base currency
-                const baseRate = exchangeRates[baseCurrency] || 1;
-                const currencyRate = exchangeRates[currency.code] || 1;
-                const rate = currencyRate / baseRate;
-                
-                row.innerHTML = `
-                    <td>${currency.flag} ${currency.name}</td>
-                    <td>${currency.code}</td>
-                    <td>${(exchangeRates[currency.code] || 0).toFixed(4)}</td>
-                    <td>${((exchangeRates[currency.code] || 0) / (exchangeRates['EUR'] || 1)).toFixed(4)}</td>
-                    <td>${((exchangeRates[currency.code] || 0) / (exchangeRates['GBP'] || 1)).toFixed(4)}</td>
-                    <td>${new Date().toLocaleTimeString()}</td>
-                `;
-                
-                ratesTableBody.appendChild(row);
-            });
-        }
-
-        // Filter buttons
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                updateRatesTable();
-            });
-        });
-
-        // Event listeners
-        calculateBtn.addEventListener('click', calculateConversion);
-        amountInput.addEventListener('input', calculateConversion);
-        fromCurrencySelect.addEventListener('change', calculateConversion);
-        toCurrencySelect.addEventListener('change', calculateConversion);
-        customRateInput.addEventListener('input', calculateConversion);
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
             populateCurrencyDropdowns();
+            if (lastUpdated) lastUpdated.textContent = rateUpdatedLabel;
+            renderStatus(`Daily rates available · ${currencies.length} currencies`);
             calculateConversion();
-            
-            // Simulate live rate updates (in a real app, this would be an API call)
-            setInterval(() => {
-                // Small random fluctuations to simulate live data
-                Object.keys(exchangeRates).forEach(currency => {
-                    if (currency !== 'USD') {
-                        const fluctuation = (Math.random() - 0.5) * 0.01;
-                        exchangeRates[currency] = exchangeRates[currency] * (1 + fluctuation);
-                    }
-                });
+          } catch (error) {
+            console.error('Currency rate loading failed:', error);
+            // If a previously cached rate table exists, use it transparently as dated fallback.
+            try {
+              const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
+              if (cached && cached.rates && cached.rates.USD) {
+                exchangeRates = cached.rates;
+                rateUpdatedLabel = `${cached.lastUpdated || 'Cached rates'} (cached fallback)`;
+                ratesLoaded = true;
+                populateCurrencyDropdowns();
+                if (lastUpdated) lastUpdated.textContent = rateUpdatedLabel;
+                renderStatus('Using cached rates; refresh when online');
                 calculateConversion();
-            }, 60000); // Update every minute
-        });
+                return;
+              }
+            } catch (_) {}
+            renderStatus('Could not load rates. Check your connection and retry.', true);
+            exchangeRate.textContent = 'Exchange rates could not be loaded.';
+            convertedAmount.textContent = '—';
+            if (lastUpdated) lastUpdated.textContent = 'Unavailable';
+          }
+        }
 
-        // In a real implementation, you would use an API like:
-        // fetch('https://api.exchangerate-api.com/v4/latest/USD')
-        //   .then(response => response.json())
-        //   .then(data => {
-        //     exchangeRates = data.rates;
-        //     calculateConversion();
-        //   });
+        function calculateConversion() {
+          const amount = Number.parseFloat(amountInput.value);
+          const fromCurrency = fromCurrencySelect.value;
+          const toCurrency = toCurrencySelect.value;
+          const customRate = Number.parseFloat(customRateInput.value);
+          if (!ratesLoaded || !exchangeRates[fromCurrency] || !exchangeRates[toCurrency]) {
+            if (ratesLoaded) exchangeRate.textContent = 'Choose supported currencies.';
+            convertedAmount.textContent = '—';
+            if (convertedValue) convertedValue.textContent = '—';
+            if (rateValue) rateValue.textContent = '—';
+            return;
+          }
+          if (!Number.isFinite(amount) || amount < 0) {
+            convertedAmount.textContent = '—';
+            exchangeRate.textContent = 'Enter a valid non-negative amount.';
+            return;
+          }
+          if (customRateInput.value.trim() !== '' && (!Number.isFinite(customRate) || customRate <= 0)) {
+            convertedAmount.textContent = '—';
+            exchangeRate.textContent = 'Enter a custom rate greater than zero, or clear the field to use the provider rate.';
+            if (convertedValue) convertedValue.textContent = '—';
+            if (rateValue) rateValue.textContent = '—';
+            return;
+          }
+          const rate = customRateInput.value.trim() !== ''
+            ? customRate
+            : exchangeRates[toCurrency] / exchangeRates[fromCurrency];
+          if (!Number.isFinite(rate) || rate <= 0) {
+            exchangeRate.textContent = 'A reliable rate is not available for this pair.';
+            convertedAmount.textContent = '—';
+            return;
+          }
+          const converted = amount * rate;
+          convertedAmount.textContent = `${fmt(converted, 4)} ${toCurrency}`;
+          exchangeRate.textContent = `1 ${fromCurrency} = ${fmt(rate, 6)} ${toCurrency}`;
+          if (originalAmount) originalAmount.textContent = `${fmt(amount, 4)} ${fromCurrency}`;
+          if (convertedValue) convertedValue.textContent = `${fmt(converted, 4)} ${toCurrency}`;
+          if (rateValue) rateValue.textContent = fmt(rate, 6);
+          updateRatesTable();
+        }
+
+        function updateRatesTable() {
+          if (!ratesTableBody || !ratesLoaded) return;
+          ratesTableBody.innerHTML = '';
+          const baseCurrency = fromCurrencySelect.value || 'USD';
+          const activeFilter = document.querySelector('.filter-btn.active');
+          const filter = activeFilter ? activeFilter.getAttribute('data-filter') : 'major';
+          let displayCurrencies = currencies;
+          if (filter === 'major') {
+            const major = ['USD','EUR','GBP','JPY','CNY','CAD','AUD','CHF','INR','PKR'];
+            displayCurrencies = currencies.filter(c => major.includes(c.code));
+          } else if (filter === 'popular') {
+            const popular = ['USD','EUR','GBP','JPY','AUD','CAD','CHF','CNY','INR','PKR','AED','SAR','SGD'];
+            displayCurrencies = currencies.filter(c => popular.includes(c.code));
+          }
+          const usdToEur = exchangeRates.EUR || null;
+          const usdToGbp = exchangeRates.GBP || null;
+          displayCurrencies.forEach(currency => {
+            const usdRate = exchangeRates[currency.code];
+            if (!Number.isFinite(usdRate)) return;
+            const row = document.createElement('tr');
+            const values = [
+              `${currency.flag} ${currency.name}`,
+              currency.code,
+              fmt(usdRate, 6),
+              usdToEur ? fmt(usdRate / usdToEur, 6) : '—',
+              usdToGbp ? fmt(usdRate / usdToGbp, 6) : '—',
+              rateUpdatedLabel
+            ];
+            values.forEach(value => {
+              const cell = document.createElement('td');
+              cell.textContent = value;
+              row.appendChild(cell);
+            });
+            ratesTableBody.appendChild(row);
+          });
+        }
+
+        swapBtn.addEventListener('click', () => {
+          const fromValue = fromCurrencySelect.value;
+          fromCurrencySelect.value = toCurrencySelect.value;
+          toCurrencySelect.value = fromValue;
+          if (customRateInput.value) customRateInput.value = '';
+          calculateConversion();
+        });
+        filterBtns.forEach(btn => btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          updateRatesTable();
+        }));
+        calculateBtn.addEventListener('click', () => {
+          if (!ratesLoaded) loadExchangeRates();
+          else calculateConversion();
+        });
+        amountInput.addEventListener('input', calculateConversion);
+        fromCurrencySelect.addEventListener('change', () => { if (customRateInput.value) customRateInput.value=''; calculateConversion(); });
+        toCurrencySelect.addEventListener('change', () => { if (customRateInput.value) customRateInput.value=''; calculateConversion(); });
+        customRateInput.addEventListener('input', calculateConversion);
+        loadExchangeRates();
+        // Rates are refreshed daily by the provider. Do not invent random minute-by-minute movements.
+
     </script>
 </body>
 </html>

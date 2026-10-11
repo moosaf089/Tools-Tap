@@ -1,0 +1,23 @@
+ToolsTap technical update notes
+
+1. Currency Converter uses ExchangeRate-API Open Access (https://www.exchangerate-api.com), whose public rates update once daily. Rates can be delayed versus bank/remittance/card rates. Attribution is included on the currency page. Network access is needed for first load; cached rates are reused until their provider-supplied next update time.
+2. PDF to Word extracts selectable text via PDF.js and packages it into a valid DOCX using JSZip. It does not retain full original PDF layout/images and does not OCR scanned/image-only PDFs.
+3. Document Converter now performs real text-oriented conversions among selectable-text PDF/DOCX/TXT/RTF/HTML and PDF/DOCX/TXT/RTF/HTML output. Layout, images, tables and office-specific formatting may change. Conversion libraries load from public CDNs.
+4. PDF Lock/Unlock still requires a compatible backend at POST /pdf-lockunlock; GitHub Pages is static hosting and cannot run that endpoint. Do not advertise it as fully functional until backend is deployed.
+5. Categories navigation and related-tool cards use existing static HTML routes.
+6. Gmail compose opens Gmail's web composer to help users whose computer has no default mail client configured.
+7. Barcode scanner uses QuaggaJS for real camera/image decoding; camera access requires HTTPS and user permission. The live video preview is no longer covered by the scanning overlay.
+8. The Document Converter supports readable-text conversion among PDF/DOCX/TXT/RTF/HTML only. PPTX/XLSX/ODT are deliberately not listed as supported.
+9. PDF Compressor rasterizes pages for compression, which may change selectable text/vector fidelity; compare input and output before relying on a result.
+
+10. The PDF Compressor rasterizes pages to JPEG images before rebuilding the PDF. It now handles all pages and reports actual size change, but the output may lose selectable text/vector sharpness or even become larger.
+11. Currency Converter shows no sample exchange rate while loading; it fetches daily reference rates and offers a retry through the Convert button if loading fails.
+12. Barcode Scanner decodes barcode values; it does not query a product catalog or claim product names/prices.
+
+13. Image Converter only offers JPG, PNG, and WebP output because browser canvas encoding does not reliably produce GIF, BMP, or ICO; the downloadable extension is determined from the actual encoded MIME type. Transparent images are flattened onto white for JPEG output.
+14. Image Compressor preserves original file order, safely renders user-provided filenames, uses correct output extensions, and prefers a ZIP download when the JSZip CDN is available. GIF animation is flattened to its first browser-rendered frame; PNG output is lossless but the compressor may resize images above 2000 px.
+15. PDF Merger/Splitter inserts user filenames as text rather than HTML and delays object-URL revocation to allow browser downloads to start.
+16. Age Calculator counts calendar-day differences in UTC to avoid daylight-saving time off-by-one errors.
+17. Currency Converter rejects invalid custom rates rather than silently using a different rate.
+18. Image Converter now previews the actual encoded output rather than only showing the source canvas; unsupported browser encodings fail with an explicit message.
+19. Removed dead placeholder links from Image Optimization Blog cards and About page controls; unconfigured GitHub icon is non-clickable and Help opens the FAQ.

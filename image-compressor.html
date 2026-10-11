@@ -1144,6 +1144,20 @@
       ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
     </style>
 
+
+<style id="toolstap-related-tools-style">
+.toolstap-related-tools{padding:34px 0;margin-top:36px;border-top:1px solid var(--border-color,#e5e7eb)}
+.toolstap-related-tools .container{width:min(1120px,92%);margin:0 auto}
+.toolstap-related-tools h2{font-size:clamp(1.35rem,2vw,1.8rem);margin:0 0 8px;color:var(--text-dark,#1f2937)}
+.toolstap-related-tools .related-intro{margin:0 0 20px;color:var(--text-light,#64748b);line-height:1.65}
+.toolstap-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.toolstap-related-card{display:flex;flex-direction:column;gap:8px;padding:18px;border:1px solid var(--border-color,#e5e7eb);border-radius:14px;background:var(--light-color-2,#fff);text-decoration:none;color:var(--text-dark,#1f2937);transition:transform .2s ease,border-color .2s ease}
+.toolstap-related-card:hover{transform:translateY(-2px);border-color:var(--primary-color,#4361ee)}
+.toolstap-related-card strong{font-size:1rem;color:var(--text-dark,#1f2937)}
+.toolstap-related-card span{font-size:.92rem;line-height:1.5;color:var(--text-light,#64748b)}
+.toolstap-related-card:focus-visible{outline:3px solid var(--primary-color,#4361ee);outline-offset:3px}
+</style>
+
 </head>
 <body>
     <!-- Header -->
@@ -1166,10 +1180,11 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="index.html#categories">Categories</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry" class="contact-link">Get in Touch</a></li>
+                    <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer" class="contact-link">Get in Touch</a></li>
                 </ul>
             </nav>
         </div>
@@ -1179,7 +1194,7 @@
     <section class="tool-hero">
         <div class="tool-hero-content container">
             <h1>Image Compressor</h1>
-            <p>Reduce image file size without losing quality. Compress JPG, PNG, and other image formats for faster websites and easier sharing.</p>
+            <p>Reduce image file size by adjusting compression settings. Lossy formats can affect visual detail, while output size depends on image content and settings.</p>
             <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                 <a href="#compressor" class="btn btn-primary">
                     <i class="fas fa-compress-alt"></i> Compress Images
@@ -1309,8 +1324,8 @@
                             <span class="blog-category">Optimization</span>
                         </div>
                         <h3 class="blog-title">5 Essential Image Compression Tips for Better Website Performance</h3>
-                        <p class="blog-excerpt">Learn how to properly compress images without losing quality to improve your website loading speed and user experience.</p>
-                        <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        <p class="blog-excerpt">Learn how compression settings, formats, and image content affect file size and visual quality.</p>
+                        <a href="blog-image-compression-techniques.html" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
@@ -1323,7 +1338,7 @@
                         </div>
                         <h3 class="blog-title">JPG vs PNG vs WEBP: Which Image Format Should You Use?</h3>
                         <p class="blog-excerpt">A comprehensive comparison of popular image formats and when to use each one for optimal quality and file size.</p>
-                        <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        <a href="blog-jpg-vs-png-vs-webp.html" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
@@ -1336,7 +1351,7 @@
                         </div>
                         <h3 class="blog-title">Optimizing Images for Mobile: Best Practices and Tools</h3>
                         <p class="blog-excerpt">Discover techniques to optimize images specifically for mobile devices to enhance user experience and reduce data usage.</p>
-                        <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        <a href="blog-image-compression-techniques.html" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -1440,7 +1455,7 @@
                 
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry">toolstap8@gmail.com</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer">toolstap8@gmail.com</a></p>
                     <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+923108895446">+92 3108895446</a></p>
                     <p><i class="fas fa-map-marker-alt"></i> Pakistan</p>
                 </div>
@@ -1458,7 +1473,8 @@
         </div>
     </footer>
 
-    <script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
+<script>
         // Theme Toggle Functionality
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
@@ -1639,24 +1655,33 @@
 
         // Create preview item
         function createPreviewItem(file, index) {
+            // Build the card synchronously so its position always matches the file index.
+            // Use textContent for filenames, since filenames are user-controlled input.
+            const previewItem = document.createElement('div');
+            previewItem.className = 'preview-box';
+            const heading = document.createElement('h4');
+            heading.textContent = file.name;
+            const previewImage = document.createElement('img');
+            previewImage.className = 'preview-image';
+            previewImage.alt = file.name;
+            const info = document.createElement('div');
+            info.className = 'file-info';
+            const originalInfo = document.createElement('div');
+            originalInfo.textContent = `Original: ${formatFileSize(file.size)}`;
+            const compressedInfo = document.createElement('div');
+            compressedInfo.id = `compressedSize-${index}`;
+            compressedInfo.textContent = 'Compressed: -';
+            const savingsInfo = document.createElement('div');
+            savingsInfo.id = `savings-${index}`;
+            savingsInfo.textContent = 'Savings: -';
+            info.append(originalInfo, compressedInfo, savingsInfo);
+            previewItem.append(heading, previewImage, info);
+            previewContainer.appendChild(previewItem);
             const reader = new FileReader();
-            
-            reader.onload = function(e) {
-                const previewItem = document.createElement('div');
-                previewItem.className = 'preview-box';
-                previewItem.innerHTML = `
-                    <h4>${file.name}</h4>
-                    <img src="${e.target.result}" alt="${file.name}" class="preview-image">
-                    <div class="file-info">
-                        <div>Original: ${formatFileSize(file.size)}</div>
-                        <div id="compressedSize-${index}">Compressed: -</div>
-                        <div id="savings-${index}">Savings: -</div>
-                    </div>
-                `;
-                previewContainer.appendChild(previewItem);
-            };
-            
+            reader.onload = () => { previewImage.src = reader.result; };
+            reader.onerror = () => { previewImage.alt = `Preview unavailable for ${file.name}`; };
             reader.readAsDataURL(file);
+            return previewItem;
         }
 
         // Compress images
@@ -1666,8 +1691,8 @@
             compressBtn.disabled = true;
             compressBtn.innerHTML = '<span class="loading"></span> Compressing...';
             
-            // Reset compressed files array
-            compressedFiles = [];
+            // Preserve input order even though image processing completes asynchronously.
+            compressedFiles = new Array(uploadedFiles.length);
             totalCompressedBytes = 0;
             
             // Process each file
@@ -1698,29 +1723,40 @@
                     canvas.width = width;
                     canvas.height = height;
                     
-                    // Draw image on canvas
+                    // Draw image on canvas. Preserve transparency for PNG; use a white background for JPEG.
+                    const sourceMime = (file.type || '').toLowerCase();
+                    const outputMime = sourceMime === 'image/png' || sourceMime === 'image/gif' ? 'image/png'
+                        : (sourceMime === 'image/webp' ? 'image/webp' : 'image/jpeg');
+                    if (outputMime === 'image/jpeg') {
+                        ctx.fillStyle = '#ffffff';
+                        ctx.fillRect(0, 0, width, height);
+                    }
                     ctx.drawImage(img, 0, 0, width, height);
                     
-                    // Get quality value (0.1 to 1.0)
-                    const quality = parseInt(qualitySlider.value) / 100;
-                    
-                    // Convert to blob with proper quality setting
+                    // Quality affects JPEG/WebP. PNG remains lossless; large images may be resized.
+                    const quality = parseInt(qualitySlider.value, 10) / 100;
                     canvas.toBlob((blob) => {
                         if (!blob) {
                             console.error('Failed to compress image');
                             processed++;
+                            if (img.dataset.sourceUrl) URL.revokeObjectURL(img.dataset.sourceUrl);
                             if (processed === uploadedFiles.length) {
                                 compressBtn.disabled = false;
                                 compressBtn.innerHTML = '<i class="fas fa-compress-alt"></i> Compress Images';
+                                downloadBtn.disabled = compressedFiles.filter(Boolean).length === 0;
+                                updateStats();
                             }
                             return;
                         }
                         
-                        // Create file from blob
-                        const compressedFile = new File([blob], file.name, { type: blob.type });
+                        // Match filename extension to the MIME type the browser actually produced.
+                        const actualMime = (blob.type || outputMime).toLowerCase();
+                        const outputExtension = actualMime === 'image/jpeg' ? 'jpg' : (actualMime === 'image/webp' ? 'webp' : 'png');
+                        const outputName = `${file.name.replace(/\.[^.]+$/, '')}-compressed.${outputExtension}`;
+                        const compressedFile = new File([blob], outputName, { type: actualMime });
                         
-                        // Add to compressed files array
-                        compressedFiles.push(compressedFile);
+                        // Store in original order, not asynchronous completion order.
+                        compressedFiles[index] = compressedFile;
                         totalCompressedBytes += compressedFile.size;
                         
                         // Update preview
@@ -1732,15 +1768,16 @@
                         const savings = ((originalSize - compressedSize) / originalSize * 100).toFixed(1);
                         
                         document.getElementById(`savings-${index}`).textContent = 
-                            `Savings: ${savings}%`;
+                            `Size change: ${savings >= 0 ? `${savings}% smaller` : `${Math.abs(Number(savings)).toFixed(1)}% larger`}`;
                         
                         // Update preview image with compressed version
-                        const previewImg = previewContainer.children[index].querySelector('.preview-image');
+                        const previewCard = previewContainer.children[index];
+                        const previewImg = previewCard ? previewCard.querySelector('.preview-image') : null;
                         const reader = new FileReader();
                         reader.onload = function(e) {
-                            previewImg.src = e.target.result;
+                            if (previewImg) previewImg.src = e.target.result;
                         };
-                        reader.readAsDataURL(compressedFile);
+                        if (previewImg) reader.readAsDataURL(compressedFile);
                         
                         // Check if all files are processed
                         processed++;
@@ -1750,26 +1787,61 @@
                             downloadBtn.disabled = false;
                             updateStats();
                         }
-                    }, file.type, quality);
+                    }, outputMime, quality);
+                    // Release temporary input URL after rendering/conversion has completed.
+                    if (img.dataset.sourceUrl) URL.revokeObjectURL(img.dataset.sourceUrl);
                 };
-                
-                img.src = URL.createObjectURL(file);
+                img.onerror = function() {
+                    if (img.dataset.sourceUrl) URL.revokeObjectURL(img.dataset.sourceUrl);
+                    processed++;
+                    console.warn(`Could not open ${file.name} in this browser.`);
+                    if (processed === uploadedFiles.length) {
+                        compressBtn.disabled = false;
+                        compressBtn.innerHTML = '<i class="fas fa-compress-alt"></i> Compress Images';
+                        downloadBtn.disabled = compressedFiles.filter(Boolean).length === 0;
+                        updateStats();
+                    }
+                };
+                const sourceUrl = URL.createObjectURL(file);
+                img.dataset.sourceUrl = sourceUrl;
+                img.src = sourceUrl;
             });
         }
 
         // Download all compressed images
-        function downloadAll() {
-            if (compressedFiles.length === 0) return;
-            
-            compressedFiles.forEach((file, index) => {
-                const url = URL.createObjectURL(file);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `compressed_${file.name}`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
+        async function downloadAll() {
+            const readyFiles = compressedFiles.filter(Boolean);
+            if (readyFiles.length === 0) return;
+            if (window.JSZip) {
+                try {
+                    const zip = new JSZip();
+                    readyFiles.forEach(file => zip.file(file.name, file));
+                    const blob = await zip.generateAsync({ type: 'blob' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'toolstap-compressed-images.zip';
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                    setTimeout(() => URL.revokeObjectURL(url), 60000);
+                    return;
+                } catch (error) {
+                    console.error('Could not build ZIP download, using individual downloads.', error);
+                }
+            }
+            // Fallback for CDN/offline cases. Delay URL revocation so the browser can start each download.
+            readyFiles.forEach((file, index) => {
+                window.setTimeout(() => {
+                    const url = URL.createObjectURL(file);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = file.name;
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                    setTimeout(() => URL.revokeObjectURL(url), 60000);
+                }, index * 350);
             });
         }
 

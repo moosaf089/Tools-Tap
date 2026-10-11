@@ -528,6 +528,14 @@
         }
 
         /* Category Tabs */
+        .blog-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:18px; width:min(1120px,92%); margin:0 auto; }
+        .blog-card { display:flex; flex-direction:column; align-items:flex-start; gap:10px; padding:22px; border:1px solid var(--border-color); border-radius:var(--rounded); background:var(--light-color-2); color:var(--text-dark); text-decoration:none; transition:var(--transition); }
+        .blog-card:hover { transform:translateY(-3px); border-color:var(--primary-color); box-shadow:var(--shadow); }
+        .blog-card h3 { margin:0; color:var(--text-dark); }
+        .blog-card p { margin:0; color:var(--text-light); line-height:1.65; }
+        .blog-card span { margin-top:auto; color:var(--primary-color); font-weight:600; }
+        .blog-card:focus-visible { outline:3px solid var(--primary-color); outline-offset:3px; }
+
         .category-tabs {
             display: flex;
             justify-content: center;
@@ -943,10 +951,11 @@
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#tools">Tools</a></li>
+                    <li><a href="index.html#categories">Categories</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry" class="contact-link">Get in Touch</a></li>
+                    <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer" class="contact-link">Get in Touch</a></li>
                 </ul>
             </nav>
         </div>
@@ -987,7 +996,7 @@
     <section class="search-section">
         <div class="search-container container">
             <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Search for a tool... (e.g. PDF converter, image compressor)" aria-label="Search tools">
+                <input type="text" id="searchInput" placeholder="Search tools by name or task (e.g. PDF to Word, QR code, EMI)" aria-label="Search tools">
                 <button type="submit" id="searchButton" aria-label="Search">
                     <i class="fas fa-search" aria-hidden="true"></i>
                 </button>
@@ -998,12 +1007,14 @@
     <!-- Tools Sections -->
     <main class="container">
         <!-- Category Tabs -->
-        <div class="category-tabs">
+        <div class="category-tabs" id="categories" aria-label="Browse tools by category">
             <button class="category-tab active" data-category="all">All Tools</button>
             <button class="category-tab" data-category="image">Image Tools</button>
+            <button class="category-tab" data-category="pdf">PDF Tools</button>
             <button class="category-tab" data-category="document">Document Tools</button>
             <button class="category-tab" data-category="calculator">Calculators</button>
             <button class="category-tab" data-category="text">Text Tools</button>
+            <button class="category-tab" data-category="qr">QR &amp; Barcode Tools</button>
         </div>
         
         <!-- Image Tools -->
@@ -1028,7 +1039,7 @@
                         <i class="fas fa-compress-alt" aria-hidden="true"></i>
                     </div>
                     <h3>Image Compressor</h3>
-                    <p>Reduce image file size without losing quality for faster websites and sharing. Adjust compression level.</p>
+                    <p>Adjust image quality to reduce file size for faster websites and sharing. Lossy compression can affect image detail.</p>
                     <a href="image-compressor.html" class="btn">Use Tool</a>
                 </div>
                 
@@ -1037,7 +1048,7 @@
                         <i class="fas fa-expand-alt" aria-hidden="true"></i>
                     </div>
                     <h3>Image Resizer</h3>
-                    <p>Resize images to any dimension while maintaining aspect ratio and quality. Perfect for social media.</p>
+                    <p>Resize images to custom dimensions, with aspect-ratio controls for social media and websites.</p>
                     <a href="image-resizer.html" class="btn">Use Tool</a>
                 </div>
                 
@@ -1073,30 +1084,30 @@
         <!-- Document Tools -->
         <section class="section">
             <div class="section-title">
-                <h2><i class="fas fa-file-alt" aria-hidden="true"></i> Document Tools</h2>
-                <p>Handle all your document conversion and editing needs effortlessly. Secure, fast, and completely free.</p>
+                <h2><i class="fas fa-file-alt" aria-hidden="true"></i> PDF &amp; Document Tools</h2>
+                <p>Convert and organize PDF and text-based documents with easy, browser-based tools. Secure, fast, and free.</p>
             </div>
             
             <div class="tools-grid" id="document-tools">
-                <div class="tool-card" data-category="document">
+                <div class="tool-card" data-category="pdf">
                     <div class="tool-icon-small">
                         <i class="fas fa-file-word" aria-hidden="true"></i>
                     </div>
                     <h3>PDF to Word</h3>
-                    <p>Convert PDF files to editable Word documents while preserving formatting. No quality loss.</p>
+                    <p>Extract selectable PDF text into an editable Word document. Complex layouts, images and scanned pages may need separate adjustment or OCR.</p>
                     <a href="pdf-to-word.html" class="btn">Use Tool</a>
                 </div>
                 
-                <div class="tool-card" data-category="document">
+                <div class="tool-card" data-category="pdf">
                     <div class="tool-icon-small">
                         <i class="fas fa-file-archive" aria-hidden="true"></i>
                     </div>
                     <h3>PDF Compressor</h3>
-                    <p>Reduce PDF file size without losing quality for easier sharing and storage. Optimize for web or print.</p>
+                    <p>Reduce PDF file size by compressing rendered pages. Text/vector content may be rasterized, and results depend on the original file.</p>
                     <a href="pdf-compressor-tool.html" class="btn">Use Tool</a>
                 </div>
                 
-                <div class="tool-card" data-category="document">
+                <div class="tool-card" data-category="pdf">
                     <div class="tool-icon-small">
                         <i class="fas fa-copy" aria-hidden="true"></i>
                     </div>
@@ -1110,7 +1121,7 @@
                         <i class="fas fa-exchange-alt" aria-hidden="true"></i>
                     </div>
                     <h3>Document Converter</h3>
-                    <p>Convert between DOCX, PPTX, XLSX, ODT and other document formats. Preserve formatting and layout.</p>
+                    <p>Convert readable text from supported PDF, DOCX, TXT, RTF and HTML files. Complex layout, tables and images may change.</p>
                     <a href="document-converter-tool.html" class="btn">Use Tool</a>
                 </div>
             </div>
@@ -1174,7 +1185,7 @@
                         <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
                     </div>
                     <h3>Currency Converter</h3>
-                    <p>Convert between world currencies with live exchange rates. Historical data and conversion charts available.</p>
+                    <p>Convert between 150+ supported world currencies using daily reference exchange rates. Rates may differ from banks and money-transfer providers.</p>
                     <a href="gst-currency-calculator-tool.html" class="btn">Use Tool</a>
                 </div>
             </div>
@@ -1238,14 +1249,14 @@
                         <i class="fas fa-lock" aria-hidden="true"></i>
                     </div>
                     <h3>Text Encryptor/Decryptor</h3>
-                    <p>Encrypt and decrypt text with secure algorithms for privacy protection. Multiple encryption methods.</p>
+                    <p>Encode and decode text with Base64, ROT13 and Caesar tools. These are not secure encryption for passwords or sensitive information.</p>
                     <a href="text-encrypter-decrypter.html" class="btn">Use Tool</a>
                 </div>
             </div>
         </section>
         
         <!-- QR Code Tools -->
-        <section class="section">
+        <section class="section" id="qr-tools-section">
             <div class="section-title">
                 <h2><i class="fas fa-qrcode" aria-hidden="true"></i> QR Code Tools</h2>
                 <p>Generate, scan and manage QR codes with our comprehensive QR tools. Create codes for URLs, contact info and more.</p>
@@ -1275,12 +1286,33 @@
                         <i class="fas fa-barcode" aria-hidden="true"></i>
                     </div>
                     <h3>Barcode Scanner</h3>
-                    <p>Scan barcodes from products and items. Get product information and details instantly.</p>
+                    <p>Scan supported barcodes from a camera or uploaded image and read the decoded barcode value. Product lookup is not included.</p>
                     <a href="barcode-scanner.html" class="btn">Use Tool</a>
                 </div>
             </div>
         </section>
     </main>
+
+
+    <!-- Practical guides -->
+    <section class="section blog-section" id="blog" aria-labelledby="blogSectionTitle">
+        <div class="section-title">
+            <h2 id="blogSectionTitle"><i class="fas fa-book-open" aria-hidden="true"></i> Guides from ToolsTap</h2>
+            <p>Practical tutorials for choosing formats and optimizing your images.</p>
+        </div>
+        <div class="blog-grid">
+            <a class="blog-card" href="blog-jpg-vs-png-vs-webp.html">
+                <h3>JPG vs PNG vs WebP</h3>
+                <p>Compare image formats, quality, transparency, and file size to choose the right format for your use case.</p>
+                <span>Read guide <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+            </a>
+            <a class="blog-card" href="blog-image-compression-techniques.html">
+                <h3>Image Compression Techniques</h3>
+                <p>Learn practical ways to reduce image file size while balancing visual quality and page performance.</p>
+                <span>Read guide <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+            </a>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer id="contact">
@@ -1320,7 +1352,7 @@
                 
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry">toolstap8@gmail.com</a></p>
+                    <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=toolstap8%40gmail.com&su=ToolsTap%20Website%20Inquiry" target="_blank" rel="noopener noreferrer">toolstap8@gmail.com</a></p>
                     <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+923108895446">+92 3108895446</a></p>
                     <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Pakistan</p>
                 </div>
@@ -1407,123 +1439,60 @@
             });
         });
         
-        // Category tab functionality
+        // Category and search filters work together, instead of resetting each other.
         const categoryTabs = document.querySelectorAll('.category-tab');
         const toolCards = document.querySelectorAll('.tool-card');
-        
-        categoryTabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                // Remove active class from all tabs
-                categoryTabs.forEach(t => t.classList.remove('active'));
-                
-                // Add active class to clicked tab
-                this.classList.add('active');
-                
-                const category = this.getAttribute('data-category');
-                
-                // Show/hide tools based on category
-                toolCards.forEach(card => {
-                    if (category === 'all' || card.getAttribute('data-category') === category) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
-                
-                // Show/hide sections based on visible tools
-                document.querySelectorAll('.tools-grid').forEach(section => {
-                    const visibleCards = section.querySelectorAll('.tool-card:not(.hidden)');
-                    if (visibleCards.length === 0) {
-                        section.classList.add('hidden');
-                    } else {
-                        section.classList.remove('hidden');
-                    }
-                });
-                
-                // Scroll to first visible section
-                const firstVisibleSection = document.querySelector('.tools-grid:not(.hidden)');
-                if (firstVisibleSection && category !== 'all') {
-                    window.scrollTo({
-                        top: firstVisibleSection.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Search functionality
         const searchInput = document.getElementById('searchInput');
         const searchButton = document.getElementById('searchButton');
         const toolSections = document.querySelectorAll('.tools-grid');
-        
-        function filterTools() {
-            const searchTerm = searchInput.value.toLowerCase().trim();
-            
-            if (searchTerm === '') {
-                // Show all tools if search is empty
-                toolCards.forEach(card => card.classList.remove('hidden'));
-                toolSections.forEach(section => {
-                    section.classList.remove('hidden');
-                    section.querySelector('.no-results')?.remove();
-                });
-                return;
-            }
-            
+        let activeCategory = 'all';
+
+        function applyToolFilters(scrollToResults = false) {
+            const searchTerm = (searchInput?.value || '').toLowerCase().trim();
             let hasResults = false;
-            
+            toolSections.forEach(section => section.querySelector('.no-results')?.remove());
             toolCards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                const description = card.querySelector('p').textContent.toLowerCase();
-                
-                if (title.includes(searchTerm) || description.includes(searchTerm)) {
-                    card.classList.remove('hidden');
-                    hasResults = true;
-                } else {
-                    card.classList.add('hidden');
-                }
+                const categoryMatches = activeCategory === 'all' || card.getAttribute('data-category') === activeCategory;
+                const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+                const description = card.querySelector('p')?.textContent.toLowerCase() || '';
+                const searchMatches = !searchTerm || title.includes(searchTerm) || description.includes(searchTerm);
+                const visible = categoryMatches && searchMatches;
+                card.classList.toggle('hidden', !visible);
+                if (visible) hasResults = true;
             });
-            
-            // Handle no results
             toolSections.forEach(section => {
-                // Remove existing no-results messages
-                section.querySelector('.no-results')?.remove();
-                
-                // Check if section has any visible cards
                 const visibleCards = section.querySelectorAll('.tool-card:not(.hidden)');
-                if (visibleCards.length === 0) {
-                    section.classList.add('hidden');
-                } else {
-                    section.classList.remove('hidden');
-                }
+                section.classList.toggle('hidden', visibleCards.length === 0);
             });
-            
-            // If no results in any section, show message in first section
-            if (!hasResults) {
-                const firstSection = document.querySelector('.tools-grid');
-                firstSection.classList.remove('hidden');
-                const noResults = document.createElement('div');
-                noResults.className = 'no-results';
-                noResults.textContent = `No tools found for "${searchTerm}". Try different keywords.`;
-                firstSection.appendChild(noResults);
+            if (!hasResults && searchTerm) {
+                const firstSection = Array.from(toolSections).find(section => activeCategory === 'all' || Array.from(section.querySelectorAll('.tool-card')).some(card => card.getAttribute('data-category') === activeCategory)) || toolSections[0];
+                if (firstSection) {
+                    firstSection.classList.remove('hidden');
+                    const noResults = document.createElement('div');
+                    noResults.className = 'no-results';
+                    noResults.textContent = `No tools found for "${searchTerm}"${activeCategory !== 'all' ? ' in this category' : ''}. Try another search.`;
+                    firstSection.appendChild(noResults);
+                }
             }
-            
-            // Scroll to first visible section
-            const firstVisibleSection = document.querySelector('.tools-grid:not(.hidden)');
-            if (firstVisibleSection) {
-                window.scrollTo({
-                    top: firstVisibleSection.offsetTop - 100,
-                    behavior: 'smooth'
-                });
+            if (scrollToResults) {
+                const firstVisibleSection = document.querySelector('.tools-grid:not(.hidden)');
+                if (firstVisibleSection) window.scrollTo({ top: firstVisibleSection.offsetTop - 100, behavior: 'smooth' });
             }
         }
-        
-        searchButton.addEventListener('click', filterTools);
-        searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                filterTools();
-            }
+
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                activeCategory = this.getAttribute('data-category') || 'all';
+                applyToolFilters(activeCategory !== 'all');
+            });
         });
-        
+        function filterTools() { applyToolFilters(true); }
+        searchButton?.addEventListener('click', filterTools);
+        searchInput?.addEventListener('keydown', e => { if (e.key === 'Enter') filterTools(); });
+        searchInput?.addEventListener('input', () => applyToolFilters(false));
+
         // Add loading state to buttons for better UX
         document.querySelectorAll('a.btn').forEach(button => {
             button.addEventListener('click', function(e) {
