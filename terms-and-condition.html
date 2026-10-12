@@ -660,6 +660,47 @@
 <style id="toolstap-adsense-unfilled-fix">
       ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
     </style>
+<style id="toolstap-requested-updates">
+/* ToolsTap requested category mega-menu and contact chooser */
+.site-tool-nav .tt-category-toggle{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;padding:5px 7px;border-radius:7px}
+.site-tool-nav .tt-category-toggle:hover,.site-tool-nav .tt-category-toggle:focus-visible{color:var(--primary-color,#7c3aed);outline-offset:2px}
+.site-tool-nav .tt-category-menu{left:0;transform:none;top:calc(100% + 6px)}
+.site-tool-nav .tt-category-nav{display:inline-block}
+.site-tool-nav .tt-menu-group h3{color:var(--primary-color,#7c3aed)}
+.tt-category-nav{position:relative!important}
+#mainNav .tt-category-toggle{appearance:none;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;padding:10px 12px;line-height:1.4;border-radius:8px;white-space:nowrap}
+#mainNav .tt-category-toggle:hover,#mainNav .tt-category-toggle:focus-visible{color:var(--primary-color,#7c3aed);outline-offset:2px}
+.tt-category-menu{display:none;position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-48%);width:min(900px,calc(100vw - 32px));max-height:min(74vh,650px);overflow:auto;z-index:99999;box-sizing:border-box;padding:22px;gap:22px;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--light-color-2,#171717);color:var(--text-dark,#e5e7eb);border:1px solid var(--border-color,#373737);border-radius:16px;box-shadow:0 18px 52px rgba(0,0,0,.42)}
+.tt-category-nav.is-open>.tt-category-menu{display:grid}
+.tt-menu-group h3{font-size:.82rem;letter-spacing:.06em;font-weight:700;color:var(--primary-color,#a855f7);margin:0 0 10px;padding:0}
+.tt-menu-group ul{list-style:none!important;padding:0!important;margin:0 0 10px!important;display:block!important}
+.tt-menu-group li{margin:0 0 5px!important;padding:0!important}
+.tt-menu-group li a{display:block;padding:5px 7px;border-radius:6px;font-size:.92rem;line-height:1.35;text-decoration:none!important;color:var(--text-dark,#e5e7eb)!important;white-space:normal}
+.tt-menu-group li a:hover,.tt-menu-group li a:focus-visible{background:rgba(124,58,237,.13);color:var(--primary-color,#a855f7)!important;outline-offset:1px}
+.tt-menu-viewall{display:inline-block;padding:5px 7px;font-weight:600;font-size:.9rem;color:var(--primary-color,#a855f7)!important;text-decoration:none!important}
+.tt-menu-viewall:hover{text-decoration:underline!important}
+#tt-email-choice-dialog{width:min(480px,calc(100vw - 32px));padding:0;border:1px solid var(--border-color,#374151);border-radius:18px;color:var(--text-dark,#e5e7eb);background:var(--light-color-2,#111827);box-shadow:0 24px 80px rgba(0,0,0,.42)}
+#tt-email-choice-dialog::backdrop{background:rgba(3,7,18,.7);backdrop-filter:blur(3px)}
+.tt-email-dialog-inner{padding:24px}
+.tt-email-dialog-head{display:flex;gap:14px;justify-content:space-between;align-items:flex-start}
+.tt-email-dialog-head h2{margin:0 0 8px;font-size:1.35rem;color:inherit}
+.tt-email-dialog-head p{margin:0;color:var(--text-light,#9ca3af);line-height:1.5}
+.tt-email-close{border:0;background:transparent;color:inherit;font-size:1.55rem;cursor:pointer;line-height:1;padding:4px}
+.tt-email-options{display:grid;grid-template-columns:1fr;gap:10px;margin-top:20px}
+.tt-email-option{display:flex;align-items:center;gap:12px;padding:13px 15px;border:1px solid var(--border-color,#374151);border-radius:10px;color:inherit;text-decoration:none;background:transparent;font-weight:600}
+.tt-email-option:hover,.tt-email-option:focus-visible{border-color:var(--primary-color,#7c3aed);background:rgba(124,58,237,.1);outline-offset:2px}
+.tt-email-note{font-size:.82rem;line-height:1.45;margin:15px 0 0;color:var(--text-light,#9ca3af)}
+.tt-seo-guide{padding:26px 0;margin:28px 0;border-top:1px solid var(--border-color,#e5e7eb)}
+.tt-seo-guide .container{max-width:980px;margin:0 auto;padding:0 20px}
+.tt-seo-guide h2{font-size:clamp(1.25rem,2.4vw,1.8rem);margin:0 0 12px}
+.tt-seo-guide h3{font-size:1.1rem;margin:20px 0 8px}
+.tt-seo-guide p,.tt-seo-guide li{line-height:1.75;color:var(--text-light,#667085)}
+.tt-image-article-img{display:block;width:min(100%,520px);height:auto;margin:18px auto;border-radius:16px;border:1px solid var(--border-color,#ddd)}
+.tt-tool-promo{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,280px);gap:24px;align-items:center}
+.tt-tool-promo figure{margin:0}
+@media(max-width:900px){.tt-category-menu{left:0;transform:none;width:min(680px,calc(100vw - 24px));grid-template-columns:repeat(2,minmax(0,1fr));max-height:64vh}#mainNav .tt-category-nav{width:100%}#mainNav .tt-category-toggle{width:100%;text-align:left}.tt-category-menu{position:static;transform:none;width:100%;max-height:58vh;margin-top:6px;box-shadow:none;grid-template-columns:1fr 1fr}.tt-tool-promo{grid-template-columns:1fr}.tt-tool-promo figure{max-width:300px}}
+@media(max-width:520px){.tt-category-menu{grid-template-columns:1fr;padding:15px;gap:12px}.tt-menu-group li{margin-bottom:2px!important}.tt-tool-promo figure{max-width:240px}}
+</style>
 </head>
 <body>
 <!-- Header -->
@@ -679,11 +720,11 @@
 <ul>
 <li><a href="index.html">Home</a></li>
 <li><a href="index.html#tools">Tools</a></li>
-<li><a href="index.html#categories">Categories</a></li>
+<li class="tt-category-nav"><button class="tt-category-toggle" type="button" aria-expanded="false" aria-controls="tt-category-menu">Categories <span aria-hidden="true">▾</span></button><div class="tt-category-menu" id="tt-category-menu"><section class="tt-menu-group"><h3>IMAGE TOOLS</h3><ul><li><a href="background-remover.html">Background Remover</a></li><li><a href="line-art-upscaler.html">Line Art Upscaler</a></li><li><a href="image-converter.html">Image Converter</a></li><li><a href="image-compressor.html">Image Compressor</a></li><li><a href="image-resizer.html">Image Resizer</a></li><li><a href="image-cropper.html">Image Cropper</a></li><li><a href="image-rotater.html">Image Rotator / Flipper</a></li><li><a href="image-to-text.html">Image to Text (OCR)</a></li></ul><a class="tt-menu-viewall" href="index.html#image-tools">View all Image Tools →</a></section><section class="tt-menu-group"><h3>PDF TOOLS</h3><ul><li><a href="pdf-to-word.html">PDF to Word</a></li><li><a href="pdf-compressor-tool.html">PDF Compressor</a></li><li><a href="pdf-merger-splitter-tool.html">PDF Merger &amp; Splitter</a></li><li><a href="pdf-lock-unlock-tool.html">PDF Lock / Unlock</a></li></ul><a class="tt-menu-viewall" href="index.html#document-tools">View all PDF Tools →</a></section><section class="tt-menu-group"><h3>DOCUMENT TOOLS</h3><ul><li><a href="document-converter-tool.html">Document Converter</a></li></ul><a class="tt-menu-viewall" href="index.html#document-tools">View all Document Tools →</a></section><section class="tt-menu-group"><h3>CALCULATORS</h3><ul><li><a href="age-calculator-tool.html">Age Calculator</a></li><li><a href="bmi-calculator-tool.html">BMI Calculator</a></li><li><a href="loan-emi-calculator-tool.html">Loan EMI Calculator</a></li><li><a href="gst-calculator-converter.html">GST Calculator</a></li><li><a href="gst-currency-calculator-tool.html">Currency Converter</a></li><li><a href="scientific-calculator.html">Scientific Calculator</a></li></ul><a class="tt-menu-viewall" href="index.html#calculator-tools">View all Calculators →</a></section><section class="tt-menu-group"><h3>TEXT TOOLS</h3><ul><li><a href="word-counter-tool.html">Word &amp; Character Counter</a></li><li><a href="text-case-converter-tool.html">Text Case Converter</a></li><li><a href="duplicate-line-remover.html">Duplicate Line Remover</a></li><li><a href="text-reverser.html">Text Reverser</a></li><li><a href="text-shortner-tool.html">Text Sorter</a></li><li><a href="text-encrypter-decrypter.html">Text Encryptor / Decryptor</a></li></ul><a class="tt-menu-viewall" href="index.html#text-tools">View all Text Tools →</a></section><section class="tt-menu-group"><h3>QR &amp; BARCODE</h3><ul><li><a href="qrcode-generator.html">QR Code Generator</a></li><li><a href="qr-code-scanner.html">QR Code Scanner</a></li><li><a href="barcode-scanner.html">Barcode Scanner</a></li></ul><a class="tt-menu-viewall" href="index.html#qr-tools">View all QR &amp; Barcode Tools →</a></section></div></li>
 <li><a href="index.html#contact">Contact</a></li>
 <li><a href="about.html">About</a></li>
 <li><a href="faq.html">FAQ</a></li>
-<li><a class="contact-link" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=toolstap8%40gmail.com&amp;su=ToolsTap%20Website%20Inquiry" rel="noopener noreferrer" target="_blank">Get in Touch</a></li>
+<li><a class="contact-link tt-email-choice-trigger" href="#email-options" rel="noopener noreferrer" target="_blank" aria-haspopup="dialog">Get in Touch</a></li>
 </ul>
 </nav>
 </div>
@@ -703,7 +744,7 @@
 <h2>7. Third-Party Services</h2><p>ToolsTap may link to or rely on third-party services, libraries, APIs, and providers. Their availability and terms are controlled by those providers, not ToolsTap.</p>
 <h2>8. Limitation of Liability</h2><p>To the extent permitted by law, ToolsTap is provided on an “as is” and “as available” basis. We are not liable for indirect loss, file corruption, loss of data, financial decisions, or damages arising from use of the website. Keep backups of important files.</p>
 <h2>9. Changes to These Terms</h2><p>We may update these terms as the website develops. The updated version will be published on this page with the revised wording.</p>
-<h2>10. Contact</h2><p>Questions about these terms can be sent through our <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=toolstap8%40gmail.com&amp;su=ToolsTap%20Terms%20Inquiry" rel="noopener noreferrer" target="_blank">contact email</a>.</p>
+<h2>10. Contact</h2><p>Questions about these terms can be sent through our <a href="#email-options" rel="noopener noreferrer" target="_blank" class="tt-email-choice-trigger" aria-haspopup="dialog">contact email</a>.</p>
 </div></section><footer id="contact">
 <div class="container">
 <div class="footer-container">
@@ -740,7 +781,7 @@
 </div>
 <div class="footer-contact">
 <h3>Contact Us</h3>
-<p><i class="fas fa-envelope"></i> <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=toolstap8%40gmail.com&amp;su=ToolsTap%20Website%20Inquiry" rel="noopener noreferrer" target="_blank">toolstap8@gmail.com</a></p>
+<p><i class="fas fa-envelope"></i> <a href="#email-options" rel="noopener noreferrer" target="_blank" class="tt-email-choice-trigger" aria-haspopup="dialog">toolstap8@gmail.com</a></p>
 <p><i aria-hidden="true" class="fas fa-phone"></i> <a href="tel:+923108895446">+92 3108895446</a></p>
 <p><i class="fas fa-map-marker-alt"></i> Pakistan</p>
 </div>
@@ -825,5 +866,37 @@
             });
         });
     </script>
+
+<dialog id="tt-email-choice-dialog" aria-labelledby="tt-email-choice-title">
+  <div class="tt-email-dialog-inner">
+    <div class="tt-email-dialog-head"><div><h2 id="tt-email-choice-title">Choose how to email ToolsTap</h2><p>Pick the email service you use. Your message will be addressed to <strong>toolstap8@gmail.com</strong>.</p></div><button class="tt-email-close" type="button" aria-label="Close email options">&times;</button></div>
+    <div class="tt-email-options">
+      <a class="tt-email-option" target="_blank" rel="noopener noreferrer" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=toolstap8%40gmail.com&amp;su=ToolsTap%20Website%20Inquiry"><span aria-hidden="true">✉</span> Gmail</a>
+      <a class="tt-email-option" target="_blank" rel="noopener noreferrer" href="https://outlook.live.com/mail/0/deeplink/compose?to=toolstap8%40gmail.com&amp;subject=ToolsTap%20Website%20Inquiry"><span aria-hidden="true">✉</span> Outlook.com</a>
+      <a class="tt-email-option" target="_blank" rel="noopener noreferrer" href="https://outlook.office.com/mail/deeplink/compose?to=toolstap8%40gmail.com&amp;subject=ToolsTap%20Website%20Inquiry"><span aria-hidden="true">✉</span> Microsoft 365 Outlook</a>
+      <a class="tt-email-option" href="mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry"><span aria-hidden="true">✉</span> Default email app</a>
+    </div>
+    <p class="tt-email-note">ToolsTap does not send an email automatically. Your chosen app opens a draft that you can review and send.</p>
+  </div>
+</dialog>
+<script id="toolstap-navigation-email-handlers">
+(function(){
+  var categoryNav=document.querySelector('.tt-category-nav');
+  var categoryToggle=document.querySelector('.tt-category-toggle');
+  if(categoryNav && categoryToggle){
+    categoryToggle.addEventListener('click',function(event){event.preventDefault();var opened=categoryNav.classList.toggle('is-open');categoryToggle.setAttribute('aria-expanded',opened?'true':'false');});
+    document.addEventListener('click',function(event){if(!categoryNav.contains(event.target)){categoryNav.classList.remove('is-open');categoryToggle.setAttribute('aria-expanded','false');}});
+    document.addEventListener('keydown',function(event){if(event.key==='Escape'){categoryNav.classList.remove('is-open');categoryToggle.setAttribute('aria-expanded','false');}});
+    categoryNav.querySelectorAll('.tt-category-menu a').forEach(function(link){link.addEventListener('click',function(){categoryNav.classList.remove('is-open');categoryToggle.setAttribute('aria-expanded','false');});});
+  }
+  var dialog=document.getElementById('tt-email-choice-dialog');
+  if(dialog){
+    document.addEventListener('click',function(event){var trigger=event.target.closest('.tt-email-choice-trigger');if(!trigger)return;event.preventDefault();if(typeof dialog.showModal==='function'){dialog.showModal();var first=dialog.querySelector('.tt-email-option');if(first)first.focus();}else{window.location.href='mailto:toolstap8@gmail.com?subject=ToolsTap%20Website%20Inquiry';}});
+    var close=dialog.querySelector('.tt-email-close');if(close)close.addEventListener('click',function(){dialog.close();});
+    dialog.addEventListener('click',function(event){if(event.target===dialog)dialog.close();});
+  }
+})();
+</script>
+
 </body>
 </html>

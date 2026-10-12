@@ -21,3 +21,15 @@ ToolsTap technical update notes
 17. Currency Converter rejects invalid custom rates rather than silently using a different rate.
 18. Image Converter now previews the actual encoded output rather than only showing the source canvas; unsupported browser encodings fail with an explicit message.
 19. Removed dead placeholder links from Image Optimization Blog cards and About page controls; unconfigured GitHub icon is non-clickable and Help opens the FAQ.
+
+
+20. Background Remover is a local, edge-connected colour remover. It is best for uniform/solid backgrounds and is not AI segmentation; complex hair/detail scenes may require a dedicated model.
+21. Line Art Upscaler uses high-quality browser image interpolation plus adjustable sharpening and optional threshold cleanup. It is not a neural-network AI upscaler and cannot reconstruct details absent from the source.
+22. Image Converter has an optional PNG-only connected near-white background removal control. Standard JPG-to-PNG conversion does not make white pixels transparent unless the user enables it.
+23. All tool pages now include a tool-specific explanatory guide, and the navigation category menu lists the actual available pages.
+24. Email/contact links open a chooser for Gmail, Outlook.com, Microsoft 365 Outlook, or the default mail app.
+25. Image sitemap entries only reference image assets present in the archive. Google Images indexing/ranking cannot be guaranteed.
+
+26. Verification performed for this update: 38 HTML files were reviewed; 91 inline JavaScript blocks passed syntax checks; sitemap XML parsed successfully with 35 page URLs and 6 image entries; CSS parsing found no errors in 167 style blocks; local relative asset checks found no missing assets. Automated source-level checks reported zero errors.
+27. Browser smoke tests passed for the category mega menu, email chooser (four options), transparent PNG output with optional edge-connected white removal, Background Remover on a plain white background, Line Art Upscaler 2x output, Image Resizer (16x10 output), Image Rotator/Flipper output, Word Counter, Text Case Converter, Duplicate Line Remover, Text Reverser, BMI Calculator, zero-interest Loan EMI, GST Calculator, Age Calculator, Scientific Calculator, and Currency Converter maths using a mocked test response. Mocked currency test is not a live-rate availability guarantee.
+28. The above are targeted smoke tests, not exhaustive manual end-to-end tests of every browser, device, external CDN, or third-party service. GitHub Pages cannot run the PDF Lock/Unlock API endpoint; the interface remains clearly disabled until a backend is deployed.

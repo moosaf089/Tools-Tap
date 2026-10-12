@@ -1,7 +1,7 @@
-User-agent: Mediapartners-Google
+User-agent: *
 Allow: /
 
-User-agent: *
+User-agent: Mediapartners-Google
 Allow: /
 
 Sitemap: https://toolstap.site/sitemap.xml
