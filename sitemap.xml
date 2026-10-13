@@ -164,4 +164,12 @@
 <loc>https://toolstap.site/word-counter-tool.html</loc>
 <lastmod>2026-10-12</lastmod>
 </url>
+<url>
+<loc>https://toolstap.site/image-upscaler.html</loc>
+<lastmod>2026-10-12</lastmod>
+<image:image>
+<image:loc>https://toolstap.site/assets/image-upscaler-guide.svg</image:loc>
+<image:title>ToolsTap AI Image Upscaler guide illustration</image:title>
+</image:image>
+</url>
 </urlset>
