@@ -1,0 +1,26 @@
+TOOLSTAP AI TOOLS - VERIFICATION REPORT
+======================================
+
+SOURCE PROJECT
+- 39 HTML pages scanned.
+- 94 inline JavaScript blocks passed `node --check` syntax validation.
+- 0 duplicate HTML IDs detected.
+- 0 broken local assets/files/fragments detected (legacy #email-options links are handled by the existing dialog script).
+- sitemap.xml parses as valid XML and its 36 page URLs resolve to existing files.
+- ai-client.js and ai-config.js pass Node syntax checks.
+- ai-backend/app.py passes Python bytecode compilation.
+
+BACKEND CONTRACT TESTS
+- GET /api/health returned HTTP 200 and status=ok.
+- CORS preflight for https://toolstap.site returned HTTP 200 with the expected Access-Control-Allow-Origin header.
+- A generated PNG passed through the result artifact helper; preview returned image/webp and download returned image/png with a file name.
+- Multipart upload + job-status polling contract tests passed for /api/remove-background, /api/upscale, and /api/line-art-upscale using a mocked worker.
+
+IMPORTANT TEST LIMITATION
+- Real background-removal and Real-ESRGAN neural-network inference was NOT run in this environment. The rembg/Real-ESRGAN model dependencies and downloaded weights are not installed here. The mock worker test validates API routing, CORS, multipart fields and polling only; it does not validate visual quality or model inference.
+- The browser automation environment could not be used for a full real-image browser run. Please do the first real-image check after deploying the backend.
+
+MEMORY SAFETY / DEPLOYMENT
+- High-resolution AI processing must run on the separate Python service in `ai-backend/`; GitHub Pages cannot run that Python server.
+- `ai-config.js` is intentionally left with a blank URL. Until a server is deployed and its HTTPS base URL is set there, the tools use conservative browser-only limits to reduce out-of-memory crashes.
+- Follow `AI-BACKEND-SETUP-URDU.txt`. Free CPU hosting may be slow, may sleep when idle, and is not unlimited. No model can promise perfectly pixel-free 800% zoom for every source image.

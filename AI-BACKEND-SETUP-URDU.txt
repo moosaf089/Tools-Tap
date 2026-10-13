@@ -1,0 +1,37 @@
+TOOLSTAP AI BACKEND SETUP (ROMAN URDU)
+====================================
+
+Yeh website GitHub Pages par static HTML hai. High-resolution background removal aur AI upscaling ko browser memory se bahar nikalne ke liye Python AI backend alag deploy karna zaroori hai. Backend ko deploy kiye baghair large images par safe browser mode jaan-boojh kar limit karta hai taake mobile/browser crash na ho.
+
+A) HUGGING FACE SPACE BANAYEIN
+1. Hugging Face par apne account se sign in karein: https://huggingface.co/new-space
+2. Space ka naam rakhein, misal ke taur par toolstap-ai-backend. SDK mein Docker select karein. Free CPU Basic available ho to CPU Basic se start kar sakte hain.
+3. Is website archive ke ai-backend/ folder ke ANDAR wali files (app.py, requirements.txt, Dockerfile, README.md front matter samait) Space repository ke root mein upload karein. Folder ko ek aur nested ai-backend/ ke andar na rakhein.
+4. Space ko build hone dein. First build mein dependencies install honay ki wajah se kaafi waqt lag sakta hai.
+5. Space URL kholein aur /api/health add karein. Misal: https://YOUR-SPACE-NAME.hf.space/api/health. JSON mein status=ok aana chahiye.
+
+B) WEBSITE KO BACKEND SE CONNECT KAREIN
+1. Is website ke root mein ai-config.js file kholein.
+2. Is line mein apne live Space ka HTTPS address paste karein (ending slash ke baghair):
+   window.TOOLSTAP_AI_API_BASE = 'https://YOUR-SPACE-NAME.hf.space';
+3. Sirf base URL set karein. Koi secret API key is public JavaScript file mein kabhi mat rakhein.
+4. Save karein aur GitHub par push karein. Ab teen AI image tools configured backend use karenge.
+
+C) TEST
+1. Background Remover par ek chhoti JPG test karein, phir ek badi image.
+2. AI Image Upscaler par 2x, phir 4x test karein.
+3. Line Art Upscaler par 2000 px output se start karein; phir 3000 px. 5000/7000 px bohat bari files banati hain, processing slow ho sakti hai aur server ke 49 MP/12,000 px limits se bahar nahi ja sakti.
+4. Browser mein result preview chhota thumbnail hai taake tab full-resolution image decode karke memory exhaust na kare. Download full-resolution result deta hai.
+
+IMPORTANT LIMITS / COSTS
+- Free CPU hosting unlimited nahi hoti. Provider workload ke mutabiq slow kar sakta hai, Space idle hone par sleep kar sakta hai, aur usage/queue limits ho sakti hain. Large AI images par kai minutes lag sakte hain.
+- “800% zoom par kabhi pixel na aaye” ya 7000x7000 par har original image perfect ho jana guarantee nahi ho sakta. AI missing detail ka estimate karta hai.
+- Server configured hone par users ki selected images HTTPS se backend ko bheji jati hain. Output aur preview temporary tor par 40 minute tak store hote hain; cleanup request ke waqt expired files delete karta hai. Privacy policy mein is baat ka note add hai.
+- Public API URL ka matlab public endpoint hai. Production brand ke liye queue/rate limiting, abuse prevention, monitoring, aur munasib paid compute ko plan karna hoga. Free CPU ko unlimited service na samjhein.
+- Agar /api/health nahi khulta ya frontend “Could not reach server / CORS” dikhata hai, Space URL aur backend build logs check karein. ALLOWED_ORIGINS ka default toolstap.site aur www.toolstap.site ko allow karta hai.
+
+BROWSER SAFE MODE (BACKEND URL BLANK HO TO)
+- Background remover: max 1.2 MP local image; “High-detail” requires backend.
+- AI Image Upscaler: 2x up to 1.2 MP and 4x up to 0.3 MP source, general model only.
+- Line Art: local mode max 1.5 MP source and 6 MP output; local AI option limited to 250,000 source pixels.
+In limits ka maqsad error se pehle processing rokna hai, browser memory crash ke baad nahi.
