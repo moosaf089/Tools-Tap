@@ -1,0 +1,66 @@
+TOOLS TAP AI BACKEND: ZERO GPU SETUP (ROMAN URDU)
+================================================
+
+Aapne Hugging Face Space bana liya hai:
+https://huggingface.co/spaces/moosa123/toolstap-ai-backend
+
+Aapke computer par Python install karna zaroori nahi. Hugging Face par build aur run hota hai.
+
+PART 1 — SPACE PAR SIRF 3 ROOT FILES REPLACE KAREIN
+--------------------------------------------------
+1. Apna Space kholein aur Files and versions par click karein:
+   https://huggingface.co/spaces/moosa123/toolstap-ai-backend/tree/main
+2. Is archive ke `ai-backend/` folder se ye 3 files Space repository ke ROOT mein upload/replace karein:
+   - README.md
+   - app.py
+   - requirements.txt
+   Files ko ek aur ai-backend/ folder ke andar mat rakhein.
+3. Space root se purana Dockerfile delete karein, agar maujood ho. README front matter mein `sdk: gradio` hona chahiye, `sdk: docker` nahi.
+4. README.md ke top par ye front matter hona chahiye:
+   ---
+   title: ToolsTap AI Backend
+   emoji: 🖼️
+   colorFrom: blue
+   colorTo: indigo
+   sdk: gradio
+   sdk_version: "5.50.0"
+   python_version: "3.12"
+   app_file: app.py
+   pinned: false
+   ---
+5. Hardware/Settings mein ZeroGPU selected rehne dein. Commit changes karein aur Space ko rebuild hone dein. Pehli build aur pehli model loading mein waqt lag sakta hai.
+
+PART 2 — SPACE RUNNING HAI YA NAHI
+----------------------------------
+1. Space main page kholein:
+   https://huggingface.co/spaces/moosa123/toolstap-ai-backend
+2. Status Running hona chahiye. Agar Configuration error/build error aaye to Space ke Logs/Build logs kholein aur aakhri 20 lines save karein.
+3. App ki UI mein neeche Health status section aur "Check backend health" button hai. Isay click karein. JSON mein `status: ok` ke saath teenon model flags true hon to models loaded hain.
+   Agar kisi model ka flag false ho, to Space logs mein model ka error dekhna hoga. Sirf Space ka Running hona model load hone ki guarantee nahi.
+4. App ke API endpoints Gradio API page par hain: `/remove_background`, `/upscale_image`, `/line_art_upscale`, `/health_check`.
+
+PART 3 — WEBSITE KO BACKEND SE CONNECT KAREIN
+--------------------------------------------
+1. Is website package mein `ai-config.js` pehle se aapke Space ka URL use kar raha hai:
+   window.TOOLSTAP_AI_API_BASE = 'https://moosa123-toolstap-ai-backend.hf.space';
+2. Full website ZIP extract karein. Iske andar `Tools-Tap-main` folder ki files apne existing local GitHub repository folder mein copy karein. Existing `.git` folder delete na karein.
+3. VS Code Terminal mein:
+   git status
+   git add ai-client.js ai-config.js ai-backend ZERO-GPU-SETUP-URDU.txt
+   git commit -m "Connect ToolsTap to Gradio ZeroGPU backend"
+   git push origin main
+4. GitHub Pages deployment complete hone dein.
+5. Pehle chhoti JPG test karein: Background Remover, phir AI Upscaler 2x, phir Line Art 2000 px. Sab theek ho to bari images try karein.
+
+IMPORTANT: ZERO GPU FREE QUOTA / LIMITS
+---------------------------------------
+Official Hugging Face ZeroGPU docs ke mutabiq unauthenticated requests ki shared quota 2 GPU minutes/day, Free account use 5 minutes/day, aur PRO 40 minutes/day hoti hai (quota/priority account ke mutabiq badal sakti hai). Static public website mein private HF token rakhna unsafe hai, isliye user ko authenticated personal quota dene ke liye token public JavaScript mein mat paste karein.
+
+Iska matlab ye free demo high-traffic unlimited service nahi hai. Quota khatam, queue full, Space sleeping ya model error ki surat mein request fail ho sakti hai. Website ko real business scale par promote karne se pehle actual requests test karein, logs/usage monitor karein, aur zaroorat par paid compute ya secure server-side authentication ka plan banayein.
+
+Agar client website se Space ko connect nahi kar pata:
+- Space status Running check karein.
+- API page par endpoint names verify karein.
+- Browser Console mein exact error note karein.
+- Space Logs se model load/runtime error ki aakhri 20 lines copy karein.
+- Kisi bhi public file mein HF token ya password na daalein.
