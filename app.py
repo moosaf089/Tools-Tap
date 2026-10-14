@@ -10,6 +10,7 @@ import os
 os.environ.setdefault("HF_HOME", "/tmp/toolstap_hf_cache")
 os.environ.setdefault("HF_MODULES_CACHE", "/tmp/toolstap_hf_cache/modules")
 os.environ.setdefault("TRANSFORMERS_CACHE", "/tmp/toolstap_hf_cache/transformers")
+os.environ.setdefault("GRADIO_ANALYTICS_ENABLED", "False")
 
 # IMPORTANT: import spaces before torch, as required by ZeroGPU.
 import spaces  # provided by the Hugging Face ZeroGPU runtime; don't pin in requirements.txt
@@ -45,20 +46,15 @@ try:
 except Exception:
     pass
 
-# Compatibility shim for BasicSR/Real-ESRGAN: newer torchvision versions removed
-# torchvision.transforms.functional_tensor. Register a tiny, explicit module alias
-# BEFORE importing BasicSR so Real-ESRGAN does not crash at startup.
+# Fix compatibility with BasicSR versions that import a removed torchvision internal module.
 try:
-    import types
-    import torchvision.transforms as _tv_transforms
-    from torchvision.transforms.functional import rgb_to_grayscale as _rgb_to_grayscale
-
-    _functional_tensor = types.ModuleType("torchvision.transforms.functional_tensor")
-    _functional_tensor.rgb_to_grayscale = _rgb_to_grayscale
-    sys.modules.setdefault("torchvision.transforms.functional_tensor", _functional_tensor)
-    setattr(_tv_transforms, "functional_tensor", sys.modules["torchvision.transforms.functional_tensor"])
-except Exception as _tv_compat_error:
-    print(f"[ToolsTap] torchvision compatibility shim unavailable: {_tv_compat_error}", flush=True)
+    import torchvision.transforms.functional_tensor  # type: ignore # noqa: F401
+except Exception:
+    try:
+        import torchvision.transforms.functional as tv_functional
+        sys.modules.setdefault("torchvision.transforms.functional_tensor", tv_functional)
+    except Exception:
+        pass
 
 
 def _clean_old_files() -> None:
@@ -186,32 +182,47 @@ except Exception as exc:
 
 
 def _download_weight(model_key: str) -> Path:
-    urls = {
-        "general": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/RealESRGAN_x4plus.pth",
-        "anime": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/RealESRGAN_x4plus_anime_6B.pth",
+    """Download published Real-ESRGAN weights from verified Hugging Face model repos.
+
+    The former GitHub asset URLs used an incorrect release tag and returned 404.
+    huggingface_hub follows Xet/CDN redirects and caches the files between restarts.
+    """
+    model_specs = {
+        "general": {
+            "repo_id": "amd/realesrgan-x4plus",
+            "filename": "RealESRGAN_x4plus.pth",
+        },
+        "anime": {
+            "repo_id": "amd/realesrgan-x4plus-anime-6b",
+            "filename": "RealESRGAN_x4plus_anime_6B.pth",
+        },
     }
-    names = {
-        "general": "RealESRGAN_x4plus.pth",
-        "anime": "RealESRGAN_x4plus_anime_6B.pth",
-    }
-    target = MODEL_DIR / names[model_key]
-    if target.exists() and target.stat().st_size > 1_000_000:
-        return target
-    tmp = target.with_suffix(target.suffix + ".part")
-    print(f"[ToolsTap] Downloading {names[model_key]} model weights…", flush=True)
+    if model_key not in model_specs:
+        raise ValueError(f"Unknown Real-ESRGAN model key: {model_key}")
+
+    from huggingface_hub import hf_hub_download
+
+    spec = model_specs[model_key]
+    print(
+        f"[ToolsTap] Downloading {spec['filename']} from {spec['repo_id']}…",
+        flush=True,
+    )
     try:
-        with urllib.request.urlopen(urls[model_key], timeout=180) as response, open(tmp, "wb") as out:
-            while True:
-                chunk = response.read(1024 * 1024)
-                if not chunk:
-                    break
-                out.write(chunk)
-        if tmp.stat().st_size < 1_000_000:
-            raise RuntimeError("Downloaded model weights were incomplete.")
-        tmp.replace(target)
-        return target
-    finally:
-        tmp.unlink(missing_ok=True)
+        model_path = Path(
+            hf_hub_download(
+                repo_id=spec["repo_id"],
+                filename=spec["filename"],
+                cache_dir=str(MODEL_DIR / "hub"),
+            )
+        )
+        if not model_path.exists() or model_path.stat().st_size < 1_000_000:
+            raise RuntimeError("Downloaded model weights are missing or incomplete.")
+        return model_path
+    except Exception as exc:
+        raise RuntimeError(
+            f"Could not download {spec['filename']} from {spec['repo_id']}: "
+            f"{type(exc).__name__}: {exc}"
+        ) from exc
 
 
 UPSAMPLERS: dict[str, Any] = {}
@@ -411,18 +422,17 @@ def health_check() -> dict[str, Any]:
         "sdk": "gradio-zero-gpu",
         "device": DEVICE,
         "background_model_loaded": BG_MODEL is not None,
+        "background_model_error": BG_MODEL_ERROR,
         "upscaler_general_loaded": "general" in UPSAMPLERS,
+        "upscaler_general_error": UPSCALER_ERRORS.get("general"),
         "upscaler_anime_loaded": "anime" in UPSAMPLERS,
+        "upscaler_anime_error": UPSCALER_ERRORS.get("anime"),
         "max_upload_mb": MAX_UPLOAD_BYTES // (1024 * 1024),
         "max_output_megapixels": MAX_OUTPUT_PIXELS / 1_000_000,
     }
 
 
-with gr.Blocks(
-    title="ToolsTap AI Backend",
-    theme=gr.themes.Soft(primary_hue="blue", secondary_hue="indigo"),
-    delete_cache=(1800, 2400),
-) as demo:
+with gr.Blocks(title="ToolsTap AI Backend", theme=gr.themes.Soft(primary_hue="blue", secondary_hue="indigo")) as demo:
     gr.Markdown("# ToolsTap AI Processing Backend\nThis public API powers the ToolsTap website's background remover and image upscalers. Large files are processed on the server; output previews are downsized.")
     with gr.Tab("Background Remover"):
         bg_file = gr.File(label="Image file", type="filepath", file_types=["image"])
@@ -472,5 +482,4 @@ with gr.Blocks(
 demo.queue(default_concurrency_limit=1, max_size=10)
 
 if __name__ == "__main__":
-    # delete_cache belongs to gr.Blocks(...), not to Blocks.launch(...).
-    demo.launch(analytics_enabled=False, max_file_size="25mb")
+    demo.launch(max_file_size="25mb")

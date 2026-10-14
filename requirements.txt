@@ -9,4 +9,11 @@ numpy==1.26.4
 opencv-python-headless==4.10.0.84
 basicsr==1.4.2
 realesrgan==0.3.0
+einops>=0.8.0
+kornia>=0.8.0
+scipy>=1.10.0
+scikit-image>=0.23.0
+prettytable>=3.9.0
+tqdm>=4.66.0
+huggingface_hub>=0.34.0
 torchvision
