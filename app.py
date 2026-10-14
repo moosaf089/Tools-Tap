@@ -45,15 +45,20 @@ try:
 except Exception:
     pass
 
-# Fix compatibility with BasicSR versions that import a removed torchvision internal module.
+# Compatibility shim for BasicSR/Real-ESRGAN: newer torchvision versions removed
+# torchvision.transforms.functional_tensor. Register a tiny, explicit module alias
+# BEFORE importing BasicSR so Real-ESRGAN does not crash at startup.
 try:
-    import torchvision.transforms.functional_tensor  # type: ignore # noqa: F401
-except Exception:
-    try:
-        import torchvision.transforms.functional as tv_functional
-        sys.modules.setdefault("torchvision.transforms.functional_tensor", tv_functional)
-    except Exception:
-        pass
+    import types
+    import torchvision.transforms as _tv_transforms
+    from torchvision.transforms.functional import rgb_to_grayscale as _rgb_to_grayscale
+
+    _functional_tensor = types.ModuleType("torchvision.transforms.functional_tensor")
+    _functional_tensor.rgb_to_grayscale = _rgb_to_grayscale
+    sys.modules.setdefault("torchvision.transforms.functional_tensor", _functional_tensor)
+    setattr(_tv_transforms, "functional_tensor", sys.modules["torchvision.transforms.functional_tensor"])
+except Exception as _tv_compat_error:
+    print(f"[ToolsTap] torchvision compatibility shim unavailable: {_tv_compat_error}", flush=True)
 
 
 def _clean_old_files() -> None:
@@ -413,7 +418,11 @@ def health_check() -> dict[str, Any]:
     }
 
 
-with gr.Blocks(title="ToolsTap AI Backend", theme=gr.themes.Soft(primary_hue="blue", secondary_hue="indigo")) as demo:
+with gr.Blocks(
+    title="ToolsTap AI Backend",
+    theme=gr.themes.Soft(primary_hue="blue", secondary_hue="indigo"),
+    delete_cache=(1800, 2400),
+) as demo:
     gr.Markdown("# ToolsTap AI Processing Backend\nThis public API powers the ToolsTap website's background remover and image upscalers. Large files are processed on the server; output previews are downsized.")
     with gr.Tab("Background Remover"):
         bg_file = gr.File(label="Image file", type="filepath", file_types=["image"])
@@ -463,4 +472,5 @@ with gr.Blocks(title="ToolsTap AI Backend", theme=gr.themes.Soft(primary_hue="bl
 demo.queue(default_concurrency_limit=1, max_size=10)
 
 if __name__ == "__main__":
-    demo.launch(analytics_enabled=False, max_file_size="25mb", delete_cache=(1800, 2400))
+    # delete_cache belongs to gr.Blocks(...), not to Blocks.launch(...).
+    demo.launch(analytics_enabled=False, max_file_size="25mb")
